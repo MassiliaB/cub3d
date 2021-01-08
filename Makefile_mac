@@ -1,0 +1,60 @@
+NAME = Cub3D
+
+SRCS = main.c custom_mlx.c mlx_errors.c parse_map.c\
+	gnl/get_next_line.c \
+	gnl/get_next_line_utils.c \
+
+MLX_PATH_LIN	= minilibx/
+MLX_PATH_MAC	= minilibx_macos/
+MLX_NAME_LIN	= ${MLX_PATH_LIN}libmlx_Linux.a \
+MLX_NAME_MAC	= ${MLX_PATH_MAC}libmlx.a\
+
+UNAME			:= $(shell uname -s)
+
+ifeq ($(UNAME), Linux)
+	MLX_PAT		:=	${MLX_PATH_LIN}
+	LIBS        := ${MLX_NAME_LIN}
+	LIB_MAKE	:= -lXext -lX11 -lm -lz -o
+endif
+ifeq ($(UNAME), Darwin)
+	MLX_PATH	:=	${MLX_PATH_MAC}
+	LIBS        :=	$(MLX_NAME_MAC)
+	LIB_MAKE	:= -framework OpenGL -framework AppKit -lm 
+endif
+
+MLX_I		=	-I${MLX_PATH}
+LIBC_PATH	=	libft/
+LIBC_NAME	=	${LIBC_PATH}libft.a
+LIBC_I		=	-I${LIBC_PATH}
+
+OBJS = $(SRCS:.c=.o)
+
+CC = gcc
+
+#CFLAGS = -Wall -Wextra -Werror -g
+
+RM = rm -f
+
+LIB = ar -rc ${NAME}
+
+.o.c = $(CC) ${CFLAGS} -c $< -o ${$<.c=.o}
+
+all: ${NAME}
+
+$(NAME): ${OBJS}
+	@make --silent -C libft/
+	@make --silent -C minilibx/
+	@${CC} ${OBJS} ${LIBS} ${LIBC_NAME} -L${MLX_PATH} -L/usr/lib/ -L${LIBC_PATH} ${LIBC_I} ${MLX_INC} ${LIB_MAKE} ${NAME}
+
+clean:
+	@make clean --silent -C libft/
+	@make clean --silent -C minilibx/
+	${RM} ${OBJS}
+
+fclean: clean
+	@make fclean --silent -C libft/
+	${RM} ${NAME}
+
+re: fclean all
+
+.PHONY: all clean fclean re
