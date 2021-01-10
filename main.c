@@ -2,7 +2,7 @@
 
 void	ft_init_img(t_param *p)
 {
-	p->img.bits_per_pixel = 32;
+	p->img.bits_per_pixel = 16;
 	p->img.line_length = 1;
 	p->img.endian = 1;
 }
@@ -32,10 +32,12 @@ int		main(int ac, char **av)
 	char	*path;
 
 	if (ac < 2)
-		return (print_error("No enough args\nNeed a .cub file"));
+		return (print_error("Wrong number of arguments.\nNeed one .cub file"));
 	path = av[1];
-	fd = open_cub(&params, path);
-	parse_no_error(&params, fd, path);
+	if ((fd = open_cub(&params, path)) == -1)
+		return (0);
+	if (!(parse_no_error(&params, fd, path)))
+		return (0);
 	main_loop(&params);
 	return (0);
 }

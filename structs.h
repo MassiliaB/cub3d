@@ -26,7 +26,7 @@ typedef struct s_map
 	int		mapX;
 	int		mapY;
 	int		tile_size;
-	int		**tab;
+	char		**tab;
 }               t_map;
 
 typedef struct s_colors
@@ -59,7 +59,7 @@ typedef struct s_horizon
 	double  deltaDistX;
 	double  deltaDistY;
 	char	view;
-	int	view_nu;
+	char	view_nu;
 }               t_horizon;
 
 typedef struct s_param
