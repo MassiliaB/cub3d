@@ -1,6 +1,6 @@
 NAME = Cub3D
 
-SRCS = main.c custom_mlx.c mlx_errors.c parse_map.c\
+SRCS = main.c custom_mlx.c mlx_errors.c parse_map.c open_cub.c utils.c check_content.c\
 	gnl/get_next_line.c \
 	gnl/get_next_line_utils.c \
 

@@ -48,29 +48,34 @@ void	my_cub_map(t_param *p)
     int	y;
     int tileY;
     int	tileX;
-	int width;
+    int width;
 
-    p->colors.wall = creat_trgb(40, 47, 95, 95);//rose
-    p->colors.floor = creat_trgb(40, 165, 89, 89);//bleu foncé
-    p->colors.sky = creat_trgb(40, 0, 224, 224);//bleu clair
-	width = 32;
+    p->colors.wall = creat_trgb(0, 47, 95, 95);//rose
+    p->colors.floor = creat_trgb(0, p->colors.floor_r, p->colors.floor_g, p->colors.floor_b);//bleu foncé
+   // p->colors.sky = creat_trgb(0, p->colors.sky_r, p->colors.sky_g, p->colors.sky_b);//bleu clair
+    p->colors.person = creat_trgb(0, 255, 255, 255);//bleu clair
+    p->colors.sky = creat_trgb(0, 0, 0, 0);//bleu clair
+
+    width = 32;
     y = 0;
     while (y < (p->map.mapY))
     {
-		x = 0;
-		p->map.mapX = 24; 
-		while (x < (p->map.mapX))
-		{
-	    	tileY = y * width; 
-	    	tileX = x * width;
-			if (p->map.tab[y][x] == '1')
-				display_cub_map(p, p->colors.wall, tileX, tileY, width);    
-	    	else if (p->map.tab[y][x] == '0')
-				display_cub_map(p, p->colors.floor, tileX, tileY, width);
-	    	else
-				display_cub_map(p, p->colors.sky, tileX, tileY, width);
-	    	x++;
-		}
-		y++;
+	x = 0;
+	p->map.mapX = ft_strlen2(p->map.tab[y]);
+	while (x < (p->map.mapX))
+	{
+	    tileY = y * width; 
+	    tileX = x * width;
+	    if (p->map.tab[y][x] == '1')
+		display_cub_map(p, p->colors.wall, tileX, tileY, width);    
+	    else if (p->map.tab[y][x] == '0')
+		display_cub_map(p, p->colors.floor, tileX, tileY, width);
+	    else if (ft_isview(p->map.tab[y][x]))
+		display_cub_map(p, p->colors.person, tileX, tileY, width);
+	    else
+		display_cub_map(p, p->colors.sky, tileX, tileY, width);
+	    x++;
+	}
+	y++;
     }
 }

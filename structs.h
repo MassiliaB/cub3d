@@ -27,6 +27,8 @@ typedef struct s_map
 	int		mapY;
 	int		tile_size;
 	char		**tab;
+	int		nb_lines;
+	int		line_max;
 }               t_map;
 
 typedef struct s_colors
@@ -34,6 +36,14 @@ typedef struct s_colors
 	int		floor;
 	int		sky;
 	int		wall;
+	int		person;
+	int		sky_r;
+	int		sky_g;
+	int		sky_b;
+	int		floor_r;
+	int		floor_g;
+	int		floor_b;
+
 }				t_colors;
 
 typedef struct s_horizon

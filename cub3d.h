@@ -22,5 +22,14 @@ int		get_elements(char *line, t_param *p);
 int		get_tab(char *line, t_param *p);
 void            my_mlx_pixel_put(t_param *data, int x, int y, int color);
 void	my_cub_map(t_param *p);
+int		is_there_num(char *line);
+int	 get_good_line(char *line, t_param *p, int x);
+int		ft_isview(char view);
+int		malloc_lines(t_param *p, char *line, int fd);
+int	get_f(char *line, t_param *p);
+int	get_c(char *line, t_param *p);
+int	get_r(char *line, t_param *p);
+int	check_col(t_param *p);
+int	check_line(t_param *p, int y, int x);
 
 #endif

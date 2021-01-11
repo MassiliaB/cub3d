@@ -32,12 +32,12 @@ int		main(int ac, char **av)
 	char	*path;
 
 	if (ac < 2)
-		return (print_error("Wrong number of arguments.\nNeed one .cub file"));
+	    return (print_error("Wrong number of arguments.\nNeed one .cub file"));
 	path = av[1];
 	if ((fd = open_cub(&params, path)) == -1)
-		return (0);
+	    return (0);
 	if (!(parse_no_error(&params, fd, path)))
-		return (0);
+	    return (0);
 	main_loop(&params);
 	return (0);
 }
