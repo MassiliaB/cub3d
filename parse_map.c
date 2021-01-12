@@ -6,6 +6,7 @@ int	 get_good_line(char *line, t_param *p, int x)
 	   p->map.tab[p->map.mapY][x] = *line;
 	else if (ft_isview(*line))
 	{
+	//printf("wsh\n");
 	   p->person.view = *line;
 	   p->map.tab[p->map.mapY][x] = *line;
 	}

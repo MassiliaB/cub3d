@@ -5,6 +5,19 @@
 # define Width 880
 # define Height 550
 
+typedef struct s_player
+{
+    int	    x;
+    int	    y;
+    double rad;
+    double  dir_turn; // = 0 devant, -1 left +1 right
+    double  dir_walk; // = 0 bouge pas, -1 back, +1 front
+    double  rot_angle; // = M_PI /2 = angle droit 
+    double  move_speed; //3.0 ; pix per frme
+    double  rot_speed; // = 3 * (M_PI / 180) = angles per frame
+
+}		t_player;
+
 typedef struct	s_mlx
 {
 	void    *mlx_ptr;
@@ -77,6 +90,7 @@ typedef struct s_param
 	t_mlx	vars;
 	t_img	img;
 	t_map	map;
+	t_player fps;
 	t_horizon person;
 	t_colors colors;
 	int	win_width;

@@ -29,7 +29,7 @@ int	check_line(t_param *p, int y, int x)
 	    if (p->map.tab[y][x] != ' ' && p->map.tab[y][x] != '1')
 		return (0);
 	if (p->map.tab[y][x] == ' ')
-	    if ((p->map.tab[y][x + 1] != '1' && p->map.tab[y][x + 1] != ' ')
+	    if ((p->map.tab[y][x + 1] != '1' && p->map.tab[y][x + 1] != ' ' && p->map.tab[y][x + 1] != '\0')
 	|| (x != 0 && (p->map.tab[y][x - 1] != ' ' && p->map.tab[y][x - 1] != '1')))
 		return (0);
 	if (p->map.tab[y][x] == '0' || p->map.tab[y][x] == '2')
@@ -52,10 +52,8 @@ int	check_col(t_param *p)
 	x = 0;
 	while (p->map.tab[y][x] != '\0')
 	{
-//printf("[%c]", p->map.tab[y][x]); 
 	    if (!(check_line(p, y, x)))
 		return (0);
-//printf("[%c]", p->map.tab[y][x]); 
 	    if ((p->map.tab[y][x] == '0' || p->map.tab[y][x] == '2') &&
 	    (p->map.tab[y - 1][x - 1] == ' ' || p->map.tab[y - 1][x + 1] == ' '
 	    || p->map.tab[y + 1][x - 1] == ' ' || p->map.tab[y + 1][x + 1] == ' '
@@ -64,7 +62,6 @@ int	check_col(t_param *p)
 		return (0);
 	    x++;
 	}
-//printf("\n"); 
 	y++;
     }
     return (1);

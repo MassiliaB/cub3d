@@ -9,6 +9,7 @@
 # include "structs.h"
 # include "libft/libft.h"
 # include "gnl/get_next_line.h"
+# include <math.h>
 
 int		creat_trgb(int t, int r, int g, int b);
 int		print_error(char *str);
@@ -31,5 +32,6 @@ int	get_c(char *line, t_param *p);
 int	get_r(char *line, t_param *p);
 int	check_col(t_param *p);
 int	check_line(t_param *p, int y, int x);
-
+void	init_player(t_param *p);
+void	display_circle(t_param *p, int color, int x, int y);
 #endif
