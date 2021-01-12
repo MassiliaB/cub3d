@@ -23,6 +23,7 @@ int		is_there_num(char *line)
 
 int	check_line(t_param *p, int y, int x)
 {
+   // printf("[%c]",p->map.tab[p->map.mapY][x]); 
     if ((p->map.tab[y][x] >= '0' && p->map.tab[y][x] <= '2') || ft_isview(p->map.tab[y][x]) || p->map.tab[y][x] == ' ')
     {
 	if (y == 0 || x == 0 || y == (p->map.nb_lines - 1)) 

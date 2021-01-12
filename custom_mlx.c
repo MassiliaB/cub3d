@@ -53,8 +53,9 @@ void	my_cub_map(t_param *p)
     p->colors.wall = creat_trgb(0, 47, 95, 95);
     p->colors.floor = creat_trgb(0, p->colors.floor_r, p->colors.floor_g, p->colors.floor_b);
     p->colors.person = creat_trgb(0, 255, 255, 255);
-    p->colors.sky = creat_trgb(0, 0, 0, 0);
+    p->colors.sky = creat_trgb(0, 191, 63, 63);
 
+    init_player_map(p);
     width = 16;
     y = 0;
     while (y < (p->map.mapY))
@@ -70,12 +71,8 @@ void	my_cub_map(t_param *p)
 	    else if (p->map.tab[y][x] == '0')
 		display_cub_map(p, p->colors.floor, tileX, tileY, width);
 	    else if (ft_isview(p->map.tab[y][x]))
-	    {
-	//	display_cub_map(p, p->colors.person, tileX, tileY, width);
-		init_player(p);
-		display_circle(p, p->colors.person, tileX, tileY);
-	    }
-	    else
+		display_circle_map(p, p->colors.person, tileX, tileY, width);
+	    else if (p->map.tab[y][x] == '2')
 		display_cub_map(p, p->colors.sky, tileX, tileY, width);
 	    x++;
 	}

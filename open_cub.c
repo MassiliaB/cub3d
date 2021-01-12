@@ -52,7 +52,7 @@ int		parse_no_error(t_param *p, int fd, char *path)
 	    free(line);
     }
     if (!(check_col(p)))
-	return (quit(p, "Error with the map.\n"));
+	return (quit(p, "HError with the map.\n"));
     if (!(ft_isview(p->person.view)))
 	return (quit(p, "Error with the player on the map.\n"));
     if (ret == -1)

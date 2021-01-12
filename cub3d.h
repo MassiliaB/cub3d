@@ -7,9 +7,11 @@
 # include <fcntl.h>
 # include "mlx.h"
 # include "structs.h"
+# include "keys.h"
 # include "libft/libft.h"
 # include "gnl/get_next_line.h"
 # include <math.h>
+
 
 int		creat_trgb(int t, int r, int g, int b);
 int		print_error(char *str);
@@ -32,6 +34,8 @@ int	get_c(char *line, t_param *p);
 int	get_r(char *line, t_param *p);
 int	check_col(t_param *p);
 int	check_line(t_param *p, int y, int x);
-void	init_player(t_param *p);
-void	display_circle(t_param *p, int color, int x, int y);
+void	init_player_map(t_param *p);
+void	display_circle_map(t_param *p, int color, int x, int y, int width);
+void	line_dir(t_param *p, int x, int y, int color);
+int	keygen(int keycode, t_param *p);
 #endif

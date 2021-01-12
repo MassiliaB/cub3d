@@ -6,7 +6,6 @@ int	 get_good_line(char *line, t_param *p, int x)
 	   p->map.tab[p->map.mapY][x] = *line;
 	else if (ft_isview(*line))
 	{
-	//printf("wsh\n");
 	   p->person.view = *line;
 	   p->map.tab[p->map.mapY][x] = *line;
 	}
@@ -22,10 +21,12 @@ int	get_tab(char *line, t_param *p)
     x = 0;
     if(!(p->map.tab[p->map.mapY] = malloc(sizeof(char) * (p->map.mapX + 1))))
 	return (0);
+   // printf("[%d]", p->map.mapX); 
     while (x < (p->map.mapX))
     {
 	if (!(get_good_line(line, p, x)))
 	    return (0);
+    printf("[%c]",p->map.tab[p->map.mapY][x]); 
 	x++;
 	line++;
     }
@@ -36,8 +37,10 @@ int	get_tab(char *line, t_param *p)
 	while (x < p->map.line_max)
 	{
 	    p->map.tab[p->map.mapY][x] = ' ';
+    printf("[%c]",p->map.tab[p->map.mapY][x]); 
 	    x++;
 	}
+    printf("\n"); 
     }
     p->map.tab[p->map.mapY][x] = '\0';
     return (1);

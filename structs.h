@@ -10,11 +10,11 @@ typedef struct s_player
     int	    x;
     int	    y;
     double rad;
-    double  dir_turn; // = 0 devant, -1 left +1 right
-    double  dir_walk; // = 0 bouge pas, -1 back, +1 front
-    double  rot_angle; // = M_PI /2 = angle droit 
-    double  move_speed; //3.0 ; pix per frme
-    double  rot_speed; // = 3 * (M_PI / 180) = angles per frame
+    double  dir_turn;
+    double  dir_walk;
+    double  rot_angle;
+    double  move_speed;
+    double  rot_speed;
 
 }		t_player;
 
