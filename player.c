@@ -1,45 +1,27 @@
 #include "cub3d.h"
 
-void	init_player_map(t_param *p)
-{ 
-    p->fps.rad = 3;
-    p->fps.dir_turn = 0;
-    p->fps.dir_walk = 0;
-    p->fps.rot_angle = M_PI / 2;
-    p->fps.move_speed = 2.0;
-    p->fps.rot_speed = 2 * (M_PI / 180);
-}
-
-void	line_dir(t_param *p, int x, int y, int color)
+/*void    ft_init_raycast(t_param *p)
 {
-    p->fps.x = x + cos(p->fps.rot_angle) * 30;
-    p->fps.y = y + cos(p->fps.rot_angle) * 30;
-
-    my_mlx_pixel_put(p, p->fps.x, p->fps.y, color);
+    p->fps.x = 14.7;
+    p->fps.y = 5.09;
+    p->fps.rot_angle = 0.0;
+    p->fps.fov = M_PI / 4.0;
+    p->fps.dist_max = 16.0;
+    p->fps.move_speed = 5.0;
 }
-
-void	display_circle_map(t_param *p, int color, int x, int y, int width)
+*/
+/*void    raycasting(t_param *p)
 {
-    int	i;
-    int j;
-    double dist;
+    p->fps.x = x / (p->win_width * p->win_height) - 0.5;
+    p->fps.angle = math.atan2(x, p->fps.focalength);
+    p->fps.ray = p->map.tab
 
-    display_cub_map(p, p->colors.floor, x, y, width);
-    j = 0;
-    while (j <= 2 * p->fps.rad)
+    int x;
+
+    x = 0;
+    while (x < p->win_width)
     {
-	i = 0;
-	while (i <= 2 * p->fps.rad)
-	{
-	    dist = sqrt((i - p->fps.rad) * (i - p->fps.rad) + (j - p->fps.rad) * (j - p->fps.rad));
-	    if (dist > (p->fps.rad - 0.5) && dist < (p->fps.rad + 0.5))
-	    {
-	    	my_mlx_pixel_put(p, i+x, j+y, color);		
-	    }
-	    line_dir(p, x, y, p->colors.person);
-	    i++;
-	}
-	j++;
-    }	
-}
+        p->fps.angle = 
 
+    }
+}*/

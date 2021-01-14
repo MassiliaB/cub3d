@@ -10,12 +10,15 @@ typedef struct s_player
     int	    x;
     int	    y;
     double rad;
+	double angle;
     double  dir_turn;
     double  dir_walk;
     double  rot_angle;
     double  move_speed;
     double  rot_speed;
-
+	double 	move_step;
+	double  dir_y;
+	double	fov;
 }		t_player;
 
 typedef struct	s_mlx
@@ -58,6 +61,11 @@ typedef struct s_colors
 	int		floor_b;
 
 }				t_colors;
+
+typedef struct s_key
+{
+	
+}				t_key;
 
 typedef struct s_horizon
 {

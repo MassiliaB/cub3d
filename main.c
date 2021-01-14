@@ -18,11 +18,9 @@ int		main_loop(t_param *p)
 	    return (quit(p,"mlx_new_image NULL"));
 	if (!(p->img.addr = mlx_get_data_addr(p->img.img, &(p->img.bits_per_pixel), &(p->img.line_length), &(p->img.endian))))
 	    return (quit(p, "mlx_get_data_add Error"));
-    my_cub_map(p);
-//	mlx_hook(p->vars.mlx_ptr, KEYPRESS, KEYPRESS_MASK, keygen, p);
-//	mlx_hook(p->vars.mlx_ptr, KEYRELEASE, KEYRELEASE_MASK, key_released, p);
-//	mlx_loop_hook(p->vars.mlx_ptr, keygen, p);
-    mlx_put_image_to_window(p->vars.mlx_ptr, p->vars.win_ptr, p->img.img, 0, 0);
+	put_image(p);
+	//my_cub_map(p);
+	mlx_hook(p->vars.win_ptr, KEYPRESS, KEYPRESS_MASK, keygen, p);
 	mlx_loop(p->vars.mlx_ptr);
 	return(0);
 }

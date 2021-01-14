@@ -52,30 +52,29 @@ void	my_cub_map(t_param *p)
 
     p->colors.wall = creat_trgb(0, 47, 95, 95);
     p->colors.floor = creat_trgb(0, p->colors.floor_r, p->colors.floor_g, p->colors.floor_b);
-    p->colors.person = creat_trgb(0, 255, 255, 255);
     p->colors.sky = creat_trgb(0, 191, 63, 63);
 
+    width = p->win_width / (2 * p->map.line_max);
     init_player_map(p);
-    width = 16;
     y = 0;
     while (y < (p->map.mapY))
     {
-	x = 0;
-	p->map.mapX = ft_strlen2(p->map.tab[y]);
-	while (x < (p->map.mapX))
-	{
-	    tileY = y * width; 
-	    tileX = x * width;
-	    if (p->map.tab[y][x] == '1')
-		display_cub_map(p, p->colors.wall, tileX, tileY, width);    
-	    else if (p->map.tab[y][x] == '0')
-		display_cub_map(p, p->colors.floor, tileX, tileY, width);
-	    else if (ft_isview(p->map.tab[y][x]))
-		display_circle_map(p, p->colors.person, tileX, tileY, width);
-	    else if (p->map.tab[y][x] == '2')
-		display_cub_map(p, p->colors.sky, tileX, tileY, width);
-	    x++;
-	}
-	y++;
+		x = 0;
+		p->map.mapX = ft_strlen2(p->map.tab[y]);
+		while (x < (p->map.mapX))
+		{
+			tileY = y * width; 
+			tileX = x * width;
+			if (p->map.tab[y][x] == '1')
+				display_cub_map(p, p->colors.wall, tileX, tileY, width);    
+			else if (p->map.tab[y][x] == '0')
+				display_cub_map(p, p->colors.floor, tileX, tileY, width);
+			else if (ft_isview(p->map.tab[y][x], p))
+				display_circle_map(p, tileX, tileY, width);
+			else if (p->map.tab[y][x] == '2')
+				display_cub_map(p, p->colors.sky, tileX, tileY, width);
+			x++;
+		}
+		y++;
     }
 }
