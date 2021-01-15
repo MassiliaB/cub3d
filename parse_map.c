@@ -6,8 +6,10 @@ int	 get_good_line(char *line, t_param *p, int x)
 		p->map.tab[p->map.mapY][x] = *line;
 	else if (ft_isview(*line, p))
 	{
-	   p->person.view = *line;
-	   p->map.tab[p->map.mapY][x] = *line;
+	   	p->person.view = *line;
+	   	p->map.tab[p->map.mapY][x] = *line;
+		p->person.posX = x;
+		p->person.posY = p->map.mapY;
 	}
 	if (!(ft_isdigit(*line)) && !(ft_isview(*line, p)) && !(*line == ' '))
 		return (0);
@@ -46,24 +48,23 @@ int	get_tab(char *line, t_param *p)
     return (1);
 }
 
-
 int	parse_map(t_param *p, char *line)
 {
 	if (ft_strncmp(line, "R ", 2) == 0)
 	{
-	    if (!(get_r(line + 2, p)))
+	    if (!(get_r(line + 1, p)))
 			return (0);
 	    return (1);
 	}
 	if (ft_strncmp(line, "C ", 2) == 0)
 	{
-	    if (!(get_c(line + 2, p)))
+	    if (!(get_c(line + 1, p)))
 			return (0);
 	    return (1);
 	}
 	if (ft_strncmp(line, "F ", 2) == 0)
 	{
-	    if (!(get_f(line + 2, p)))
+	    if (!(get_f(line + 1, p)))
 			return (0);
 	    return (1);
 	}
@@ -78,4 +79,3 @@ int	parse_map(t_param *p, char *line)
 	   return (1);
 	return (0);
 }
-

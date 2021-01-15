@@ -2,6 +2,8 @@
 
 int	get_r(char *line, t_param *p)
 {
+	while (*line == ' ')
+		line++;
 	if (ft_isdigit(*line))
 	{
 	    p->win_width = ft_atoi(line);
@@ -25,6 +27,8 @@ int	get_r(char *line, t_param *p)
 
 int	get_c(char *line, t_param *p)
 {
+	while (*line == ' ')
+		line++;
     if (ft_isdigit(*line))
     {
 		p->colors.sky_r = ft_atoi(line);
@@ -52,6 +56,8 @@ int	get_c(char *line, t_param *p)
 
 int	get_f(char *line, t_param *p)
 {
+	while (*line == ' ')
+		line++;
     if (ft_isdigit(*line))
     {
 		p->colors.floor_r = ft_atoi(line);

@@ -20,12 +20,12 @@ int	put_image(t_param *p)
     return (1);
 }
 
-int ft_uptade(t_param *p)
+/*int uptade(t_param *p)
 {
-    if ()
+    ft_move();
 
 }
-
+*/
 int	keygen(int keycode, t_param *p)
 {
     static int touch;
@@ -37,8 +37,15 @@ int	keygen(int keycode, t_param *p)
 	    if (touch % 2 == 1)
             my_cub_map(p);
     }
-    ft_uptade(p);
     if (keycode == ESC)
         exit(0);
-    return (1);
+    if (keycode == GO_UP)
+        p->fps.forward = 1;
+    if (keycode == GO_DOWN)
+        p->fps.backward = 1;
+    if (keycode == GO_LEFT)
+        p->fps.left = 1;
+    if (keycode == GO_RIGHT)
+        p->fps.right = 1;
+    return (0);
 }

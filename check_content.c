@@ -4,21 +4,33 @@ int		ft_isview(char view, t_param *p)
 {
     if (view == 'W')
 	{
-		p->fps.dir_walk = 0.0;
+		p->person.dirX = 0;
+		p->person.dirY = -1;
+		p->person.planeX = -0.66;
+		p->person.planeY = 0;
 		return (1);
 	}
 	if (view == 'E')
 	{
-		 p->fps.dir_walk = 0.0;
+		p->person.dirX = 0;
+		p->person.dirY = 1;
+		p->person.planeX = 0.66;
+		p->person.planeY = 0;
 		return (1);
 	}	
 	if (view == 'S')
 	{
-		 p->fps.dir_walk = -1.0;
+		p->person.dirX = 1;
+		p->person.dirY = 0;
+		p->person.planeX = 0;
+		p->person.planeY = -0.66;
 		return (1);
 	}	if (view == 'N')
 	{
-		p->fps.dir_walk = 0.0;
+		p->person.dirX = -1;
+		p->person.dirY = 0;
+		p->person.planeX = 0;
+		p->person.planeY = 0.66;
 		return (1);
 	}		
     return (0);
@@ -40,7 +52,6 @@ int		is_there_num(char *line)
 
 int	check_line(t_param *p, int y, int x)
 {
-    //printf("i[%c]\n",p->map.tab[p->map.mapY][x]); 
     if ((p->map.tab[y][x] >= '0' && p->map.tab[y][x] <= '2') || ft_isview(p->map.tab[y][x], p) || p->map.tab[y][x] == ' ')
     {
 		if (y == 0 || x == 0 || y == (p->map.nb_lines - 1)) 

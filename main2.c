@@ -3,8 +3,7 @@
 void    ft_init_horizon(t_param *p)
 {
     int  pixels;
-  /*  t_horizon hor;
-
+    t_horizon hor;
 
     hor->posX = 22;
     hor->posY = 12;
@@ -20,7 +19,8 @@ void    ft_init_horizon(t_param *p)
     p->width = Width;
 	p->img.bits_per_pixel = 4;
     p->img.line_length = 1;
-   p->img.endian = 0;
+    p->img.endian = 0;
+
 }
 
 /*void    my_mlx_pixel_put(t_img *img, t_init *init, int color)
@@ -134,7 +134,7 @@ int main(void)
 /*  dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
     *(unsigned int*)dst = (color >> 24);
 
-  if (hor.rayDirX < 0)
+        if (hor.rayDirX < 0)
         {
             hor.stepX = -1;
             hor.sideDistX = (hor.posX - line.mapX) * hor.deltaDistX;

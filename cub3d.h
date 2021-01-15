@@ -34,7 +34,7 @@ int     get_c(char *line, t_param *p);
 int     get_r(char *line, t_param *p);
 int	    check_col(t_param *p);
 int	    check_line(t_param *p, int y, int x);
-void	init_player_map(t_param *p);
+void	init_player_map(t_param *p, int x, int y);
 void	display_circle_map(t_param *p, int x, int y, int width);
 void	line_dir(t_param *p, int x, int y, int color);
 int     keygen(int keycode, t_param *p);
@@ -42,4 +42,5 @@ void	display_cub_map(t_param *p, int color, int x, int y, int width);
 int     put_image(t_param *p);
 void    player_move(int x, int y, int keycode, t_param *p);
 void    get_view(int keycode, t_param *p);
+void    raycasting(t_param *p);
 #endif

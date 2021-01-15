@@ -55,12 +55,12 @@ void	my_cub_map(t_param *p)
     p->colors.sky = creat_trgb(0, 191, 63, 63);
 
     width = p->win_width / (2 * p->map.line_max);
-    init_player_map(p);
     y = 0;
     while (y < (p->map.mapY))
     {
 		x = 0;
 		p->map.mapX = ft_strlen2(p->map.tab[y]);
+		init_player_map(p, x, y);
 		while (x < (p->map.mapX))
 		{
 			tileY = y * width; 
