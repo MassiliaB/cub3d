@@ -1,6 +1,8 @@
 NAME = Cub3D
 
-SRCS = main.c custom_mlx.c mlx_errors.c parse_map.c open_cub.c get_coord.c check_content.c player.c player_map.c keys.c\
+SRCS = main.c custom_map.c mlx_errors.c parse_map.c open_cub.c get_coord.c \
+	check_content.c view.c player_map.c keys.c scene.c ft_move.c\
+	init.c \
 	gnl/get_next_line.c \
 	gnl/get_next_line_utils.c \
 

@@ -6,10 +6,11 @@ int	 get_good_line(char *line, t_param *p, int x)
 		p->map.tab[p->map.mapY][x] = *line;
 	else if (ft_isview(*line, p))
 	{
-	   	p->person.view = *line;
+	   	p->horizon.view = *line;
 	   	p->map.tab[p->map.mapY][x] = *line;
-		p->person.posX = x;
-		p->person.posY = p->map.mapY;
+		p->horizon.posX = x;
+		p->horizon.posY = p->map.mapY;
+
 	}
 	if (!(ft_isdigit(*line)) && !(ft_isview(*line, p)) && !(*line == ' '))
 		return (0);
@@ -23,28 +24,28 @@ int	get_tab(char *line, t_param *p)
 
     x = 0;
     n = 0;
-    if (p->map.mapX >= p->map.line_max)
-		p->map.line_max = p->map.mapX;
+    if (p->map.mapX >= p->map.col_max)
+		p->map.col_max = p->map.mapX;
     else
-		n = p->map.line_max - p->map.mapX;
-    if(!(p->map.tab[p->map.mapY] = malloc(sizeof(char) * (p->map.mapX + n + 1))))
+		n = p->map.col_max - p->map.mapX;
+    if (!(p->map.tab[p->map.mapY] = malloc(sizeof(char) * (p->map.mapX + n + 1))))
 		return (0);
     while (x < (p->map.mapX))
     {
 		if (!(get_good_line(line, p, x)))
 	    	return (0);
-  //  printf("[%c]",p->map.tab[p->map.mapY][x]); 
+	//	printf("[%c]",p->map.tab[p->map.mapY][x]);
 		x++;
 		line++;
     }
-    while (x < p->map.line_max)
+    while (x < p->map.col_max)
     {
 		p->map.tab[p->map.mapY][x] = ' ';
-  //  printf("[%c]",p->map.tab[p->map.mapY][x]); 
+	//	printf("[%c]",p->map.tab[p->map.mapY][x]);
 		x++;
     }
- //   printf("\n"); 
     p->map.tab[p->map.mapY][x] = '\0';
+//	printf("\n");
     return (1);
 }
 
@@ -75,7 +76,7 @@ int	parse_map(t_param *p, char *line)
 	    p->map.mapY++;
 	    return (1);
 	}
-	if (*line = ' ')
-	   return (1);
+	if (*line == ' ')
+		return (1);
 	return (0);
 }

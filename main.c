@@ -1,15 +1,7 @@
 #include "cub3d.h"
 
-void	ft_init_img(t_param *p)
-{
-	p->img.bits_per_pixel = 16;
-	p->img.line_length = 1;
-	p->img.endian = 1;
-}
-
 int		main_loop(t_param *p)
 {
-	ft_init_img(p);
 	if (!(p->vars.mlx_ptr = mlx_init()))
 	    return (print_error("Can't connect"));
 	if (!(p->vars.win_ptr = mlx_new_window(p->vars.mlx_ptr, p->win_width, p->win_height, "cub3d")))
@@ -18,13 +10,14 @@ int		main_loop(t_param *p)
 	    return (quit(p,"mlx_new_image NULL"));
 	if (!(p->img.addr = mlx_get_data_addr(p->img.img, &(p->img.bits_per_pixel), &(p->img.line_length), &(p->img.endian))))
 	    return (quit(p, "mlx_get_data_add Error"));
-	put_image(p); //en atendant d'avoir un rendu
-
-	//my_cub_map(p);
-	mlx_hook(p->vars.win_ptr, KEYPRESS, KEYPRESS_MASK, keygen, p);
-	//mlx_loop_hook(p->vars.win_ptr, uptdate, p);	
+	put_floorsky(p);
+	update_scene(p);
+	mlx_hook(p->vars.win_ptr, KEYPRESS, KEYPRESS_MASK, key_press, p);
+	mlx_hook(p->vars.win_ptr, KEYRELEASE, KEYRELEASE_MASK, key_release, p);
+	mlx_loop_hook(p->vars.mlx_ptr, get_update, p);
+	mlx_put_image_to_window(p->vars.mlx_ptr, p->vars.win_ptr, p->img.img, 0, 0);
 	mlx_loop(p->vars.mlx_ptr);
-	return(0);
+	return(1);
 }
 
 int		main(int ac, char **av)
@@ -38,8 +31,10 @@ int		main(int ac, char **av)
 	path = av[1];
 	if ((fd = open_cub(&params, path)) == -1)
 	    return (0);
+	init_player(&params);
 	if (!(parse_no_error(&params, fd, path)))
 	    return (0);
+	ft_init_img(&params);
 	main_loop(&params);
 	return (0);
 }

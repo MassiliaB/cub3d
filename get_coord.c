@@ -59,7 +59,7 @@ int	get_f(char *line, t_param *p)
 	while (*line == ' ')
 		line++;
     if (ft_isdigit(*line))
-    {
+    {		
 		p->colors.floor_r = ft_atoi(line);
 		while (ft_isdigit(*line))
 			line++;

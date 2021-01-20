@@ -16,7 +16,13 @@ int		malloc_lines(t_param *p, char *line, int fd)
     ret = 0;
     while ((ret = get_next_line(fd, &line)) > 0)
     {
-        if (is_there_num(line) && (ft_is_id(line) == 0))
+        if (is_there_num(line))
+            size++;
+        free(line);
+    }
+    if (ret == 0 && line != NULL)
+    {
+        if (is_there_num(line))
             size++;
         free(line);
     }
@@ -27,6 +33,7 @@ int		malloc_lines(t_param *p, char *line, int fd)
 	    return (quit(p, "Closing FD error\n"));
     if (!(p->map.tab = (char **)malloc(sizeof(char*) * (size))))
 	    return (quit(p, "Failed to malloc tab"));
+    return (1);
 }
 
 int		parse_no_error(t_param *p, int fd, char *path)
@@ -37,23 +44,33 @@ int		parse_no_error(t_param *p, int fd, char *path)
     ret = 0;
     line = NULL;
     p->map.mapY = 0;
-    p->map.line_max = 0;
+    p->map.col_max = 0;
     if (!(malloc_lines(p, line, fd)))
 	    return (0);
     fd = open_cub(p, path);
-    while ((ret = get_next_line(fd, &line)) > 0)
-    { 
+    while ((ret = get_next_line(fd, &line)))
+    {
 	    p->map.mapX = ft_strlen2(line);
 	    if (!(parse_map(p, line)))
 	    {
 		    free(line);
-		    return (quit(p, "Error with the map.\n"));
+		    return (quit(p, "YError with the map.\n"));
+	    }
+	    free(line);
+    }
+    if (ret == 0 && line != NULL)
+    {	
+        p->map.mapX = ft_strlen2(line);
+        if (!(parse_map(p, line)))
+	    {
+		    free(line);
+		    return (quit(p, "HError with the map.\n"));
 	    }
 	    free(line);
     }
     if (!(check_col(p)))
-	    return (quit(p, "HError with the map.\n"));
-    if (!(ft_isview(p->person.view, p)))
+	    return (quit(p, "LError with the map.\n"));
+    if (!(ft_isview(p->horizon.view, p)))
 	    return (quit(p, "Error with the player on the map.\n"));
     if (ret == -1)
 	    return (quit(p, "Problem getting the lines\n"));

@@ -1,38 +1,51 @@
 # include "cub3d.h"
 
-int		ft_isview(char view, t_param *p)
+void	set_camwe(char view, t_param *p)
 {
-    if (view == 'W')
+	if (view == 'W')
 	{
-		p->person.dirX = 0;
-		p->person.dirY = -1;
-		p->person.planeX = -0.66;
-		p->person.planeY = 0;
-		return (1);
+		p->horizon.dirX = 0;
+		p->horizon.dirY = -1;
+		p->horizon.planeX = -0.66;
+		p->horizon.planeY = 0;
 	}
 	if (view == 'E')
 	{
-		p->person.dirX = 0;
-		p->person.dirY = 1;
-		p->person.planeX = 0.66;
-		p->person.planeY = 0;
-		return (1);
-	}	
+		p->horizon.dirX = 0;
+		p->horizon.dirY = 1;
+		p->horizon.planeX = 0.66;
+		p->horizon.planeY = 0;
+	}
+}
+
+void	set_camsn(char view, t_param *p)
+{
 	if (view == 'S')
 	{
-		p->person.dirX = 1;
-		p->person.dirY = 0;
-		p->person.planeX = 0;
-		p->person.planeY = -0.66;
-		return (1);
-	}	if (view == 'N')
+		p->horizon.dirX = 1;
+		p->horizon.dirY = 0;
+		p->horizon.planeX = 0;
+		p->horizon.planeY = -0.66;
+	}
+	if (view == 'N')
 	{
-		p->person.dirX = -1;
-		p->person.dirY = 0;
-		p->person.planeX = 0;
-		p->person.planeY = 0.66;
-		return (1);
+		p->horizon.dirX = -1;
+		p->horizon.dirY = 0;
+		p->horizon.planeX = 0;
+		p->horizon.planeY = 0.66;
 	}		
+}
+
+int		ft_isview(char view, t_param *p)
+{
+    if (view == 'W')
+		return (1);
+	if (view == 'E')
+		return (1);
+	if (view == 'S')
+		return (1);
+	if (view == 'N')
+		return (1);
     return (0);
 }
 
@@ -45,7 +58,10 @@ int		is_there_num(char *line)
 	{
 	    if (ft_isdigit(*tmp))
 			return (1);
-	    tmp++;
+		if (*tmp == ' ')
+	    	tmp++;
+		else
+			return (0);
 	}
 	return (0);
 }

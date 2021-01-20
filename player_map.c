@@ -1,16 +1,5 @@
 #include "cub3d.h"
 
-void	init_player_map(t_param *p, int x, int y)
-{ 
-    p->fps.rad = 3;
-    p->person.posX = x + 0.5;
-    p->person.posX = y + 0.5;
-    p->fps.forward = 0;
-    p->fps.backward = 0;
-    p->fps.left = 0;
-    p->fps.right = 0;
-}
-
 /*void	line_dir(t_param *p, int x, int y, int color)
 {
     p->fps.x + cos(p->fps.rot_angle) * 30;
@@ -23,7 +12,10 @@ void	display_circle_map(t_param *p, int x, int y, int width)
     int	i;
     int j;
     double dist;
- 
+
+    p->fps.rad = 3;
+    p->horizon.posX = x + 0.5;
+    p->horizon.posX = y + 0.5;
     p->colors.person = creat_trgb(0, 255, 255, 255);
     display_cub_map(p, p->colors.floor, x, y, width);
     j = 0;

@@ -13,6 +13,8 @@ typedef struct s_player
 	int		backward;	
 	int		left;
 	int		right;
+	int rotleft;
+	int rotright;
 	int	    x;
     int	    y;
 }		t_player;
@@ -40,7 +42,7 @@ typedef struct s_map
 	int		tile_size;
 	char	**tab;
 	int		nb_lines;
-	int		line_max;
+	int		col_max;
 }               t_map;
 
 typedef struct s_colors
@@ -74,7 +76,7 @@ typedef struct s_horizon
 	double  cameraX;
 	double  rayDirX;
 	double  rayDirY;
-	double  perpWallDist;
+	double  perpwalldist;
 	int     stepX;
 	int     stepY;
 	double  sideDistX;
@@ -83,10 +85,26 @@ typedef struct s_horizon
 	double  deltaDistY;
 	char	view;
 	char	view_nu;
-	double time;
-	double oldtime;
+	double 	time;
+	double 	oldtime;
+	int		side;
+	int 	hit;
+	double frameTime;
+	double movespeed;
+	double rotspeed;
+	double oldDirX;
+	double oldPlaneX;
+	int currentposX;
+	int currentposY;
  
 }               t_horizon;
+
+typedef struct s_draw
+{
+	int drawStart;
+	int lineHeight;
+	int drawEnd;
+}				t_draw;
 
 typedef struct s_param
 {
@@ -94,8 +112,9 @@ typedef struct s_param
 	t_img	img;
 	t_map	map;
 	t_player fps;
-	t_horizon person;
+	t_horizon horizon;
 	t_colors colors;
+	t_draw	draw;
 	int	win_width;
 	int 	win_height;
 }               t_param;
