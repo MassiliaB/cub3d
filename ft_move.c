@@ -11,14 +11,14 @@ void    rotate(t_param *p)
 {
     p->horizon.oldDirX = p->horizon.dirX;
     p->horizon.oldPlaneX = p->horizon.planeX;
-    if (p->fps.rotright == 1)
+    if (p->fps.rot_right == 1)
     {
         p->horizon.dirX = p->horizon.dirX * cos(-(p->horizon.rotspeed)) - p->horizon.dirY * sin(-(p->horizon.rotspeed));
         p->horizon.dirY = p->horizon.oldDirX * sin(-(p->horizon.rotspeed)) + p->horizon.dirY * cos(-(p->horizon.rotspeed));
         p->horizon.planeX = p->horizon.planeX * cos(-(p->horizon.rotspeed)) - p->horizon.planeY * sin(-(p->horizon.rotspeed));
         p->horizon.planeY = p->horizon.oldPlaneX * sin(-(p->horizon.rotspeed)) + p->horizon.planeY * cos(-(p->horizon.rotspeed));        
     }
-    if (p->fps.rotleft == 1)
+    if (p->fps.rot_left == 1)
     {
         p->horizon.dirX = p->horizon.dirX * cos(p->horizon.rotspeed) - p->horizon.dirY * sin(p->horizon.rotspeed);
         p->horizon.dirY = p->horizon.oldDirX * sin(p->horizon.rotspeed) + p->horizon.dirY * cos(p->horizon.rotspeed);

@@ -1,4 +1,10 @@
 R 1000 800
+NO ./path_to_the_sprite_texture
+SO ./path_to_the_sprite_texture
+WE ./path_to_the_sprite_texture
+EA ./path_to_the_sprite_texture
+ 
+S ./path_to_the_sprite_texture
 F 235, 151,78
 C 1,204,181
  

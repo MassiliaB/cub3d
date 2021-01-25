@@ -11,10 +11,10 @@ int		main_loop(t_param *p)
 	if (!(p->img.addr = mlx_get_data_addr(p->img.img, &(p->img.bits_per_pixel), &(p->img.line_length), &(p->img.endian))))
 	    return (quit(p, "mlx_get_data_add Error.\n"));
  //   init_rotTime(p);
-   my_cub_map(p);
-//	mlx_hook(p->vars.win_ptr, KEYPRESS, KEYPRESS_MASK, key_press, p);
-//	mlx_hook(p->vars.win_ptr, KEYRELEASE, KEYRELEASE_MASK, key_release, p);
-//mlx_loop_hook(p->vars.mlx_ptr, get_update, p);
+ //   my_cub_map(p);
+	mlx_hook(p->vars.win_ptr, KEYPRESS, KEYPRESS_MASK, key_press, p);
+	mlx_hook(p->vars.win_ptr, KEYRELEASE, KEYRELEASE_MASK, key_release, p);
+	mlx_loop_hook(p->vars.mlx_ptr, get_update, p);
 	mlx_loop(p->vars.mlx_ptr);
 	return(1);
 }

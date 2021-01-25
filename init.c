@@ -17,8 +17,8 @@ void	init_player(t_param *p)
     p->fps.backward = 0;
     p->fps.left = 0;
     p->fps.right = 0;
-    p->fps.rotleft = 0;
-    p->fps.rotright = 0;
+    p->fps.rot_left = 0;
+    p->fps.rot_right = 0;
     p->horizon.posX = 0;
     p->horizon.posY = 0;
     p->horizon.movespeed = 0.08;
@@ -31,4 +31,8 @@ void	init_player(t_param *p)
     p->vars.win_ptr = 0;
     p->horizon.movespeed =  0.08;
     p->horizon.rotspeed =  0.02;
+    p->text.no = NULL;
+    p->text.so = NULL;
+    p->text.we = NULL;
+    p->text.ea = NULL;
 }

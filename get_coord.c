@@ -2,8 +2,6 @@
 
 int	get_r(char *line, t_param *p)
 {
-	if (ft_isalpha(*line))
-		line++;
 	while (*line == ' ')
 		line++;
 	if (ft_isdigit(*line))
@@ -16,17 +14,15 @@ int	get_r(char *line, t_param *p)
 	    if (ft_isdigit(*line))
 			p->win_height = ft_atoi(line);
 	    else
-			quit(p, "Id Error.\n");
+			return (quit(p, "Id 1Error.\n"));
 	}
 	else
-		quit(p, "Id Error.\n");
+		return (quit(p, "Id 2Error.\n"));
 	return (1);
 }
 
 int	get_c(char *line, t_param *p)
 {
-	if (ft_isalpha(*line))
-		line++;
 	while (*line == ' ')
 		line++;
     if (ft_isdigit(*line))
@@ -45,17 +41,15 @@ int	get_c(char *line, t_param *p)
 		if (ft_isdigit(*line))
 			p->colors.sky_b = ft_atoi(line);
 		else
-			quit(p, "Id Error.\n");
+			return (quit(p, "Id Error.\n"));
     }
     else
-		quit(p, "Id Error.\n");
+		return (quit(p, "Id Error.\n"));
     return (1);
 }
 
 int	get_f(char *line, t_param *p)
 {
-	if (ft_isalpha(*line))
-		line++;
 	while (*line == ' ')
 		line++;
     if (ft_isdigit(*line))
@@ -74,9 +68,9 @@ int	get_f(char *line, t_param *p)
 		if (ft_isdigit(*line))
 			p->colors.floor_b = ft_atoi(line);
 		else
-			quit(p, "Id Error.\n");
+			return (quit(p, "Id Error.\n"));
     }
     else
-		quit(p, "Id Error.\n");
+		return (quit(p, "Id Error.\n"));
     return (1);
 }

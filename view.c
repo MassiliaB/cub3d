@@ -12,8 +12,8 @@ void    draw_verline(int x, t_param *p, int color)
 {
     int i;
 
-    i = p->draw.drawStart;
-    while (i <= p->draw.drawEnd)
+    i = p->draw.draw_start;
+    while (i <= p->draw.draw_end)
     {
         my_mlx_pixel_put(p, x, i, color);
         i++;
@@ -24,13 +24,13 @@ void    line_wall(t_param *p, int x)
 {
     int color;
 
-    p->draw.lineHeight = (int)(p->win_height / p->horizon.perpwalldist);
-    p->draw.drawStart = -p->draw.lineHeight / 2 + p->win_height / 2;
-    if (p->draw.drawStart < 0)
-        p->draw.drawStart = 0;
-    p->draw.drawEnd = p->draw.lineHeight / 2 + p->win_height / 2;
-    if (p->draw.drawEnd >= p->win_height)
-        p->draw.drawEnd = p->win_height - 1;
+    p->draw.line_height = (int)(p->win_height / p->horizon.perpwalldist);
+    p->draw.draw_start = -p->draw.line_height / 2 + p->win_height / 2;
+    if (p->draw.draw_start < 0)
+        p->draw.draw_start = 0;
+    p->draw.draw_end = p->draw.line_height / 2 + p->win_height / 2;
+    if (p->draw.draw_end >= p->win_height)
+        p->draw.draw_end = p->win_height - 1;
     color = p->colors.wall;
     if (p->horizon.side == 1)
         color = p->colors.wall / 2;

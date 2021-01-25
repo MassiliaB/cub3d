@@ -27,8 +27,8 @@ void	display_circle_map(t_param *p, int x, int y, int width)
             dist = sqrt((i - p->fps.rad) * (i - p->fps.rad) + (j - p->fps.rad) * (j - p->fps.rad));
             if (dist > (p->fps.rad - 0.5) && dist < (p->fps.rad + 0.5))
             {    
-                my_mlx_pixel_put(p, i+x, j+y, p->colors.person);		
-                line_dir(p, p->horizon.posX, p->horizon.posY, p->colors.person);
+                my_mlx_pixel_put(p, i+x, j+y, p->colors.person);
+                move(p);	
             }
             i++;
         }

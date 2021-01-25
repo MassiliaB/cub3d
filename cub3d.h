@@ -59,6 +59,10 @@ void    wall_dist(t_param *p);
 void    line_wall(t_param *p, int x);
 void    draw_verline(int x, t_param *p, int color);
 void    init_rotTime(t_param *p);
-
+int	get_no(char *line, t_param *p);
+int	get_so(char *line, t_param *p);
+int	get_we(char *line, t_param *p);
+int	get_ea(char *line, t_param *p);
+int	get_sprite(char *line, t_param *p);
 
 #endif

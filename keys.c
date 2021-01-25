@@ -37,9 +37,9 @@ int	key_release(int keycode, t_param *p)
     if (keycode == GO_RIGHT)
         p->fps.right = 0;
     if (keycode == ROT_LEFT)
-        p->fps.rotleft = 0;
+        p->fps.rot_left = 0;
     if (keycode == ROT_RIGHT)
-        p->fps.rotright = 0;
+        p->fps.rot_right = 0;
     return (0);
 }
 
@@ -64,9 +64,9 @@ int	key_press(int keycode, t_param *p)
     if (keycode == GO_RIGHT)
         p->fps.right = 1;
     if (keycode == ROT_LEFT)
-        p->fps.rotleft = 1;
+        p->fps.rot_left = 1;
     if (keycode == ROT_RIGHT)
-        p->fps.rotright = 1;
+        p->fps.rot_right = 1;
   /*  printf("forward %d\n", p->fps.forward);
     printf("backward %d\n", p->fps.backward);
     printf("left %d\n", p->fps.left);

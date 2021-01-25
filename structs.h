@@ -1,9 +1,17 @@
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
 # include "cub3d.h"
-# define Width 880
-# define Height 550
+
+typedef struct s_texture
+{
+	char *no;
+	char *so;
+	char *we;
+	char *ea;
+	char *sprite;
+}			t_texture;
 
 typedef struct s_player
 {
@@ -12,11 +20,11 @@ typedef struct s_player
 	int		backward;	
 	int		left;
 	int		right;
-	int		rotleft;
-	int		rotright;
+	int		rot_left;
+	int		rot_right;
 	double rot_angle;
-	int x;
-	int y;
+	int 	x;
+	int 	y;
 }		t_player;
 
 typedef struct	s_mlx
@@ -96,9 +104,9 @@ typedef struct s_horizon
 
 typedef struct s_draw
 {
-	int drawStart;
-	int lineHeight;
-	int drawEnd;
+	int draw_start;
+	int line_height;
+	int draw_end;
 }				t_draw;
 
 typedef struct s_param
@@ -110,6 +118,7 @@ typedef struct s_param
 	t_horizon horizon;
 	t_colors colors;
 	t_draw	draw;
+	t_texture text;
 	int	win_width;
 	int 	win_height;
 }               t_param;

@@ -69,6 +69,36 @@ int	parse_map(t_param *p, char *line)
 			return (0);
 	    return (1);
 	}
+	if (ft_strncmp(line, "NO", 2) == 0)
+	{
+	    if (!(get_no(line + 2, p)))
+			return (0);
+	    return (1);
+	}
+	if (ft_strncmp(line, "SO", 2) == 0)
+	{
+	    if (!(get_so(line + 2, p)))
+			return (0);
+	    return (1);
+	}
+	if (ft_strncmp(line, "S ", 2) == 0)
+	{
+	    if (!(get_so(line + 2, p)))
+			return (0);
+	    return (1);
+	}
+	if (ft_strncmp(line, "WE", 2) == 0)
+	{
+	    if (!(get_we(line + 2, p)))
+			return (0);
+	    return (1);
+	}
+	if (ft_strncmp(line, "EA", 2) == 0)
+	{
+	    if (!(get_ea(line + 2, p)))
+			return (0);
+	    return (1);
+	}
 	if (is_there_num(line))
 	{
 	    if (!(get_tab(line, p)))
