@@ -39,29 +39,41 @@ void	set_camsn(char view, t_param *p)
 int		ft_isview(char view, t_param *p)
 {
     if (view == 'W')
+	{
+		set_camwe(view, p);
 		return (1);
+	}
 	if (view == 'E')
+	{
+		set_camwe(view, p);
 		return (1);
+	}
 	if (view == 'S')
+	{
+		set_camsn(view, p);
 		return (1);
+	}
 	if (view == 'N')
+	{		
+		set_camsn(view, p);
 		return (1);
+	}
     return (0);
 }
 
 int		is_there_num(char *line)
 {
-	char *tmp;
+	int i;
 
-	tmp = ft_strdup(line);
-	while (*tmp)
+	i = 0;
+	while (line[i])
 	{
-	    if (ft_isdigit(*tmp))
+	    if (ft_isdigit(line[i]))
 			return (1);
-		if (*tmp == ' ')
-	    	tmp++;
+		if (line[i] == ' ')
+	    	i++;
 		else
-			return (0);
+			return (0);	
 	}
 	return (0);
 }

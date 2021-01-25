@@ -34,36 +34,36 @@ int	get_tab(char *line, t_param *p)
     {
 		if (!(get_good_line(line, p, x)))
 	    	return (0);
-	//	printf("[%c]",p->map.tab[p->map.mapY][x]);
+		printf("[%c]",p->map.tab[p->map.mapY][x]);
 		x++;
 		line++;
     }
     while (x < p->map.col_max)
     {
 		p->map.tab[p->map.mapY][x] = ' ';
-	//	printf("[%c]",p->map.tab[p->map.mapY][x]);
+		printf("[%c]",p->map.tab[p->map.mapY][x]);
 		x++;
     }
     p->map.tab[p->map.mapY][x] = '\0';
-//	printf("\n");
+	printf("\n");
     return (1);
 }
 
 int	parse_map(t_param *p, char *line)
 {
-	if (ft_strncmp(line, "R ", 2) == 0)
+	if (ft_strncmp(line, "R", 1) == 0)
 	{
 	    if (!(get_r(line + 1, p)))
 			return (0);
 	    return (1);
 	}
-	if (ft_strncmp(line, "C ", 2) == 0)
+	if (ft_strncmp(line, "C", 1) == 0)
 	{
 	    if (!(get_c(line + 1, p)))
 			return (0);
 	    return (1);
 	}
-	if (ft_strncmp(line, "F ", 2) == 0)
+	if (ft_strncmp(line, "F", 1) == 0)
 	{
 	    if (!(get_f(line + 1, p)))
 			return (0);

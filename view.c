@@ -1,5 +1,13 @@
 #include "cub3d.h"
 
+void    init_rotTime(t_param *p)
+{
+    p->horizon.oldtime = p->horizon.time;
+    p->horizon.frameTime = (p->horizon.time -  p->horizon.oldtime) / 1000.0;
+    p->horizon.movespeed =  p->horizon.frameTime * 5.0;
+    p->horizon.rotspeed =  p->horizon.frameTime * 3.0;
+}
+
 void    draw_verline(int x, t_param *p, int color)
 {
     int i;

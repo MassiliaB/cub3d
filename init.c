@@ -11,7 +11,8 @@ void	ft_init_img(t_param *p)
 }
 
 void	init_player(t_param *p)
-{ 
+{
+    p->map.tab = NULL;
     p->fps.forward = 0;
     p->fps.backward = 0;
     p->fps.left = 0;
@@ -25,4 +26,9 @@ void	init_player(t_param *p)
     p->horizon.perpwalldist = 0;
     p->horizon.dirX = -1;
     p->horizon.dirY = 0;
+    p->horizon.oldtime = 0;
+    p->horizon.time = 0;
+    p->vars.win_ptr = 0;
+    p->horizon.movespeed =  0.08;
+    p->horizon.rotspeed =  0.02;
 }

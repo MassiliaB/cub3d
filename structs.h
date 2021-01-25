@@ -8,15 +8,15 @@
 typedef struct s_player
 {
     double  rad;
-	double  vec; //the player (pos & direction)*/
 	int		forward;
 	int		backward;	
 	int		left;
 	int		right;
-	int rotleft;
-	int rotright;
-	int	    x;
-    int	    y;
+	int		rotleft;
+	int		rotright;
+	double rot_angle;
+	int x;
+	int y;
 }		t_player;
 
 typedef struct	s_mlx
@@ -39,7 +39,6 @@ typedef struct s_map
 {
 	int		mapX;
 	int		mapY;
-	int		tile_size;
 	char	**tab;
 	int		nb_lines;
 	int		col_max;
@@ -62,11 +61,8 @@ typedef struct s_colors
 
 typedef struct s_horizon
 {
-	double angle; //fov 2* atan(planY/1.0) == 66 degres
 	double  deltaX;
 	double  deltaY;
-	double  pixelX;
-	double  pixelY;
 	double  posX;
 	double  posY;
 	double  dirX;
@@ -84,7 +80,6 @@ typedef struct s_horizon
 	double  deltaDistX;
 	double  deltaDistY;
 	char	view;
-	char	view_nu;
 	double 	time;
 	double 	oldtime;
 	int		side;

@@ -14,7 +14,7 @@
 
 
 int		creat_trgb(int t, int r, int g, int b);
-int		print_error(char *str);
+int		print_error(t_param *p, char *str);
 int		quit(t_param *params, char *str);
 void	ft_init_img(t_param *p);
 int		main_loop(t_param *p);
@@ -58,5 +58,7 @@ void    ft_is_wall(t_param *p);
 void    wall_dist(t_param *p);
 void    line_wall(t_param *p, int x);
 void    draw_verline(int x, t_param *p, int color);
+void    init_rotTime(t_param *p);
+
 
 #endif

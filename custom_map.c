@@ -63,13 +63,14 @@ void	my_cub_map(t_param *p)
 			if (p->map.tab[y][x] == '1')
 				display_cub_map(p, p->colors.wall, tileX, tileY, width);   
 			else if (p->map.tab[y][x] == '0')
-					display_cub_map(p, p->colors.floor, tileX, tileY, width);
+				display_cub_map(p, p->colors.floor, tileX, tileY, width);
 			else if (ft_isview(p->map.tab[y][x], p))
-					display_circle_map(p, tileX, tileY, width);
+				display_circle_map(p, tileX, tileY, width);
 			else if (p->map.tab[y][x] == '2')
-					display_cub_map(p, p->colors.sky, tileX, tileY, width);
+				display_cub_map(p, p->colors.sky, tileX, tileY, width);
 			x++;
 		}
 		y++;
     }
+	mlx_put_image_to_window(p->vars.mlx_ptr, p->vars.win_ptr, p->img.img, 0, 0);
 }
