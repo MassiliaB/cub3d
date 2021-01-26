@@ -15,7 +15,7 @@ int	get_no(char *line, t_param *p)
 				return (quit(p, "Error : 3wrong path for texture.\n"));
 			line++;
 		}
-		p->text.no = ft_strdup(line);
+		p->text.no_path = ft_strdup(line);
 	}
 	else
 		return (quit(p, "Error : 1wrong path for texture.\n"));
@@ -36,7 +36,7 @@ int	get_so(char *line, t_param *p)
 				return (quit(p, "Error : 3wrong path for texture.\n"));
 			line++;
 		}
-		p->text.so = ft_strdup(line);
+		p->text.so_path = ft_strdup(line);
 	}
 	else
 		return (quit(p, "Error : wrong path for texture.\n"));
@@ -58,7 +58,7 @@ int	get_we(char *line, t_param *p)
 				return (quit(p, "Error : 3wrong path for texture.\n"));
 			line++;
 		}
-		p->text.we = ft_strdup(line);
+		p->text.we_path = ft_strdup(line);
 	}
 	else
 		return (quit(p, "Error : wrong path for texture.\n"));
@@ -80,7 +80,7 @@ int	get_ea(char *line, t_param *p)
 				return (quit(p, "Error : 3wrong path for texture.\n"));
 			line++;
 		}
-		p->text.ea = ft_strdup(line);
+		p->text.ea_path = ft_strdup(line);
 	}
 	else
 		return (quit(p, "Error : wrong path for texture.\n"));

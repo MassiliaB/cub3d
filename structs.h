@@ -6,11 +6,26 @@
 
 typedef struct s_texture
 {
-	char *no;
-	char *so;
-	char *we;
-	char *ea;
+	char *no_path;
+	void *no;
+	char    *no_addr;
+	char *so_path;
+	void *so;
+	char    *so_addr;
+	char *we_path;
+	void *we;
+	char    *we_addr;
+	char *ea_path;
+	void *ea;
+	char    *ea_addr;
 	char *sprite;
+	int		tex_width;
+	int		tex_height;
+	int		**buff;
+	int 	tex_num;
+	double	wallX;
+	int		texX;
+	char *tex_addr;
 }			t_texture;
 
 typedef struct s_player
@@ -40,6 +55,10 @@ typedef struct s_img
 	int     bits_per_pixel;
 	int     line_length;
 	int     endian;
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
 }				t_img;
 
 

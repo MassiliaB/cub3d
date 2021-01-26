@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	ft_init_img(t_param *p)
+void	init_img(t_param *p)
 {
 	p->img.bits_per_pixel = 16;
 	p->img.line_length = 1;

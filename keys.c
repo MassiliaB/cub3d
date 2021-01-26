@@ -5,6 +5,8 @@ int    update_scene(t_param *p)
     int x;
 
     x = 0;
+    p->text.buff = (int **)malloc(sizeof(int *) * (p->win_height + 1));
+   // p->text.buff[p->win_height][p->win_width];
     put_floorsky(p);
     while (x < p->win_width)
     {
@@ -14,6 +16,7 @@ int    update_scene(t_param *p)
         line_wall(p, x);
         x++;
     }
+    free(p->text.buff);
     mlx_put_image_to_window(p->vars.mlx_ptr, p->vars.win_ptr, p->img.img, 0, 0);
 //	mlx_destroy_image(p->vars.mlx_ptr, p->img.img);
     return (0);

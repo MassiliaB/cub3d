@@ -16,7 +16,7 @@
 int		creat_trgb(int t, int r, int g, int b);
 int		print_error(t_param *p, char *str);
 int		quit(t_param *params, char *str);
-void	ft_init_img(t_param *p);
+void	init_img(t_param *p);
 int		main_loop(t_param *p);
 int		open_cub(t_param *p, char *path);
 int		parse_map(t_param *p, char *line);
@@ -64,5 +64,6 @@ int	get_so(char *line, t_param *p);
 int	get_we(char *line, t_param *p);
 int	get_ea(char *line, t_param *p);
 int	get_sprite(char *line, t_param *p);
+void    get_tex_path(t_param *p);
 
 #endif

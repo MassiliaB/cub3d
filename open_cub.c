@@ -74,8 +74,8 @@ int		parse_no_error(t_param *p, int fd, char *path)
     line = NULL;
     if (!(check_col(p)))
 	    return (quit(p, "LError with the map.\n"));
-    if (!p->text.no || !p->text.so || !p->text.we || !p->text.ea)
-        return (quit(p, "Error \nMissing texture.\n"));
+    if (!p->text.no_path || !p->text.so_path || !p->text.we_path || !p->text.ea_path)
+        return (quit(p, "Error :\nMissing texture.\n"));
     if (!(ft_isview(p->horizon.view, p)))
 	    return (quit(p, "Error with the player on the map.\n"));
     if (ret == -1)

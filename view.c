@@ -20,6 +20,21 @@ void    draw_verline(int x, t_param *p, int color)
     }
 }
 
+void    wall_tex_value(t_param *p)
+{
+    p->text.tex_num = p->map.tab[p->horizon.currentposY][p->horizon.currentposX] - 1;
+    if (p->horizon.side == 0)
+        p->text.wallX = p->horizon.posY + p->horizon.perpwalldist * p->horizon.rayDirY;
+    else
+        p->text.wallX = p->horizon.posX + p->horizon.perpwalldist * p->horizon.rayDirX;
+    //p->text.wallX -= floor?
+    p->text.texX = (int)(p->text.wallX * (double)p->text.tex_width);
+    if (p->horizon.side == 0 && p->horizon.rayDirX > 0)
+        p->text.texX = p->text.tex_width - p->text.texX - 1;
+    if (p->horizon.side == 1 && p->horizon.rayDirX < 0)
+        p->text.texX = p->text.tex_width - p->text.texX - 1;
+}
+
 void    line_wall(t_param *p, int x)
 {
     int color;
@@ -34,7 +49,8 @@ void    line_wall(t_param *p, int x)
     color = p->colors.wall;
     if (p->horizon.side == 1)
         color = p->colors.wall / 2;
-    draw_verline(x, p, color);  
+    draw_verline(x, p, color);
+  //  wall_tex_value(p);
 }
 
 void put_floorsky(t_param *p)
