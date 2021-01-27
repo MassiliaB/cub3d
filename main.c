@@ -10,8 +10,8 @@ int		main_loop(t_param *p)
 	    return (quit(p,"Error : mlx_new_image NULL.\n"));
 	if (!(p->img.addr = mlx_get_data_addr(p->img.img, &(p->img.bits_per_pixel), &(p->img.line_length), &(p->img.endian))))
 	    return (quit(p, "mlx_get_data_add Error.\n"));
-//	get_tex_path(p);
  //   init_rotTime(p);
+ 	get_tex_path(p);
 	mlx_hook(p->vars.win_ptr, KEYPRESS, KEYPRESS_MASK, key_press, p);
 	mlx_hook(p->vars.win_ptr, KEYRELEASE, KEYRELEASE_MASK, key_release, p);
 	mlx_loop_hook(p->vars.mlx_ptr, get_update, p);

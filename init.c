@@ -31,8 +31,5 @@ void	init_player(t_param *p)
     p->vars.win_ptr = 0;
     p->horizon.movespeed =  0.08;
     p->horizon.rotspeed =  0.02;
-    p->text.no = NULL;
-    p->text.so = NULL;
-    p->text.we = NULL;
-    p->text.ea = NULL;
+    p->touch = 0;
 }

@@ -7,16 +7,12 @@
 typedef struct s_texture
 {
 	char *no_path;
-	void *no;
 	char    *no_addr;
 	char *so_path;
-	void *so;
 	char    *so_addr;
 	char *we_path;
-	void *we;
 	char    *we_addr;
 	char *ea_path;
-	void *ea;
 	char    *ea_addr;
 	char *sprite;
 	int		tex_width;
@@ -26,6 +22,20 @@ typedef struct s_texture
 	double	wallX;
 	int		texX;
 	char *tex_addr;
+	double step;
+	double tex_pos;
+	int		texY;
+	char wall_dir;
+	char *img_addr;
+	int		no_width;
+	int		no_height;
+	int		so_width;
+	int		so_height;
+	int		we_width;
+	int		we_height;
+	int		ea_width;
+	int		ea_height;
+
 }			t_texture;
 
 typedef struct s_player
@@ -56,9 +66,21 @@ typedef struct s_img
 	int     line_length;
 	int     endian;
 	void	*no;
+	int		bits_per_pixel_no;
+	int     line_length_no;
+	int     endian_no;
 	void	*so;
+	int		bits_per_pixel_so;
+	int     line_length_so;
+	int     endian_so;
 	void	*we;
+	int		bits_per_pixel_we;
+	int     line_length_we;
+	int     endian_we;
 	void	*ea;
+	int		bits_per_pixel_ea;
+	int     line_length_ea;
+	int     endian_ea;
 }				t_img;
 
 
@@ -140,6 +162,7 @@ typedef struct s_param
 	t_texture text;
 	int	win_width;
 	int 	win_height;
+	int touch;
 }               t_param;
 
 

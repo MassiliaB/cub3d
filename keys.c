@@ -5,27 +5,26 @@ int    update_scene(t_param *p)
     int x;
 
     x = 0;
-    p->text.buff = (int **)malloc(sizeof(int *) * (p->win_height + 1));
-   // p->text.buff[p->win_height][p->win_width];
     put_floorsky(p);
     while (x < p->win_width)
     {
+     //   printf("2 line \n");
         stepX(p, x);
         ft_is_wall(p);
         wall_dist(p);
         line_wall(p, x);
         x++;
     }
-    free(p->text.buff);
     mlx_put_image_to_window(p->vars.mlx_ptr, p->vars.win_ptr, p->img.img, 0, 0);
-//	mlx_destroy_image(p->vars.mlx_ptr, p->img.img);
     return (0);
 }
 
 int    get_update(t_param *p)
-{
+{ 
     move(p);
     update_scene(p);
+    if (p->touch % 2 == 1)
+        my_cub_map(p);
     return (0);
 }
 
@@ -48,12 +47,10 @@ int	key_release(int keycode, t_param *p)
 
 int	key_press(int keycode, t_param *p)
 {
-    static int touch;
     if (keycode == DISP_MAP)
-    {   
-    //    update_scene(p);
-	    touch = (touch + 1) % 2;
-	    if (touch % 2 == 1)
+    {
+	    p->touch = (p->touch + 1) % 2;
+	    if (p->touch % 2 == 1)
             my_cub_map(p);
     }
     if (keycode == ESC)

@@ -1,10 +1,10 @@
 R 1000 800
 NO ./wall_white.xpm
-SO ./path_to_the_sprite_texture
-WE ./path_to_the_sprite_texture
-EA ./path_to_the_sprite_texture
+SO ./wall_white.xpm
+WE ./wall_white.xpm
+EA ./wall_white.xpm
  
-S ./path_to_the_sprite_texture
+S ./path_to_the_sprite_texture.xpm
 F 235, 151,78
 C 1,204,181
  

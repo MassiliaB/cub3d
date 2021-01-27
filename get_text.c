@@ -2,107 +2,119 @@
 
 int	get_no(char *line, t_param *p)
 {
+	int i;
+	
+	i = 0;
 	while (*line == ' ')
 		line++;
-	if (ft_strncmp(line, "./", 2) == 0)
+	if (ft_isalpha(*line) || *line == '_' || (*line == '.' && *(line + 1) == '/'))
 	{
-		line += 2;
-		if (!ft_isalpha(*line))
-			return (quit(p, "Error : wrong path for texture.\n"));
-		while (ft_isalpha(*line) || *line == '_' || ft_isdigit(*line))
+		while (ft_isalpha(line[i]) || line[i] == '_' || line[i] == '.' || line[i] == '/' || ft_isdigit(line[i]))
 		{
-			if (!ft_isalpha(*line) && *line != '_' && !ft_isdigit(*line))
+			if (!ft_isalpha(line[i]) && line[i] != '_' && line[i] != '.' && line[i] != '/' && !ft_isdigit(*line))
 				return (quit(p, "Error : 3wrong path for texture.\n"));
-			line++;
+			i++;
 		}
+		if (!(ft_strstr(line, ".xpm")))
+			return (quit(p, "Error :\nInvalid texture file.\n"));
 		p->text.no_path = ft_strdup(line);
 	}
 	else
-		return (quit(p, "Error : 1wrong path for texture.\n"));
+		return (quit(p, "Error :\nWrong path for texture.\n"));
 	return (1);
 }
 int	get_so(char *line, t_param *p)
 {
+	int i;
+	
+	i = 0;
 	while (*line == ' ')
 		line++;
-	if (ft_strncmp(line, "./", 2) == 0)
+	if (ft_isalpha(*line) || *line == '_' || (*line == '.' && *(line + 1) == '/'))
 	{
-		line += 2;
-		if (!ft_isalpha(*line))
-			return (quit(p, "Error : wrong path for texture.\n"));
-		while (ft_isalpha(*line) || *line == '_' || ft_isdigit(*line))
+		while (ft_isalpha(line[i]) || line[i] == '_' || line[i] == '.' || line[i] == '/' || ft_isdigit(line[i]))
 		{
-			if (!ft_isalpha(*line) && *line != '_' && !ft_isdigit(*line))
+			if (!ft_isalpha(line[i]) && line[i] != '_' && line[i] != '.' && line[i] != '/' && !ft_isdigit(*line))
 				return (quit(p, "Error : 3wrong path for texture.\n"));
-			line++;
+			i++;
 		}
+		if (!(ft_strstr(line, ".xpm")))
+			return (quit(p, "Error :\nInvalid texture file.\n"));
 		p->text.so_path = ft_strdup(line);
 	}
 	else
-		return (quit(p, "Error : wrong path for texture.\n"));
+		return (quit(p, "Error :\nWrong path for texture.\n"));
 	return (1);
 }
 
 int	get_we(char *line, t_param *p)
 {
+	int i;
+	
+	i = 0;
 	while (*line == ' ')
 		line++;
-	if (ft_strncmp(line, "./", 2) == 0)
+	if (ft_isalpha(*line) || *line == '_' || (*line == '.' && *(line + 1) == '/'))
 	{
-		line += 2;
-		if (!ft_isalpha(*line))
-			return (quit(p, "Error : wrong path for texture.\n"));
-		while (ft_isalpha(*line) || *line == '_' || ft_isdigit(*line))
+		while (ft_isalpha(line[i]) || line[i] == '_' || line[i] == '.' || line[i] == '/' || ft_isdigit(line[i]))
 		{
-			if (!ft_isalpha(*line) && *line != '_' && !ft_isdigit(*line))
+			if (!ft_isalpha(line[i]) && line[i] != '_' && line[i] != '.' && line[i] != '/' && !ft_isdigit(*line))
 				return (quit(p, "Error : 3wrong path for texture.\n"));
-			line++;
+			i++;
 		}
+		if (!(ft_strstr(line, ".xpm")))
+			return (quit(p, "Error :\nInvalid texture file.\n"));
 		p->text.we_path = ft_strdup(line);
 	}
 	else
-		return (quit(p, "Error : wrong path for texture.\n"));
+		return (quit(p, "Error :\nWrong path for texture.\n"));
 	return (1);
 }
 
 int	get_ea(char *line, t_param *p)
 {
+	int i;
+	
+	i = 0;
 	while (*line == ' ')
 		line++;
-	if (ft_strncmp(line, "./", 2) == 0)
+	if (ft_isalpha(*line) || *line == '_' || (*line == '.' && *(line + 1) == '/'))
 	{
-		line += 2;
-		if (!ft_isalpha(*line))
-			return (quit(p, "Error : wrong path for texture.\n"));
-		while (ft_isalpha(*line) || *line == '_' || ft_isdigit(*line))
+		while (ft_isalpha(line[i]) || line[i] == '_' || line[i] == '.' || line[i] == '/' || ft_isdigit(line[i]))
 		{
-			if (!ft_isalpha(*line) && *line != '_' && !ft_isdigit(*line))
+			if (!ft_isalpha(line[i]) && line[i] != '_' && line[i] != '.' && line[i] != '/' && !ft_isdigit(*line))
 				return (quit(p, "Error : 3wrong path for texture.\n"));
-			line++;
+			i++;
 		}
+		if (!(ft_strstr(line, ".xpm")))
+			return (quit(p, "Error :\nInvalid texture file.\n"));
 		p->text.ea_path = ft_strdup(line);
 	}
 	else
-		return (quit(p, "Error : wrong path for texture.\n"));
+		return (quit(p, "Error :\nWrong path for texture.\n"));
 	return (1);
 }
 
 int	get_sprite(char *line, t_param *p)
 {
-	if (ft_strncmp(line, "./", 2) == 0)
+	int i;
+	
+	i = 0;
+	while (*line == ' ')
+		line++;
+	if (ft_isalpha(*line) || *line == '_' || (*line == '.' && *(line + 1) == '/'))
 	{
-		line += 2;
-		if (!ft_isalpha(*line))
-			return (quit(p, "Error : wrong path for texture.\n"));
-		while (ft_isalpha(*line) || *line == '_' || ft_isdigit(*line))
+		while (ft_isalpha(line[i]) || line[i] == '_' || line[i] == '.' || line[i] == '/' || ft_isdigit(line[i]))
 		{
-			if (!ft_isalpha(*line) && *line != '_' && !ft_isdigit(*line))
+			if (!ft_isalpha(line[i]) && line[i] != '_' && line[i] != '.' && line[i] != '/' && !ft_isdigit(*line))
 				return (quit(p, "Error : 3wrong path for texture.\n"));
-			line++;
+			i++;
 		}
+		if (!(ft_strstr(line, ".xpm")))
+			return (quit(p, "Error :\nInvalid texture file.\n"));
 		p->text.sprite = ft_strdup(line);
 	}
 	else
-		return (quit(p, "Error : wrong path for texture.\n"));
+		return (quit(p, "Error :\nWrong path for texture.\n"));
 	return (1);
 }
