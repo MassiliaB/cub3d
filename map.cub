@@ -1,6 +1,6 @@
 R 1000 800
 NO ./wall_white.xpm
-SO ./wall_white.xpm
+SO ./wall.xpm
 WE ./wall_white.xpm
 EA ./wall_white.xpm
  
