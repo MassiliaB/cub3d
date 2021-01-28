@@ -1,93 +1,17 @@
 # include "cub3d.h"
 
-void	set_camwe(char view, t_param *p)
-{
-	if (view == 'W')
-	{
-		p->horizon.dirX = 0;
-		p->horizon.dirY = -1;
-		p->horizon.planeX = -0.66;
-		p->horizon.planeY = 0;
-	}
-	if (view == 'E')
-	{
-		p->horizon.dirX = 0;
-		p->horizon.dirY = 1;
-		p->horizon.planeX = 0.66;
-		p->horizon.planeY = 0;
-	}
-}
-
-void	set_camsn(char view, t_param *p)
-{
-	if (view == 'S')
-	{
-		p->horizon.dirX = 1;
-		p->horizon.dirY = 0;
-		p->horizon.planeX = 0;
-		p->horizon.planeY = -0.66;
-	}
-	if (view == 'N')
-	{
-		p->horizon.dirX = -1;
-		p->horizon.dirY = 0;
-		p->horizon.planeX = 0;
-		p->horizon.planeY = 0.66;
-	}		
-}
-
-int		ft_isview(char view, t_param *p)
-{
-    if (view == 'W')
-	{
-		set_camwe(view, p);
-		return (1);
-	}
-	if (view == 'E')
-	{
-		set_camwe(view, p);
-		return (1);
-	}
-	if (view == 'S')
-	{
-		set_camsn(view, p);
-		return (1);
-	}
-	if (view == 'N')
-	{		
-		set_camsn(view, p);
-		return (1);
-	}
-    return (0);
-}
-
-int		is_there_num(char *line)
-{
-	int i;
-
-	i = 0;
-	while (line[i])
-	{
-	    if (ft_isdigit(line[i]))
-			return (1);
-		if (line[i] == ' ')
-	    	i++;
-		else
-			return (0);	
-	}
-	return (0);
-}
-
 int	check_line(t_param *p, int y, int x)
 {
-    if ((p->map.tab[y][x] >= '0' && p->map.tab[y][x] <= '2') || ft_isview(p->map.tab[y][x], p) || p->map.tab[y][x] == ' ')
+    if ((p->map.tab[y][x] >= '0' && p->map.tab[y][x] <= '2')
+	|| ft_isview(p->map.tab[y][x], p) || p->map.tab[y][x] == ' ')
     {
-		if (y == 0 || x == 0 || y == (p->map.nb_lines - 1)) 
+		if (y == 0 || x == 0 || y == (p->map.nb_lines - 1))
 	    	if (p->map.tab[y][x] != ' ' && p->map.tab[y][x] != '1')
 				return (0);
 		if (p->map.tab[y][x] == ' ')
-	    	if ((p->map.tab[y][x + 1] != '1' && p->map.tab[y][x + 1] != ' ' && p->map.tab[y][x + 1] != '\0')
-	|| (x != 0 && (p->map.tab[y][x - 1] != ' ' && p->map.tab[y][x - 1] != '1')))
+	    	if ((p->map.tab[y][x + 1] != '1' && p->map.tab[y][x + 1] != ' '
+			&& p->map.tab[y][x + 1] != '\0') || (x != 0 && (p->map.tab[y][x - 1] != ' '
+			&& p->map.tab[y][x - 1] != '1')))
 				return (0);
 		if (p->map.tab[y][x] == '0' || p->map.tab[y][x] == '2')
 			if (p->map.tab[y][x + 1] == ' ' || p->map.tab[y][x - 1] == ' ')
@@ -96,7 +20,6 @@ int	check_line(t_param *p, int y, int x)
    }
    return (0);
 }
-
 
 int	check_col(t_param *p)
 {

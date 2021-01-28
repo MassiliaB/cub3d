@@ -8,19 +8,17 @@ int    update_scene(t_param *p)
     put_floorsky(p);
     while (x < p->win_width)
     {
-     //   printf("2 line \n");
         stepX(p, x);
         ft_is_wall(p);
         wall_dist(p);
         line_wall(p, x);
         x++;
     }
-    mlx_put_image_to_window(p->vars.mlx_ptr, p->vars.win_ptr, p->img.img, 0, 0);
     return (0);
 }
 
 int    get_update(t_param *p)
-{ 
+{
     move(p);
     update_scene(p);
     if (p->touch % 2 == 1)
@@ -67,9 +65,5 @@ int	key_press(int keycode, t_param *p)
         p->fps.rot_left = 1;
     if (keycode == ROT_RIGHT)
         p->fps.rot_right = 1;
-  /*  printf("forward %d\n", p->fps.forward);
-    printf("backward %d\n", p->fps.backward);
-    printf("left %d\n", p->fps.left);
-    printf("right %d\n", p->fps.right);*/
     return (0);
 }

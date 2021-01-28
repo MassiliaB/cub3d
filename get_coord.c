@@ -14,7 +14,7 @@ int	get_r(char *line, t_param *p)
 	    if (ft_isdigit(*line))
 			p->win_height = ft_atoi(line);
 	    else
-			return (quit(p, "Id 1Error.\n"));
+			return (quit(p, "Id Error.\n"));
 	}
 	else
 		return (quit(p, "Id 2Error.\n"));

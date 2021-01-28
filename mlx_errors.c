@@ -1,5 +1,16 @@
 #include "cub3d.h"
 
+int		open_parse_err(t_param *p, int ret, int fd)
+{
+	if (!(check_col(p)))
+		return (quit(p, "Error :\nProblem with the map.\n"));
+    if (!p->text.no_path || !p->text.so_path || !p->text.we_path || !p->text.ea_path)
+        return (quit(p, "Error :\nMissing a texture.\n"));
+    if (!(ft_isview(p->horizon.view, p)))
+	    return (quit(p, "Error with the player on the map.\n"));
+	return (1);
+}
+
 int		print_error(t_param *p, char *str)
 {
 	int i;
@@ -7,16 +18,6 @@ int		print_error(t_param *p, char *str)
 	i = 0;
 	while (str[i])
 		write(1, &str[i++], 1);
-/*	i = 0;
-	if (p->map.tab)
-	{while (p->map.tab[i])
-	{
-		free(p->map.tab[i]);
-		i++;
-	}
-	free(p->map.tab);
-	p->map.tab = NULL;
-	}*/
 	return (0);
 }
 

@@ -2,7 +2,7 @@ NAME = Cub3D
 
 SRCS = main.c custom_map.c mlx_errors.c parse_map.c open_cub.c get_coord.c \
 	check_content.c view.c player_map.c keys.c scene.c ft_move.c\
-	init.c get_text.c textures_gen.c \
+	init.c get_text.c textures_gen.c  check_valid.c\
 	gnl/get_next_line.c \
 	gnl/get_next_line_utils.c \
 

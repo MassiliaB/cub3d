@@ -9,29 +9,24 @@ void	line_dir(t_param *p, int x, int y, int color)
 
 void	display_circle_map(t_param *p, int x, int y, int width)
 {
-    int	i;
-    int j;
-    double dist;
+  int	i;
+  int j;
+  double dist;
 
-  /*  p->horizon.posX = x * 0.5;
-    p->horizon.posY = y * 0.5;*/
-    p->fps.rad = 3;
-    p->colors.person = creat_trgb(0, 255, 255, 255);
-    display_cub_map(p, p->colors.floor, x, y, width);
-    j = 0;
-    while (j <= 2 * p->fps.rad)
-    {
-	    i = 0;
-        while (i <= 2 * p->fps.rad)
-        {
-            dist = sqrt((i - p->fps.rad) * (i - p->fps.rad) + (j - p->fps.rad) * (j - p->fps.rad));
-            if (dist > (p->fps.rad - 0.5) && dist < (p->fps.rad + 0.5))
-            {    
-                my_mlx_pixel_put(p, i+x, j+y, p->colors.person);
-              //  move(p);	
-            }
-            i++;
-        }
-        j++;
-    }	
+  p->fps.rad = 3;
+  p->colors.person = creat_trgb(0, 255, 255, 255);
+  display_cub_map(p, p->colors.floor, x, y, width);
+  j = 0;
+  while (j <= 2 * p->fps.rad)
+  {
+    i = 0;
+      while (i <= 2 * p->fps.rad)
+      {
+          dist = sqrt((i - p->fps.rad) * (i - p->fps.rad) + (j - p->fps.rad) * (j - p->fps.rad));
+          if (dist > (p->fps.rad - 0.5) && dist < (p->fps.rad + 0.5))   
+              my_mlx_pixel_put(p, i+x, j+y, p->colors.person);
+          i++;
+      }
+      j++;
+  }	
 }

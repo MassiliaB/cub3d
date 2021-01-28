@@ -32,30 +32,38 @@ int    move(t_param *p)
 {
     if (p->fps.forward == 1)
     {
-        if (moving_ok(p->map.tab[(int)(p->horizon.posY)][(int)(p->horizon.posX + p->horizon.dirX * p->horizon.movespeed)]))
+        if (moving_ok(p->map.tab[(int)(p->horizon.posY)]
+        [(int)(p->horizon.posX + p->horizon.dirX * p->horizon.movespeed)]))
             p->horizon.posX += p->horizon.dirX * p->horizon.movespeed * 0.5;
-        if (moving_ok(p->map.tab[(int)(p->horizon.posY + p->horizon.dirY * p->horizon.movespeed)][(int)(p->horizon.posX)])) 
+        if (moving_ok(p->map.tab[(int)(p->horizon.posY + p->horizon.dirY * p->horizon.movespeed)]
+        [(int)(p->horizon.posX)])) 
             p->horizon.posY += p->horizon.dirY * p->horizon.movespeed * 0.5;
     }
     if (p->fps.backward == 1)
     {
-        if (moving_ok(p->map.tab[(int)(p->horizon.posY)][(int)(p->horizon.posX - p->horizon.dirX * p->horizon.movespeed)]))
+        if (moving_ok(p->map.tab[(int)(p->horizon.posY)]
+        [(int)(p->horizon.posX - p->horizon.dirX * p->horizon.movespeed)]))
             p->horizon.posX -= p->horizon.dirX * p->horizon.movespeed * 0.5;
-        if (moving_ok(p->map.tab[(int)(p->horizon.posY - p->horizon.dirY * p->horizon.movespeed)][(int)(p->horizon.posX)]))
+        if (moving_ok(p->map.tab[(int)(p->horizon.posY - p->horizon.dirY * p->horizon.movespeed)]
+        [(int)(p->horizon.posX)]))
             p->horizon.posY -= p->horizon.dirY * p->horizon.movespeed * 0.5;
     }
     if (p->fps.left == 1)
     {
-        if (moving_ok(p->map.tab[(int)(p->horizon.posY)][(int)(p->horizon.posX - p->horizon.dirY * p->horizon.movespeed)]) )
+        if (moving_ok(p->map.tab[(int)(p->horizon.posY)]
+        [(int)(p->horizon.posX - p->horizon.dirY * p->horizon.movespeed)]))
             p->horizon.posX += p->horizon.dirY * p->horizon.movespeed * 0.5;
-        if (moving_ok(p->map.tab[(int)(p->horizon.posY + p->horizon.dirX * p->horizon.movespeed)][(int)(p->horizon.posX)])) 
+        if (moving_ok(p->map.tab[(int)(p->horizon.posY + p->horizon.dirX * p->horizon.movespeed)]
+        [(int)(p->horizon.posX)])) 
             p->horizon.posY += p->horizon.dirX * p->horizon.movespeed * 0.5;
     }
     if (p->fps.right == 1)
     {
-        if (moving_ok(p->map.tab[(int)(p->horizon.posY)][(int)(p->horizon.posX + p->horizon.dirY * p->horizon.movespeed)]))
+        if (moving_ok(p->map.tab[(int)(p->horizon.posY)]
+        [(int)(p->horizon.posX + p->horizon.dirY * p->horizon.movespeed)]))
             p->horizon.posX -= p->horizon.dirY * p->horizon.movespeed * 0.5;
-        if (moving_ok(p->map.tab[(int)(p->horizon.posY - p->horizon.dirX * p->horizon.movespeed)][(int)(p->horizon.posX)]))
+        if (moving_ok(p->map.tab[(int)(p->horizon.posY - p->horizon.dirX * p->horizon.movespeed)]
+        [(int)(p->horizon.posX)]))
             p->horizon.posY -= p->horizon.dirX * p->horizon.movespeed * 0.5;
     }
     rotate(p);

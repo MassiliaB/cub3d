@@ -2,7 +2,10 @@
 
 int	ft_is_id(char *id)
 {
-    if (*id == 'R' || *id == 'F' || *id == 'C' || *id == 'S'|| (*id == 'N' && *++id == 'O') || (*id == 'S' && *++id == 'O') || (*id == 'W' && *++id == 'E') || (*id == 'E' && *++id == 'A'))
+    if (*id == 'R' || *id == 'F' || *id == 'C'
+    || *id == 'S'|| (*id == 'N' && *++id == 'O')
+    || (*id == 'S' && *++id == 'O') || (*id == 'W' && *++id == 'E')
+    || (*id == 'E' && *++id == 'A'))
 	    return (1);
     return (0);
 }
@@ -33,11 +36,11 @@ int		malloc_lines(t_param *p, char *line, int fd)
     if (close(fd) == -1)
 	    return (quit(p, "Closing FD error.\n"));
     if (!(p->map.tab = (char **)malloc(sizeof(char *) * (size + 1))))
-	    return (quit(p, "Failed to malloc the array.\n"));
+	    return (quit(p, "Error :\nMalloc failed.\n"));
     return (1);
 }
 
-int		parse_no_error(t_param *p, int fd, char *path)
+int		parse_cub(t_param *p, int fd, char *path)
 {
     int		ret;
     char	*line;
@@ -56,7 +59,7 @@ int		parse_no_error(t_param *p, int fd, char *path)
 	    {
 		    free(line);
             line = NULL;
-		    return (quit(p, "YError with the map.\n"));
+		    return (quit(p, "Error :\nProblem with the map.\n"));
 	    }
 	    free(line);
     }
@@ -67,19 +70,13 @@ int		parse_no_error(t_param *p, int fd, char *path)
 	    {
 		    free(line);
             line = NULL;
-		    return (quit(p, "HError with the map.\n"));
+		    return (quit(p, "Error :\nProblem with the map.\n"));
 	    }
 	    free(line);
     }
     line = NULL;
-    if (!(check_col(p)))
-	    return (quit(p, "LError with the map.\n"));
-    if (!p->text.no_path || !p->text.so_path || !p->text.we_path || !p->text.ea_path)
-        return (quit(p, "Error :\nMissing texture.\n"));
-    if (!(ft_isview(p->horizon.view, p)))
-	    return (quit(p, "Error with the player on the map.\n"));
     if (ret == -1)
-	    return (quit(p, "Error with the file.\n"));
+	    return (quit(p, "Error :\nwith the file.\n"));
     if (close(fd) == -1)
 	    return (quit(p, "Closing FD error.\n"));
     return (1);
@@ -91,10 +88,10 @@ int	open_cub(t_param *p, char *path)
 
 	fd = 0;
 	if (ft_strlen(path) < 4)
-	    return (quit(p, "Not a cub file.\n"));
+	    return (quit(p, "Error :\nNot a cub file.\n"));
 	if (!(ft_strstr(path, ".cub")))
-	    return (quit(p, "Not a '.cub' file.\n"));
+	    return (quit(p, "Error :\nNot a '.cub' file.\n"));
 	else if ((fd = open(path, O_RDONLY)) == -1)
-		return (quit(p, "FD Error.\n"));
+		return (quit(p, "Error :\nFD problem.\n"));
 	return (fd);
 }

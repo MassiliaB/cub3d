@@ -8,8 +8,8 @@ int	 get_good_line(char *line, t_param *p, int x)
 	{
 	   	p->horizon.view = *line;
 	   	p->map.tab[p->map.mapY][x] = *line;
-		p->horizon.posX = x;
-		p->horizon.posY = p->map.mapY;
+		p->horizon.posX = x + 0.5;
+		p->horizon.posY = p->map.mapY + 0.5;
 
 	}
 	if (!(ft_isdigit(*line)) && !(ft_isview(*line, p)) && !(*line == ' '))
@@ -34,22 +34,51 @@ int	get_tab(char *line, t_param *p)
     {
 		if (!(get_good_line(line, p, x)))
 	    	return (0);
-	//	printf("[%c]",p->map.tab[p->map.mapY][x]);
+		printf("[%c]",p->map.tab[p->map.mapY][x]);
 		x++;
 		line++;
     }
     while (x < p->map.col_max)
     {
 		p->map.tab[p->map.mapY][x] = ' ';
-	//	printf("[%c]",p->map.tab[p->map.mapY][x]);
+		printf("[%c]",p->map.tab[p->map.mapY][x]);
 		x++;
     }
     p->map.tab[p->map.mapY][x] = '\0';
-//s	printf("\n");
+	printf("\n");
     return (1);
 }
 
-int	parse_map(t_param *p, char *line)
+int	parse_map_tex(t_param *p, char *line)
+{
+	if (ft_strncmp(line, "NO", 2) == 0)
+	{
+	    if (!(get_no(line + 2, p)))
+			return (0);
+	    return (1);
+	}
+	if (ft_strncmp(line, "SO", 2) == 0)
+	{
+	    if (!(get_so(line + 2, p)))
+			return (0);
+	    return (1);
+	}
+	if (ft_strncmp(line, "WE", 2) == 0)
+	{
+	    if (!(get_we(line + 2, p)))
+			return (0);
+	    return (1);
+	}
+	if (ft_strncmp(line, "EA", 2) == 0)
+	{
+	    if (!(get_ea(line + 2, p)))
+			return (0);
+	    return (1);
+	}
+	return (0);
+}
+
+int	parse_map_coord(t_param *p, char *line)
 {
 	if (ft_strncmp(line, "R", 1) == 0)
 	{
@@ -69,36 +98,21 @@ int	parse_map(t_param *p, char *line)
 			return (0);
 	    return (1);
 	}
-	if (ft_strncmp(line, "NO", 2) == 0)
-	{
-	    if (!(get_no(line + 2, p)))
-			return (0);
-	    return (1);
-	}
-	if (ft_strncmp(line, "SO", 2) == 0)
-	{
-	    if (!(get_so(line + 2, p)))
-			return (0);
-	    return (1);
-	}
 	if (ft_strncmp(line, "S ", 2) == 0)
 	{
 	    if (!(get_sprite(line + 2, p)))
 			return (0);
 	    return (1);
 	}
-	if (ft_strncmp(line, "WE", 2) == 0)
-	{
-	    if (!(get_we(line + 2, p)))
-			return (0);
-	    return (1);
-	}
-	if (ft_strncmp(line, "EA", 2) == 0)
-	{
-	    if (!(get_ea(line + 2, p)))
-			return (0);
-	    return (1);
-	}
+	return (0);
+}
+
+int	parse_map(t_param *p, char *line)
+{
+	if (parse_map_tex(p, line))
+		return (1);
+	if (parse_map_coord(p, line))
+		return (1);
 	if (is_there_num(line))
 	{
 	    if (!(get_tab(line, p)))
@@ -106,7 +120,7 @@ int	parse_map(t_param *p, char *line)
 	    p->map.mapY++;
 	    return (1);
 	}
-	if (*line == ' ')
+	if (*(line + 1) == '\0')
 		return (1);
 	return (0);
 }
