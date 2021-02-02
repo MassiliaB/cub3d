@@ -39,7 +39,7 @@ int	get_so(char *line, t_param *p)
 			i++;
 		}
 		if (!(ft_strstr(line, ".xpm")))
-			return (quit(p, "Error :\nInvalid texture file.\n"));
+			return (quit(p, "Error :\nInvalid xpm/jpg file.\n"));
 		p->text.so_path = ft_strdup(line);
 	}
 	else

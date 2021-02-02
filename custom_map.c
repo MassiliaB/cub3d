@@ -62,12 +62,12 @@ void	my_cub_map(t_param *p)
 			tileX = x * width;
 			if (p->map.tab[y][x] == '1')
 				display_cub_map(p, p->colors.wall, tileX, tileY, width);
-			else if (p->map.tab[y][x] == '0')
+			else if (p->map.tab[y][x] == '0' || ft_isview(p->map.tab[y][x], p))
 				display_cub_map(p, p->colors.floor, tileX, tileY, width);
-			else if (ft_isview(p->map.tab[y][x], p))
-				display_circle_map(p, tileX, tileY, width);
 			else if (p->map.tab[y][x] == '2')
 				display_cub_map(p, p->colors.sky, tileX, tileY, width);
+			if (x == p->horizon.currentposX && y == p->horizon.currentposY)
+				display_circle_map(p, tileX, tileY, width);
 			x++;
 		}
 		y++;

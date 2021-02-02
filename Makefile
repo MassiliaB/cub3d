@@ -31,7 +31,7 @@ all: ${NAME}
 $(NAME): ${OBJS}
 	@make --silent -C libft/
 	@make --silent -C minilibx/
-	@${CC} ${OBJS} ${MLX_NAME} ${LIBC_NAME} -L${MLX_PATH} -L/usr/lib -L${LIBC_PATH} ${LIBC_I} ${MLX_INC} -lXext -lX11 -lm -lz -o ${NAME}
+	@${CC} ${OBJS} ${MLX_NAME} ${LIBC_NAME} -L${MLX_PATH} -L/usr/lib -L${LIBC_PATH} ${LIBC_I} ${MLX_INC} -lXext -lX11 -lm -o ${NAME}
 
 clean:
 	@make clean --silent -C libft/

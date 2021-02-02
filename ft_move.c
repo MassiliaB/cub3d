@@ -1,8 +1,8 @@
 #include "cub3d.h"
 
-int moving_ok(char pos)
+int moving_ok(char moove)
 {
-    if (pos == '1' || pos == '2')
+    if (moove == '1' || moove == '2')
         return (0);
     return (1);
 }

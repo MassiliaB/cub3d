@@ -15,7 +15,6 @@ void	display_circle_map(t_param *p, int x, int y, int width)
 
   p->fps.rad = 3;
   p->colors.person = creat_trgb(0, 255, 255, 255);
-  display_cub_map(p, p->colors.floor, x, y, width);
   j = 0;
   while (j <= 2 * p->fps.rad)
   {
