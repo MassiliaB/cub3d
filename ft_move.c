@@ -25,7 +25,6 @@ void    rotate(t_param *p)
         p->horizon.planeX = p->horizon.planeX * cos(p->horizon.rotspeed) - p->horizon.planeY * sin(p->horizon.rotspeed);
         p->horizon.planeY = p->horizon.oldPlaneX * sin(p->horizon.rotspeed) + p->horizon.planeY * cos(p->horizon.rotspeed);        
     }
-    
 }
 
 int    move(t_param *p)

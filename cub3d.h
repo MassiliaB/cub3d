@@ -25,12 +25,13 @@ int		is_there_num(char *line);
 int	    check_col(t_param *p);
 int		ft_isview(char view, t_param *p);
 void	display_circle_map(t_param *p, int x, int y, int width);
-void	my_cub_map(t_param *p);
+void	my_tiny_map(t_param *p);
 void	display_cub_map(t_param *p, int color, int x, int y, int width);
 int     get_f(char *line, t_param *p);
 int     get_c(char *line, t_param *p);
 int     get_r(char *line, t_param *p);
 int		creat_trgb(int t, int r, int g, int b);
+void	sprite_casting(t_param *p);
 
 int		creat_trgb(int t, int r, int g, int b);
 int		print_error(t_param *p, char *str);

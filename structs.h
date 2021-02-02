@@ -14,10 +14,10 @@ typedef struct s_texture
 	char    *we_addr;
 	char *ea_path;
 	char    *ea_addr;
-	char *sprite;
+	char *sprite_path;
+	char *sp_addr;
 	int		tex_width;
 	int		tex_height;
-	int		**buff;
 	int 	tex_num;
 	double	wallX;
 	int		texX;
@@ -35,8 +35,42 @@ typedef struct s_texture
 	int		we_height;
 	int		ea_width;
 	int		ea_height;
+	int		sp_width;
+	int		sp_height;
+	int		bpp;
+	int ll;
 
 }			t_texture;
+typedef struct s_sprites
+{
+	double	x;
+	double	y;
+	int		first;
+	int 	second;
+}				t_sprites;
+typedef struct s_sprites_utils
+{
+	int tex;
+	double *buff;
+	double	sprite_dist;
+	int		*sprite_order;
+	double	spriteX;
+	double spriteY;
+	double invDet;
+	double transformX;
+	double transformY;
+	int		sprite_screenX;
+	int		sprite_height;
+	int		sprite_width;
+	int stripe;
+	int texX;
+	int	texY;
+	int draw_startY;
+    int draw_startX;
+    int draw_endY;
+    int draw_endX;
+    
+}				t_sprites_utils;
 
 typedef struct s_player
 {
@@ -81,6 +115,10 @@ typedef struct s_img
 	int		bits_per_pixel_ea;
 	int     line_length_ea;
 	int     endian_ea;
+	void	*sprite;
+	int		bits_per_pixel_sp;
+	int     line_length_sp;
+	int     endian_sp;
 }				t_img;
 
 
@@ -99,6 +137,7 @@ typedef struct s_colors
 	int		sky;
 	int		wall;
 	int		person;
+	int		sprite;
 	int		sky_r;
 	int		sky_g;
 	int		sky_b;
@@ -155,6 +194,8 @@ typedef struct s_param
 	t_mlx	vars;
 	t_img	img;
 	t_map	map;
+	t_sprites sprit;
+	t_sprites_utils sprite;
 	t_player fps;
 	t_horizon horizon;
 	t_colors colors;

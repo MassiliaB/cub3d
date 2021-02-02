@@ -19,12 +19,17 @@ void    choose_wall_dirWE(t_param *p)
         p->text.img_addr = p->text.we_addr;
         p->text.tex_width = p->text.we_width;
         p->text.tex_height = p->text.we_height;
+        p->text.ll = p->img.line_length_we;
+        p->text.bpp = p->img.bits_per_pixel_we;
+
     }
     else if (p->text.wall_dir == 'E')
     {
         p->text.img_addr = p->text.ea_addr;
         p->text.tex_width = p->text.ea_width;
         p->text.tex_height = p->text.ea_height;
+        p->text.ll = p->img.line_length_ea;
+        p->text.bpp = p->img.bits_per_pixel_ea;
     }
 }
 
@@ -38,12 +43,16 @@ void    choose_wall_dirNS(t_param *p)
         p->text.img_addr = p->text.no_addr;
         p->text.tex_width = p->text.no_width;
         p->text.tex_height = p->text.no_height;
+        p->text.ll = p->img.line_length_no;
+        p->text.bpp = p->img.bits_per_pixel_no;
     }
     else if (p->text.wall_dir == 'S')
     {
         p->text.img_addr = p->text.so_addr;
         p->text.tex_width = p->text.so_width;
         p->text.tex_height = p->text.so_height;
+        p->text.ll = p->img.line_length_so;
+        p->text.bpp = p->img.bits_per_pixel_so;
     }
     else
         choose_wall_dirWE(p);
@@ -60,12 +69,14 @@ void    put_tex_on(t_param *p, int x)
         p->text.texY = (int)p->text.tex_pos & p->text.tex_height - 1;
         p->text.tex_pos += p->text.step;
        // color = p->colors.person;
-       color = p->text.img_addr[p->text.tex_height * p->text.texY + p->text.texX];
-        if (p->horizon.side == 1)
-            color = (color >> 1) & 8355711;
+      // color = p->text.img_addr[ p->text.texY + p->text.texX];
+        color = p->text.img_addr[p->text.texY * p->text.ll + p->text.texX * (p->text.bpp / 8)];
+       /* if (p->horizon.side == 1)
+            color = (color >> 1) & 8355711;*/
         my_mlx_pixel_put(p, x, y, color);
         y++;
     }
+  //  p->sprite.buff[x] = p->horizon.perpwalldist;
 }
 
 void    wall_tex_value(t_param *p, int x)
@@ -81,23 +92,23 @@ void    wall_tex_value(t_param *p, int x)
     {
         if (p->horizon.rayDirX > 0)
         {
-            p->text.wall_dir = 'N';
+            p->text.wall_dir = 'S';
             p->text.texX = p->text.tex_width - p->text.texX - 1;
         }
         else
-            p->text.wall_dir = 'S';
+            p->text.wall_dir = 'N';
     }
     if (p->horizon.side == 1)
     {
         if (p->horizon.rayDirY > 0)
-            p->text.wall_dir = 'W';
+            p->text.wall_dir = 'E';
         else
         {
-            p->text.wall_dir = 'E';
+            p->text.wall_dir = 'W';
             p->text.texX = p->text.tex_width - p->text.texX - 1;
         }
     }
-  //  printf("hola3, [%c]\n", p->text.wall_dir);    
+ //   printf("hola3, [%c]\n", p->text.wall_dir);    
     choose_wall_dirNS(p);
     put_tex_on(p, x);
 }

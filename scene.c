@@ -19,8 +19,8 @@ void    stepX(t_param *p, int x)
     p->horizon.cameraX = 2 * x / (double)p->win_width - 1;
     p->horizon.rayDirX = p->horizon.dirX + p->horizon.planeX * p->horizon.cameraX;
     p->horizon.rayDirY = p->horizon.dirY + p->horizon.planeY * p->horizon.cameraX;
-    p->horizon.currentposX = p->horizon.posX;
-    p->horizon.currentposY = p->horizon.posY;
+    p->horizon.currentposX = (int)p->horizon.posX;
+    p->horizon.currentposY = (int)p->horizon.posY;
     p->horizon.deltaDistX = (p->horizon.rayDirY == 0) ? 0 : ((p->horizon.rayDirX == 0) ? 1 : fabs(1 / (p->horizon.rayDirX)));
     p->horizon.deltaDistY = (p->horizon.rayDirX == 0) ? 0 : ((p->horizon.rayDirY == 0) ? 1 : fabs(1 / (p->horizon.rayDirY)));
     p->horizon.hit = 0;

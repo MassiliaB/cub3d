@@ -3,7 +3,11 @@
 int	 get_good_line(char *line, t_param *p, int x)
 {
 	if (ft_isdigit(*line) || *line == ' ')
+	{
 		p->map.tab[p->map.mapY][x] = *line;
+		if (*line == '2')
+			p->sprite.num_sprites += 1;
+	}
 	else if (ft_isview(*line, p))
 	{
 	   	p->horizon.view = *line;

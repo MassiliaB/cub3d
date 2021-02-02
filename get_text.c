@@ -39,7 +39,7 @@ int	get_so(char *line, t_param *p)
 			i++;
 		}
 		if (!(ft_strstr(line, ".xpm")))
-			return (quit(p, "Error :\nInvalid xpm/jpg file.\n"));
+			return (quit(p, "Error :\nInvalid xpm/png file.\n"));
 		p->text.so_path = ft_strdup(line);
 	}
 	else
@@ -112,7 +112,7 @@ int	get_sprite(char *line, t_param *p)
 		}
 		if (!(ft_strstr(line, ".xpm")))
 			return (quit(p, "Error :\nInvalid texture file.\n"));
-		p->text.sprite = ft_strdup(line);
+		p->text.sprite_path = ft_strdup(line);
 	}
 	else
 		return (quit(p, "Error :\nWrong path for texture.\n"));

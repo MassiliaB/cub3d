@@ -42,7 +42,7 @@ int	count_mapX(t_param *p, int y)
     return (i);
 }
 
-void	my_cub_map(t_param *p)
+void	my_tiny_map(t_param *p)
 {
     int	x;
     int	y;
@@ -65,8 +65,8 @@ void	my_cub_map(t_param *p)
 			else if (p->map.tab[y][x] == '0' || ft_isview(p->map.tab[y][x], p))
 				display_cub_map(p, p->colors.floor, tileX, tileY, width);
 			else if (p->map.tab[y][x] == '2')
-				display_cub_map(p, p->colors.sky, tileX, tileY, width);
-			if (x == p->horizon.currentposX && y == p->horizon.currentposY)
+				display_cub_map(p, p->colors.sprite, tileX, tileY, width);
+			if (x == (int)p->horizon.posX && y == (int)p->horizon.posY )
 				display_circle_map(p, tileX, tileY, width);
 			x++;
 		}
