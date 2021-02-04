@@ -6,15 +6,17 @@ int    update_scene(t_param *p)
 
     x = 0;
     put_floorsky(p);
+    p->sprite.buff = (double *)malloc(sizeof(double) * p->win_width + 1);
     while (x < p->win_width)
     {
         stepX(p, x);
         ft_is_wall(p);
         wall_dist(p);
         line_wall(p, x);
-        sprite_casting(p);
         x++;
     }
+    sprite_casting(p);
+    free(p->sprite.buff);
     return (0);
 }
 

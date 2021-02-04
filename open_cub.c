@@ -75,6 +75,7 @@ int		parse_cub(t_param *p, int fd, char *path)
 	    free(line);
     }
     line = NULL;
+    open_parse_err(p);
     if (ret == -1)
 	    return (quit(p, "Error :\nwith the file.\n"));
     if (close(fd) == -1)

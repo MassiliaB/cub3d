@@ -7,7 +7,7 @@ void	line_dir(t_param *p, int x, int y, int color)
     my_mlx_pixel_put(p, p->fps.x, p->fps.y, color);
 }
 
-void	display_circle_map(t_param *p, int x, int y, int width)
+void	display_circle_map(t_param *p, int x, int y)
 {
   int	i;
   int j;

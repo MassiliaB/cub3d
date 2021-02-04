@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int		open_parse_err(t_param *p, int ret, int fd)
+int		open_parse_err(t_param *p)
 {
 	if (!(check_col(p)))
 		return (quit(p, "Error :\nProblem with the map.\n"));
@@ -11,7 +11,7 @@ int		open_parse_err(t_param *p, int ret, int fd)
 	return (1);
 }
 
-int		print_error(t_param *p, char *str)
+int		print_error(char *str)
 {
 	int i;
 
@@ -21,9 +21,10 @@ int		print_error(t_param *p, char *str)
 	return (0);
 }
 
-int		quit(t_param *params, char *str)
+int		quit(t_param *p, char *str)
 {
-	print_error(params, str);
+	(void)p;
+	print_error(str);
 	/*if (params->vars.win_ptr != 0)
 	{
 		mlx_clear_window(params->vars.mlx_ptr, params->vars.win_ptr);

@@ -6,27 +6,27 @@
 
 typedef struct s_texture
 {
-	char *no_path;
+	char	*no_path;
 	char    *no_addr;
-	char *so_path;
+	char 	*so_path;
 	char    *so_addr;
-	char *we_path;
+	char 	*we_path;
 	char    *we_addr;
-	char *ea_path;
+	char 	*ea_path;
 	char    *ea_addr;
-	char *sprite_path;
-	char *sp_addr;
+	char 	*sprite_path;
+	char 	*sp_addr;
 	int		tex_width;
 	int		tex_height;
 	int 	tex_num;
 	double	wallX;
 	int		texX;
-	char *tex_addr;
-	double step;
-	double tex_pos;
+	char 	*tex_addr;
+	char 	*img_addr;
+	double 	step;
+	double 	tex_pos;
 	int		texY;
-	char wall_dir;
-	char *img_addr;
+	char 	wall_dir;
 	int		no_width;
 	int		no_height;
 	int		so_width;
@@ -38,39 +38,40 @@ typedef struct s_texture
 	int		sp_width;
 	int		sp_height;
 	int		bpp;
-	int ll;
+	int 	ll;
 
 }			t_texture;
-typedef struct s_sprites
+
+typedef struct s_sprites_ptr
 {
 	double	x;
 	double	y;
-	int		first;
-	int 	second;
-}				t_sprites;
-typedef struct s_sprites_utils
+	int texture;
+}				t_sprites_ptr;
+
+typedef struct s_sprites
 {
-	int tex;
+
+	int		x;
+	int		y;
+	int		d;
+	int 	tex;
 	double *buff;
-	double	sprite_dist;
+	double	*sprite_dist;
 	int		*sprite_order;
 	double	spriteX;
-	double spriteY;
-	double invDet;
-	double transformX;
-	double transformY;
+	double 	spriteY;
+	double 	invDet;
+	double 	transformX;
+	double 	transformY;
 	int		sprite_screenX;
 	int		sprite_height;
 	int		sprite_width;
-	int stripe;
-	int texX;
-	int	texY;
-	int draw_startY;
-    int draw_startX;
-    int draw_endY;
-    int draw_endX;
-    
-}				t_sprites_utils;
+	int 	stripe;
+	int 	texX;
+	int		texY;
+    int 	num_sprites;
+}				t_sprites;
 
 typedef struct s_player
 {
@@ -168,8 +169,6 @@ typedef struct s_horizon
 	double  deltaDistX;
 	double  deltaDistY;
 	char	view;
-	double 	time;
-	double 	oldtime;
 	int		side;
 	int 	hit;
 	double frameTime;
@@ -184,26 +183,30 @@ typedef struct s_horizon
 
 typedef struct s_draw
 {
-	int draw_start;
-	int line_height;
-	int draw_end;
+	int 	draw_start;
+	int 	line_height;
+	int 	draw_end;
+	int		draw_startY;
+    int		draw_startX;
+    int		draw_endY;
+    int		draw_endX;
 }				t_draw;
 
 typedef struct s_param
 {
-	t_mlx	vars;
-	t_img	img;
-	t_map	map;
-	t_sprites sprit;
-	t_sprites_utils sprite;
-	t_player fps;
-	t_horizon horizon;
-	t_colors colors;
-	t_draw	draw;
-	t_texture text;
-	int	win_width;
-	int 	win_height;
-	int touch;
+	t_mlx			vars;
+	t_img			img;
+	t_map			map;
+	t_sprites_ptr 	*sprite_ptr;
+	t_sprites 		sprite;
+	t_player 		fps;
+	t_horizon		horizon;
+	t_colors		colors;
+	t_draw			draw;
+	t_texture		text;
+	int				win_width;
+	int				win_height;
+	int				touch;
 }               t_param;
 
 

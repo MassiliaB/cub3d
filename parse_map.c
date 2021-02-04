@@ -38,18 +38,18 @@ int	get_tab(char *line, t_param *p)
     {
 		if (!(get_good_line(line, p, x)))
 	    	return (0);
-		printf("[%c]",p->map.tab[p->map.mapY][x]);
+	//	printf("[%c]",p->map.tab[p->map.mapY][x]);
 		x++;
 		line++;
     }
     while (x < p->map.col_max)
     {
 		p->map.tab[p->map.mapY][x] = ' ';
-		printf("[%c]",p->map.tab[p->map.mapY][x]);
+	//	printf("[%c]",p->map.tab[p->map.mapY][x]);
 		x++;
     }
     p->map.tab[p->map.mapY][x] = '\0';
-	printf("\n");
+//	printf("\n");
     return (1);
 }
 

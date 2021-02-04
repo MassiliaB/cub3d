@@ -66,17 +66,17 @@ void    put_tex_on(t_param *p, int x)
     y = p->draw.draw_start;
     while (y < p->draw.draw_end)
     {
-        p->text.texY = (int)p->text.tex_pos & p->text.tex_height - 1;
+        p->text.texY = (int)p->text.tex_pos & (p->text.tex_height - 1);
         p->text.tex_pos += p->text.step;
        // color = p->colors.person;
       // color = p->text.img_addr[ p->text.texY + p->text.texX];
         color = p->text.img_addr[p->text.texY * p->text.ll + p->text.texX * (p->text.bpp / 8)];
        /* if (p->horizon.side == 1)
             color = (color >> 1) & 8355711;*/
-        my_mlx_pixel_put(p, x, y, color);
+        my_mlx_pixel_put(p, x, y , color);
         y++;
     }
-  //  p->sprite.buff[x] = p->horizon.perpwalldist;
+    p->sprite.buff[x] = p->horizon.perpwalldist;
 }
 
 void    wall_tex_value(t_param *p, int x)
@@ -91,22 +91,18 @@ void    wall_tex_value(t_param *p, int x)
     if (p->horizon.side == 0)
     {
         if (p->horizon.rayDirX > 0)
-        {
             p->text.wall_dir = 'S';
-            p->text.texX = p->text.tex_width - p->text.texX - 1;
-        }
         else
             p->text.wall_dir = 'N';
+        p->text.texX = p->text.tex_width - p->text.texX - 1;
     }
     if (p->horizon.side == 1)
     {
         if (p->horizon.rayDirY > 0)
             p->text.wall_dir = 'E';
         else
-        {
             p->text.wall_dir = 'W';
-            p->text.texX = p->text.tex_width - p->text.texX - 1;
-        }
+        p->text.texX = p->text.tex_width - p->text.texX - 1;
     }
  //   printf("hola3, [%c]\n", p->text.wall_dir);    
     choose_wall_dirNS(p);
@@ -115,8 +111,6 @@ void    wall_tex_value(t_param *p, int x)
 
 void    line_wall(t_param *p, int x)
 {
-    int color;
-
     p->draw.line_height = (int)(p->win_height / p->horizon.perpwalldist);
     p->draw.draw_start = -p->draw.line_height / 2 + p->win_height / 2;
     if (p->draw.draw_start < 0)
@@ -124,10 +118,10 @@ void    line_wall(t_param *p, int x)
     p->draw.draw_end = p->draw.line_height / 2 + p->win_height / 2;
     if (p->draw.draw_end >= p->win_height)
         p->draw.draw_end = p->win_height - 1;
-    color = p->colors.wall;
+/*    colors = p->colors.wall;
     if (p->horizon.side == 1)
-        color = p->colors.wall / 2;
-// draw_verline(x, p, color);
+        colors = p->colors.wall / 2;
+ draw_verline(x, p, color);*/
    wall_tex_value(p, x);
 }
 
@@ -135,7 +129,6 @@ void put_floorsky(t_param *p)
 {
     int i;
     int j;
-    char *dst;
 
     i = 0;
     while (i < p->win_width)

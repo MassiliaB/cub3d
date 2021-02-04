@@ -25,9 +25,8 @@ int		main(int ac, char **av)
 	int		fd;
 	char	*path;
 
-
 	if (ac < 2 && ac > 3)
-	    return (print_error(&params, "Error :\nInvalid number of arguments.\n"));
+	    return (print_error("Error :\nInvalid number of arguments.\n"));
 	path = av[1];
 	if ((fd = open_cub(&params, path)) == -1)
 	    return (0);

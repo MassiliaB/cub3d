@@ -67,7 +67,7 @@ void	my_tiny_map(t_param *p)
 			else if (p->map.tab[y][x] == '2')
 				display_cub_map(p, p->colors.sprite, tileX, tileY, width);
 			if (x == (int)p->horizon.posX && y == (int)p->horizon.posY )
-				display_circle_map(p, tileX, tileY, width);
+				display_circle_map(p, tileX, tileY);
 			x++;
 		}
 		y++;
