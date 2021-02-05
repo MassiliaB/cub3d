@@ -1,24 +1,27 @@
 #include "cub3d.h"
 
-void	set_camwe(char view, t_param *p)
+int	set_camwe(char view, t_param *p)
 {
 	if (view == 'W')
 	{
-		p->horizon.dirX = 0.0;
+		p->horizon.dirX = 0;
 		p->horizon.dirY = -1;
 		p->horizon.planeX = -0.66;
-		p->horizon.planeY = 0.0;
+		p->horizon.planeY = 0;
+		return (1);
 	}
 	else if (view == 'E')
 	{
-		p->horizon.dirX = 0.0;
+		p->horizon.dirX = 0;
 		p->horizon.dirY = 1;
 		p->horizon.planeX = 0.66;
 		p->horizon.planeY = 0;
+		return (1);
 	}
+	return (0);
 }
 
-void	set_camsn(char view, t_param *p)
+int	set_camsn(char view, t_param *p)
 {
 	if (view == 'S')
 	{
@@ -26,6 +29,7 @@ void	set_camsn(char view, t_param *p)
 		p->horizon.dirY = 0;
 		p->horizon.planeX = 0;
 		p->horizon.planeY = -0.66;
+		return (1);
 	}
 	else if (view == 'N')
 	{
@@ -33,31 +37,17 @@ void	set_camsn(char view, t_param *p)
 		p->horizon.dirY = 0.0;
 		p->horizon.planeX = 0.0;
 		p->horizon.planeY = 0.66;
-	}		
+		return (1);
+	}
+	return (0);
 }
 
 int		ft_isview(char view, t_param *p)
 {
-    if (view == 'W')
-	{
-		set_camwe(view, p);
+	if (set_camwe(view, p))
 		return (1);
-	}
-	if (view == 'E')
-	{
-		set_camwe(view, p);
+	if (set_camsn(view, p))
 		return (1);
-	}
-	if (view == 'S')
-	{
-		set_camsn(view, p);
-		return (1);
-	}
-	if (view == 'N')
-	{		
-		set_camsn(view, p);
-		return (1);
-	}
     return (0);
 }
 

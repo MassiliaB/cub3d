@@ -32,7 +32,7 @@ int	check_col(t_param *p)
 		x = 0;
 		while (p->map.tab[y][x])
 		{
-			if (!(check_line(p, y, x)))
+			if (!check_line(p, y, x))
 				return (0);
 			if ((p->map.tab[y][x] == '0' || p->map.tab[y][x] == '2') &&
 			(p->map.tab[y - 1][x - 1] == ' ' || p->map.tab[y - 1][x + 1] == ' '

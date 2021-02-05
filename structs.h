@@ -207,6 +207,9 @@ typedef struct s_param
 	int				win_width;
 	int				win_height;
 	int				touch;
+	int				save;
+	int get_screenX;
+	int get_screenY;
 }               t_param;
 
 

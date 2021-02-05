@@ -30,13 +30,15 @@ int		malloc_lines(t_param *p, char *line, int fd)
         free(line);
     }
     line = NULL;
+    if (size == 0)
+		return (quit(p, "Error :\nWhere is the map ?\n"));
     p->map.nb_lines = size;
     if (ret == -1)
-	    return (quit(p, "Error with the file.\n"));
+	    return (quit(p, "Error :\nReading file -1.\n"));
     if (close(fd) == -1)
-	    return (quit(p, "Closing FD error.\n"));
+	    return (quit(p, "Error :\nClosing FD failed.\n"));
     if (!(p->map.tab = (char **)malloc(sizeof(char *) * (size + 1))))
-	    return (quit(p, "Error :\nMalloc failed.\n"));
+	    return (quit(p, "Error :\nMalloc of the array failed.\n"));
     return (1);
 }
 
@@ -77,9 +79,9 @@ int		parse_cub(t_param *p, int fd, char *path)
     line = NULL;
     open_parse_err(p);
     if (ret == -1)
-	    return (quit(p, "Error :\nwith the file.\n"));
+	    return (quit(p, "Error :\nReading file - 1.\n"));
     if (close(fd) == -1)
-	    return (quit(p, "Closing FD error.\n"));
+	    return (quit(p, "Error :\nClosing FD failed.\n"));
     return (1);
 }
 

@@ -1,5 +1,18 @@
 #include "cub3d.h"
 
+int     word_check(char *str, char *comp)
+{
+    while (*str)
+    {
+        if (*str != *comp)
+            return (0);
+        str++;
+        comp++;
+    }
+    return (1);
+}
+
+
 void    get_tex_path(t_param *p)
 {
     p->img.no = mlx_xpm_file_to_image(p->vars.mlx_ptr, p->text.no_path, &p->text.no_width, &p->text.no_height);
@@ -72,4 +85,18 @@ void	init_player(t_param *p)
     p->fps.backward = 0;
     p->fps.left = 0;
     p->fps.right = 0;
+    p->text.sprite_path = 0;
+    p->text.ea_path = 0;
+    p->text.we_path = 0;
+    p->text.so_path = 0;
+    p->text.no_path = 0;
+    p->win_height = 0;
+    p->win_width = 0;
+    p->colors.floor_r = 0;
+    p->colors.floor_g = 0;
+    p->colors.floor_b = 0;
+    p->colors.sky_g  = 0;
+    p->colors.sky_r = 0;
+    p->colors.sky_b = 0;
+    p->horizon.view = 0;
 }

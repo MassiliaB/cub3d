@@ -5,8 +5,10 @@
 
 # define KEYPRESS 2
 # define KEYRELEASE 3
+# define MOUSEPRESS 33
 # define KEYPRESS_MASK (1L<<0)
 # define KEYRELEASE_MASK (1L<<1)
+# define MOUSEPRESS_MASK (1L << 17)
 # define M_PI 3.14159265358979323846
 # define DISP_MAP 109
 # define GO_FORWARD 119
@@ -16,6 +18,6 @@
 # define ROT_LEFT 65361
 # define ROT_RIGHT 65363
 # define ESC 65307
-
+# define INT_MAX 2147483647
 
 # endif

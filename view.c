@@ -71,8 +71,9 @@ void    put_tex_on(t_param *p, int x)
        // color = p->colors.person;
       // color = p->text.img_addr[ p->text.texY + p->text.texX];
         color = p->text.img_addr[p->text.texY * p->text.ll + p->text.texX * (p->text.bpp / 8)];
-       /* if (p->horizon.side == 1)
-            color = (color >> 1) & 8355711;*/
+        if (p->horizon.side == 1)
+            color = (color >> 1) & 8355711;
+    //    p->img.addr[y * p->w + x * (p->img.bits_per_pixel / 8)] = color;
         my_mlx_pixel_put(p, x, y , color);
         y++;
     }
@@ -104,7 +105,6 @@ void    wall_tex_value(t_param *p, int x)
             p->text.wall_dir = 'W';
         p->text.texX = p->text.tex_width - p->text.texX - 1;
     }
- //   printf("hola3, [%c]\n", p->text.wall_dir);    
     choose_wall_dirNS(p);
     put_tex_on(p, x);
 }
@@ -121,7 +121,7 @@ void    line_wall(t_param *p, int x)
 /*    colors = p->colors.wall;
     if (p->horizon.side == 1)
         colors = p->colors.wall / 2;
- draw_verline(x, p, color);*/
+   draw_verline(x, p, color);*/
    wall_tex_value(p, x);
 }
 

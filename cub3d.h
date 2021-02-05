@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <math.h>
+# include <sys/types.h>
 # include <fcntl.h>
 # include "mlx.h"
 # include "structs.h"
@@ -24,7 +25,6 @@ int	    get_sprite(char *line, t_param *p);
 int		is_there_num(char *line);
 int	    check_col(t_param *p);
 int		ft_isview(char view, t_param *p);
-void	display_circle_map(t_param *p, int x, int y);
 void	my_tiny_map(t_param *p);
 void	display_cub_map(t_param *p, int color, int x, int y, int width);
 int     get_f(char *line, t_param *p);
@@ -38,7 +38,10 @@ int		print_error(char *str);
 int		creat_trgb(int t, int r, int g, int b);
 int		quit(t_param *params, char *str);
 void	init_img(t_param *p);
-int		main_loop(t_param *p);
+int     word_check(char *str, char *comp);
+int	save(t_param *p);
+int	mlx_exit(t_param *p);
+void		check_resolution(t_param *p);
 
 int		get_elements(char *line, t_param *p);
 void    my_mlx_pixel_put(t_param *data, int x, int y, int color);

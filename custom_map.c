@@ -42,6 +42,29 @@ int	count_mapX(t_param *p, int y)
     return (i);
 }
 
+void	display_circle_map(t_param *p, int x, int y)
+{
+  int	i;
+  int j;
+  double dist;
+
+  p->fps.rad = 3;
+  p->colors.person = creat_trgb(0, 255, 255, 255);
+  j = 0;
+  while (j <= 2 * p->fps.rad)
+  {
+    i = 0;
+      while (i <= 2 * p->fps.rad)
+      {
+          dist = sqrt((i - p->fps.rad) * (i - p->fps.rad) + (j - p->fps.rad) * (j - p->fps.rad));
+          if (dist > (p->fps.rad - 0.5) && dist < (p->fps.rad + 0.5))   
+              my_mlx_pixel_put(p, i+x, j+y, p->colors.person);
+          i++;
+      }
+      j++;
+  }	
+}
+
 void	my_tiny_map(t_param *p)
 {
     int	x;
@@ -52,11 +75,11 @@ void	my_tiny_map(t_param *p)
 
     width = p->win_width / (2 * p->map.col_max);
     y = 0;
-    while (y < (p->map.mapY))
+    while (y < p->map.mapY)
     {
 		x = 0;
 		p->map.mapX = ft_strlen2(p->map.tab[y]);
-		while (x < (p->map.mapX))
+		while (x < p->map.mapX)
 		{
 			tileY = y * width; 
 			tileX = x * width;
@@ -66,11 +89,10 @@ void	my_tiny_map(t_param *p)
 				display_cub_map(p, p->colors.floor, tileX, tileY, width);
 			else if (p->map.tab[y][x] == '2')
 				display_cub_map(p, p->colors.sprite, tileX, tileY, width);
-			if (x == (int)p->horizon.posX && y == (int)p->horizon.posY )
+			if (x == (int)p->horizon.posX && y == (int)p->horizon.posY)
 				display_circle_map(p, tileX, tileY);
 			x++;
 		}
 		y++;
     }
-	mlx_put_image_to_window(p->vars.mlx_ptr, p->vars.win_ptr, p->img.img, 0, 0);
 }

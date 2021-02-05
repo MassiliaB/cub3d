@@ -16,7 +16,7 @@ void    put_sprite_on(t_param *p)
                 p->sprite.texY = ((p->sprite.d * p->text.sp_height) / p->sprite.sprite_height) / 256;
                 color = p->text.sp_addr[p->sprite.texY * p->img.line_length_sp + p->sprite.texX * p->text.bpp / 8];
                 if (color && 0x00FFFFFF != 0)
-                    my_mlx_pixel_put(p, p->sprite.stripe, p->sprite.y, color);
+                     my_mlx_pixel_put(p, p->sprite.stripe, p->sprite.y, color);
                 p->sprite.y++;
             }
         }
