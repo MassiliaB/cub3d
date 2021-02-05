@@ -27,9 +27,7 @@ int    get_update(t_param *p)
     move(p);
     update_scene(p);
     if (p->touch % 2 == 1)
-    {
         my_tiny_map(p);
-    }
     return (0);
 }
 
@@ -52,6 +50,8 @@ int	key_release(int keycode, t_param *p)
 
 int	key_press(int keycode, t_param *p)
 {
+    if (keycode == DISP_MAP)
+	    p->touch = (p->touch + 1) % 2;
     if (keycode == ESC)
         quit(p, "Closing the window.\n");
     if (keycode == GO_FORWARD)
@@ -66,7 +66,5 @@ int	key_press(int keycode, t_param *p)
         p->fps.rot_left = 1;
     if (keycode == ROT_RIGHT)
         p->fps.rot_right = 1;
-    if (keycode == DISP_MAP)
-	    p->touch = (p->touch + 1) % 2;
     return (0);
 }

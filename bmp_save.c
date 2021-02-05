@@ -44,8 +44,7 @@ int	save(t_param *p)
 		x = 0;
 		while (x < p->win_width)
 		{
-			dest = p->img.addr + (y * p->img.line_length + x * (p->img.bits_per_pixel / 8));
-			write(fd, &dest, 4);
+			write(fd, &p->img.addr[y * p->img.line_length + x * (p->img.bits_per_pixel / 8)], 4);
 			x++;
 		}
 		y--;

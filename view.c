@@ -69,11 +69,9 @@ void    put_tex_on(t_param *p, int x)
         p->text.texY = (int)p->text.tex_pos & (p->text.tex_height - 1);
         p->text.tex_pos += p->text.step;
        // color = p->colors.person;
-      // color = p->text.img_addr[ p->text.texY + p->text.texX];
         color = p->text.img_addr[p->text.texY * p->text.ll + p->text.texX * (p->text.bpp / 8)];
         if (p->horizon.side == 1)
             color = (color >> 1) & 8355711;
-    //    p->img.addr[y * p->w + x * (p->img.bits_per_pixel / 8)] = color;
         my_mlx_pixel_put(p, x, y , color);
         y++;
     }

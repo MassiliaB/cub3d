@@ -13,7 +13,7 @@ int	 get_good_line(char *line, t_param *p, int x)
 		if (p->horizon.view != 0)
 			return (quit(p, "Error :\nTwo players on the map.\n"));
 	   	p->horizon.view = *line;
-	   	p->map.tab[p->map.mapY][x] = *line;
+	   	p->map.tab[p->map.mapY][x] = '0';
 		p->horizon.posX = x + 0.5;
 		p->horizon.posY = p->map.mapY + 0.5;
 

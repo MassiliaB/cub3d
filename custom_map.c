@@ -85,7 +85,7 @@ void	my_tiny_map(t_param *p)
 			tileX = x * width;
 			if (p->map.tab[y][x] == '1')
 				display_cub_map(p, p->colors.wall, tileX, tileY, width);
-			else if (p->map.tab[y][x] == '0' || ft_isview(p->map.tab[y][x], p))
+			else if (p->map.tab[y][x] == '0' )
 				display_cub_map(p, p->colors.floor, tileX, tileY, width);
 			else if (p->map.tab[y][x] == '2')
 				display_cub_map(p, p->colors.sprite, tileX, tileY, width);

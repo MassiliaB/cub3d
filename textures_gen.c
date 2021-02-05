@@ -6,17 +6,20 @@ void    put_sprite_on(t_param *p)
     p->sprite.stripe = p->draw.draw_startX;
     while (p->sprite.stripe < p->draw.draw_endX)
     {
-        p->sprite.texX = (int)(256 * (p->sprite.stripe -(-p->sprite.sprite_width / 2 + p->sprite.sprite_screenX)) * p->text.sp_width / p->sprite.sprite_width) / 256;
-        if (p->sprite.transformY > 0 && p->sprite.stripe >= 0 && p->sprite.stripe < p->win_width && p->sprite.transformY < p->sprite.buff[p->sprite.stripe])
+        p->sprite.texX = (int)(256 * (p->sprite.stripe -(-p->sprite.sprite_width
+        / 2 + p->sprite.sprite_screenX)) * p->text.sp_width / p->sprite.sprite_width) / 256; // / 200 adapté au vol
+        if (p->sprite.transformY > 0 && p->sprite.stripe > 0 && p->sprite.stripe < p->win_width
+        && p->sprite.transformY < p->sprite.buff[p->sprite.stripe])
         {
             p->sprite.y = p->draw.draw_startY;
             while (p->sprite.y < p->draw.draw_endY)
             {
                 p->sprite.d = (p->sprite.y) * 256 - p->win_height * 128 + p->sprite.sprite_height * 128;
-                p->sprite.texY = ((p->sprite.d * p->text.sp_height) / p->sprite.sprite_height) / 256;
+                p->sprite.texY = ((p->sprite.d * p->text.sp_height) / p->sprite.sprite_height) / 256; // -> / 200 vol dans les airs
                 color = p->text.sp_addr[p->sprite.texY * p->img.line_length_sp + p->sprite.texX * p->text.bpp / 8];
+            //    printf("color = %d", color);
                 if (color && 0x00FFFFFF != 0)
-                     my_mlx_pixel_put(p, p->sprite.stripe, p->sprite.y, color);
+                    my_mlx_pixel_put(p, p->sprite.stripe, p->sprite.y, color);
                 p->sprite.y++;
             }
         }
