@@ -14,7 +14,7 @@
 # include <math.h>
 
 int		open_cub(t_param *p, char *path);
-int		open_parse_err(t_param *p);
+int		parse_error(t_param *p);
 int		parse_cub(t_param *p, int fd, char *path);
 int		parse_map(t_param *p, char *line);
 int	    get_no(char *line, t_param *p);
@@ -39,9 +39,10 @@ int		creat_trgb(int t, int r, int g, int b);
 int		quit(t_param *params, char *str);
 void	init_img(t_param *p);
 int     word_check(char *str, char *comp);
-int	save(t_param *p);
-int	mlx_exit(t_param *p);
-void		check_resolution(t_param *p);
+int 	save(t_param *p);
+int		mlx_exit(t_param *p);
+void	check_resolution(t_param *p);
+int		ft_len(int num);
 
 int		get_elements(char *line, t_param *p);
 void    my_mlx_pixel_put(t_param *data, int x, int y, int color);

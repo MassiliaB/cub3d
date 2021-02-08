@@ -1,18 +1,5 @@
 #include "cub3d.h"
 
-int	ft_len(int num) //recuperer celui de printf
-{
-	int size = 0;
-	if (num == 0)
-		return (1);
-	while (num > 0)
-	{
-		num = num / 10;
-		size++;
-	}
-	return (size);
-}
-
 void		check_resolution(t_param *p)
 {
 	mlx_get_screen_size(p->vars.mlx_ptr, &p->get_screenX, &p->get_screenY);
@@ -22,10 +9,19 @@ void		check_resolution(t_param *p)
 		p->win_height = p->get_screenY;
 }
 
-int		open_parse_err(t_param *p)
+int		parse_error(t_param *p)
 {
-	if (ft_len(p->win_width) < 3 && ft_len(p->win_height) < 3)
+	if ((ft_len(p->win_width) < 3 && ft_len(p->win_height) < 3)
+	|| p->win_width > INT_MAX || p->win_height  > INT_MAX)
 		return (quit(p, "Error :\nResolution is not adapted.\n"));
+	if (p->colors.sky_r > INT_MAX || p->colors.sky_r > 255 ||
+	p->colors.sky_g > INT_MAX || p->colors.sky_g > 255 ||
+	p->colors.sky_b > INT_MAX || p->colors.sky_b > 255 )
+		return (quit(p, "Error :\nThe C colors are not set well.\n"));
+	if (p->colors.floor_r > INT_MAX || p->colors.floor_r > 255 ||
+	p->colors.floor_g > INT_MAX || p->colors.floor_g > 255 ||
+	p->colors.floor_b > INT_MAX || p->colors.floor_b > 255 )
+		return (quit(p, "Error :\nThe F colors are not set well.\n"));
 	if (!(check_col(p)))
 		return (quit(p, "Error :\nYou have to close the map only with '1'.\n"));
     if (!p->text.no_path || !p->text.so_path || !p->text.we_path || !p->text.ea_path)

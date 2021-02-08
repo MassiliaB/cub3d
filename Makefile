@@ -1,8 +1,13 @@
 NAME = Cub3D
 
-SRCS = main.c custom_map.c mlx_errors.c parse_map.c open_cub.c get_coord.c \
-	check_content.c view.c player_map.c keys.c scene.c ft_move.c\
-	init.c get_text.c textures_gen.c  check_valid.c bmp_save.c\
+SRCS = parsing/get_coord.c parsing/check_valid.c \
+	parsing/parse_map.c parsing/open_cub.c \
+	parsing/get_text.c parsing/init \
+	mini_map/custom_map.c mini_map/useful.c \
+	main.c \
+	./mlx_errors.c  \
+	./view.c ./player_map.c ./keys.c ./scene.c ./ft_move.c\
+	./textures_gen.c   ./bmp_save.c\
 	gnl/get_next_line.c \
 	gnl/get_next_line_utils.c \
 
