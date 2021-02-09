@@ -1,4 +1,17 @@
-#include "../cub3d.h"
+#include "cub3d.h"
+
+int		creat_trgb(int t, int r, int g, int b)
+{
+	return(t << 24 | r << 16 | g << 8 | b);
+}
+
+void            my_mlx_pixel_put(t_param *data, int x, int y, int color)
+{
+	char    *dst;
+
+	dst = data->img.addr + (y * data->img.line_length + x * (data->img.bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
 
 void	display_cub_map(t_param *p, int color, int x, int y, int width)
 {
