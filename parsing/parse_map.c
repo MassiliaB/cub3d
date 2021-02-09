@@ -1,4 +1,4 @@
-#include "../cub3d.h"
+#include "../inc/cub3d.h"
 
 int	 get_good_line(char *line, t_param *p, int x)
 {
@@ -35,19 +35,23 @@ int	get_tab(char *line, t_param *p)
 		p->map.col_max = p->map.mapX;
     else
 		n = p->map.col_max - p->map.mapX;
-    if (!(p->map.tab[p->map.mapY] = malloc(sizeof(char)
-	* (p->map.mapX + n + 1))))
+    if (!(p->map.tab[p->map.mapY] = malloc(sizeof(char) * (p->map.mapX + n + 1))))
 		return (0);
     while (x < (p->map.mapX))
     {
 		if (!(get_good_line(line, p, x)))
 	    	return (0);
+//		printf("[%c]", p->map.tab[p->map.mapY][x]);
 		x++;
 		line++;
     }
 	x--;
     while (++x < p->map.col_max)
+	{	
 		p->map.tab[p->map.mapY][x] = ' ';
+//		printf("[%c]", p->map.tab[p->map.mapY][x]);
+		}
+//printf("\n");
     p->map.tab[p->map.mapY][x] = '\0';
     return (1);
 }
@@ -55,7 +59,7 @@ int	get_tab(char *line, t_param *p)
 int	parse_map_tex(t_param *p, char *line)
 {
 	if (ft_strncmp(line, "NO", 2) == 0)
-	    if (!(get_no(line + 2, p)))
+        if (!(get_no(line + 2, p)))
 			return (0);
 	if (ft_strncmp(line, "SO", 2) == 0)
 	    if (!(get_so(line + 2, p)))
@@ -66,9 +70,9 @@ int	parse_map_tex(t_param *p, char *line)
 	if (ft_strncmp(line, "EA", 2) == 0)
 	    if (!(get_ea(line + 2, p)))
 			return (0);
-	if (ft_strncmp(line, "NO", 2) && ft_strncmp(line, "SO", 2)
-	&& ft_strncmp(line, "WE", 2) && ft_strncmp(line, "EA", 2))
-		return (0);
+    if (ft_strncmp(line, "NO", 2) != 0 && ft_strncmp(line, "SO", 2) != 0
+    && ft_strncmp(line, "WE", 2) != 0 && ft_strncmp(line, "EA", 2) != 0)
+        return (0);
 	return (1);
 }
 
@@ -86,9 +90,9 @@ int	parse_map_coord(t_param *p, char *line)
 	if (ft_strncmp(line, "S ", 2) == 0)
 	    if (!(get_sprite(line + 2, p)))
 			return (0);
-	if (ft_strncmp(line, "R", 1) && ft_strncmp(line, "C", 1)
-	&& ft_strncmp(line, "F", 1) && ft_strncmp(line, "S ", 2))
-		return (0);
+	if (ft_strncmp(line, "R", 1) != 0 && ft_strncmp(line, "C", 1) != 0
+    && ft_strncmp(line, "F", 1) != 0 && ft_strncmp(line, "S ", 2) != 0)
+        return (0);
 	return (1);
 }
 

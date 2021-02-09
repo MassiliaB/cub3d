@@ -1,4 +1,4 @@
-#include "../cub3d.h"
+#include "../inc/cub3d.h"
 
 int	get_no(char *line, t_param *p)
 {

@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 void    draw_verline(int x, t_param *p, int color)
 {
@@ -72,7 +72,9 @@ void    put_tex_on(t_param *p, int x)
         color = p->text.img_addr[p->text.texY * p->text.ll + p->text.texX * (p->text.bpp / 8)];
         if (p->horizon.side == 1)
             color = (color >> 1) & 8355711;
-        my_mlx_pixel_put(p, x, y , color);
+        my_mlx_pixel_put(p, x, y , color && 0x000000FF);
+        my_mlx_pixel_put(p, x, y , color && 0x0000FF00);
+        my_mlx_pixel_put(p, x, y , color && 0x00FF0000);
         y++;
     }
     p->sprite.buff[x] = p->horizon.perpwalldist;

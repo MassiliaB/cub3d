@@ -1,4 +1,4 @@
-#include "../cub3d.h"
+#include "../inc/cub3d.h"
 
 int     close_fd(t_param * p, int fd, int ret)
 {
@@ -20,12 +20,18 @@ int		malloc_lines(t_param *p, char *line, int fd)
             p->map.nb_lines++;
         free(line);
     }
+    if (ret == 0 && line != NULL)
+    {
+        if (is_there_num(line))
+            p->map.nb_lines++;
+        free(line);
+    }
     line = NULL;
     if (!close_fd(p, ret, fd))
         return (quit(p, "Error :\nwhy.\n"));
     if (p->map.nb_lines == 0)
 		return (quit(p, "Error :\nWhere is the map ?\n"));
-    if (!(p->map.tab = (char **)malloc(sizeof(char *) * (p->map.nb_lines + 1))))
+    if (!(p->map.tab = (char **)malloc(sizeof(char *) * (p->map.nb_lines) )))
 	    return (quit(p, "Error :\nMalloc of the array failed.\n"));
     return (1);
 }
@@ -43,6 +49,17 @@ int		parse_cub(t_param *p, int fd, char *path)
     while ((ret = get_next_line(fd, &line)))
     {
 	    p->map.mapX = ft_strlen2(line);
+	    if (!(parse_map(p, line)))
+	    {
+		    free(line);
+            line = NULL;
+		    return (quit(p, "Error :\nProblem with the map.\n"));
+	    }
+	    free(line);
+    }
+    if (ret == 0 && line != NULL)
+    {
+        p->map.mapX = ft_strlen2(line);
 	    if (!(parse_map(p, line)))
 	    {
 		    free(line);

@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "inc/cub3d.h"
 
 int     word_check(char *str, char *comp)
 {
@@ -12,11 +12,10 @@ int     word_check(char *str, char *comp)
     return (1);
 }
 
-
 void    get_tex_path(t_param *p)
 {
     p->img.no = mlx_xpm_file_to_image(p->vars.mlx_ptr, p->text.no_path, &p->text.no_width, &p->text.no_height);
-    p->text.no_addr = mlx_get_data_addr(p->img.no, &(p->img.bits_per_pixel_no), &(p->img.line_length_no), &(p->img.endian_no));
+    p->text.no_addr = mlx_get_data_addr(p->img.no, &p->img.bits_per_pixel_no, &p->img.line_length_no, &p->img.endian_no);
     p->img.so = mlx_xpm_file_to_image(p->vars.mlx_ptr,  p->text.so_path, &p->text.so_width, &p->text.so_height);
     p->text.so_addr = mlx_get_data_addr(p->img.so, &(p->img.bits_per_pixel_so), &(p->img.line_length_so), &(p->img.endian_so));
     p->img.we = mlx_xpm_file_to_image(p->vars.mlx_ptr,  p->text.we_path, &p->text.we_width, &p->text.we_height);
@@ -99,4 +98,8 @@ void	init_player(t_param *p)
     p->colors.sky_r = 0;
     p->colors.sky_b = 0;
     p->horizon.view = 0;
+    p->map.nb_lines = 0;
+    p->map.col_max = 0;
+    p->map.mapX = 0;
+    p->map.mapY = 0;
 }

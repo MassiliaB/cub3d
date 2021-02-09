@@ -1,4 +1,4 @@
-#include "../cub3d.h"
+#include "../inc/cub3d.h"
 
 int		creat_trgb(int t, int r, int g, int b)
 {
@@ -9,8 +9,7 @@ void            my_mlx_pixel_put(t_param *data, int x, int y, int color)
 {
 	char    *dst;
 
-	dst = data->img.addr + (y * data->img.line_length
-	+ x * (data->img.bits_per_pixel / 8));
+	dst = data->img.addr + (y * data->img.line_length + x * (data->img.bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
 

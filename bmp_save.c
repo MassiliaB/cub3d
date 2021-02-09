@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "inc/cub3d.h"
 
 void bmp_make(t_param *p, int fd)
 {

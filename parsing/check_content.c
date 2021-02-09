@@ -1,4 +1,4 @@
-# include "cub3d.h"
+# include "../inc/cub3d.h"
 
 int	check_line(t_param *p, int y, int x)
 {

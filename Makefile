@@ -1,15 +1,21 @@
 NAME = Cub3D
 
-SRCS = parsing/get_coord.c parsing/check_valid.c \
-	parsing/parse_map.c parsing/open_cub.c \
-	parsing/get_text.c parsing/init \
-	mini_map/custom_map.c mini_map/useful.c \
-	main.c \
-	./mlx_errors.c  \
-	./view.c ./player_map.c ./keys.c ./scene.c ./ft_move.c\
-	./textures_gen.c   ./bmp_save.c\
-	gnl/get_next_line.c \
-	gnl/get_next_line_utils.c \
+SRCS = 	main.c mlx_errors.c init.c bmp_save.c \
+		parsing/get_coord.c \
+		parsing/check_valid.c \
+        parsing/parse_map.c \
+		parsing/open_cub.c \
+        parsing/get_text.c \
+		parsing/check_content.c \
+        mini_map/custom_map.c \
+		mini_map/useful.c \
+		raycasting_text/textures_gen.c \
+		raycasting_text/view.c \
+		raycasting/ft_move.c \
+		raycasting/keys.c \
+		raycasting/scene.c \
+        gnl/get_next_line.c \
+        gnl/get_next_line_utils.c \
 
 MLX_PATH	=	minilibx/
 MLX_NAME	=	${MLX_PATH}libmlx_Linux.a

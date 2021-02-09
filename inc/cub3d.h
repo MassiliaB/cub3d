@@ -6,11 +6,11 @@
 # include <math.h>
 # include <sys/types.h>
 # include <fcntl.h>
-# include "mlx.h"
+# include "../minilibx/mlx.h"
 # include "structs.h"
 # include "keys.h"
-# include "libft/libft.h"
-# include "gnl/get_next_line.h"
+# include "../libft/libft.h"
+# include "../gnl/get_next_line.h"
 # include <math.h>
 
 int		open_cub(t_param *p, char *path);
