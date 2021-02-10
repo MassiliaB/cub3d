@@ -30,13 +30,12 @@ void bmp_make(t_param *p, int fd)
 
 int	save(t_param *p)
 {
-	char *dest;
 	int fd;
 	int x;
 	int y;
 
 	if ((fd = open("./Screenshot_of_the_game.bmp", O_CREAT | O_RDWR)) == -1)
-		return (quit(p, "Error :\nProblem creating the bmp fd.\n"));
+		return (quit(p, "Error :\nProblem creating the bmp fd.\n", NULL));
 	bmp_make(p, fd);
 	y = p->win_height;
 	while (y >= 0)
@@ -50,6 +49,6 @@ int	save(t_param *p)
 		y--;
 	}
 	if (close(fd) == -1)
-    	return (quit(p, "Error :\nClosing the bmp FD failed.\n"));
-	return (quit(p, "Image saved !\n"));
+    	return (quit(p, "Error :\nClosing the bmp FD failed.\n", NULL));
+	return (quit(p, "Image saved !\n", NULL));
 }

@@ -61,7 +61,7 @@ t_sprites_ptr    *get_sprites_pos(t_param *p)
     }
     return (sprite_ptr);
 }
-
+//{}(),[y]
 void	init_img(t_param *p)
 {
 	p->colors.wall = creat_trgb(0, 47, 95, 95);
@@ -85,10 +85,10 @@ void	init_player(t_param *p)
     p->fps.left = 0;
     p->fps.right = 0;
     p->text.sprite_path = 0;
-    p->text.ea_path = 0;
-    p->text.we_path = 0;
-    p->text.so_path = 0;
-    p->text.no_path = 0;
+    p->text.ea_path = NULL;
+    p->text.we_path = NULL;
+    p->text.so_path = NULL;
+    p->text.no_path = NULL;
     p->win_height = 0;
     p->win_width = 0;
     p->colors.floor_r = 0;
@@ -102,4 +102,7 @@ void	init_player(t_param *p)
     p->map.col_max = 0;
     p->map.mapX = 0;
     p->map.mapY = 0;
+    p->sprite_ptr = NULL;
+    p->sprite.sprite_order = 0;
+    p->sprite.sprite_dist = 0;
 }

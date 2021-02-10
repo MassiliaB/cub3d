@@ -3,9 +3,9 @@
 int     close_fd(t_param * p, int fd, int ret)
 {
     if (ret == -1)
-	    return (quit(p, "Error :\nReading file -1.\n"));
+	    return (quit(p, "Error :\nReading file -1.\n", NULL));
     if (close(fd) == -1)
-	    return (quit(p, "Error :\nClosing FD failed.\n"));
+	    return (quit(p, "Error :\nClosing FD failed.\n", NULL));
     return (1);
 }
 
@@ -28,11 +28,11 @@ int		malloc_lines(t_param *p, char *line, int fd)
     }
     line = NULL;
     if (!close_fd(p, ret, fd))
-        return (quit(p, "Error :\nwhy.\n"));
+        return (quit(p, "Error :\nwhy.\n", NULL));
     if (p->map.nb_lines == 0)
-		return (quit(p, "Error :\nWhere is the map ?\n"));
+		return (quit(p, "Error :\nWhere is the map ?\n", NULL));
     if (!(p->map.tab = (char **)malloc(sizeof(char *) * (p->map.nb_lines) )))
-	    return (quit(p, "Error :\nMalloc of the array failed.\n"));
+	    return (quit(p, "Error :\nMalloc of the array failed.\n", NULL));
     return (1);
 }
 
@@ -50,22 +50,14 @@ int		parse_cub(t_param *p, int fd, char *path)
     {
 	    p->map.mapX = ft_strlen2(line);
 	    if (!(parse_map(p, line)))
-	    {
-		    free(line);
-            line = NULL;
-		    return (quit(p, "Error :\nProblem with the map.\n"));
-	    }
+		    return (quit(p, "Error :\nProblem with the map.\n", line));
 	    free(line);
     }
     if (ret == 0 && line != NULL)
     {
         p->map.mapX = ft_strlen2(line);
 	    if (!(parse_map(p, line)))
-	    {
-		    free(line);
-            line = NULL;
-		    return (quit(p, "Error :\nProblem with the map.\n"));
-	    }
+		    return (quit(p, "Error :\nProblem with the map.\n", line));
 	    free(line);
     }
     line = NULL;
@@ -80,10 +72,10 @@ int	open_cub(t_param *p, char *path)
 
 	fd = 0;
 	if (ft_strlen(path) < 4)
-	    return (quit(p, "Error :\nNot a cub file.\n"));
+	    return (quit(p, "Error :\nNot a cub file.\n", NULL));
 	if (!(ft_strstr(path, ".cub")))
-	    return (quit(p, "Error :\nNot a '.cub' file.\n"));
+	    return (quit(p, "Error :\nNot a '.cub' file.\n", NULL));
 	else if ((fd = open(path, O_RDONLY)) == -1)
-		return (quit(p, "Error :\nFD problem.\n"));
+		return (quit(p, "Error :\nFD problem.\n", NULL));
 	return (fd);
 }

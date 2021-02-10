@@ -8,9 +8,10 @@ SRCS = 	main.c mlx_errors.c init.c bmp_save.c \
         parsing/get_text.c \
 		parsing/check_content.c \
         mini_map/custom_map.c \
-		mini_map/useful.c \
-		raycasting_text/textures_gen.c \
-		raycasting_text/view.c \
+		useful.c \
+		raycasting_text/raycasting_sprite.c \
+		raycasting_text/raycasting_view.c \
+		raycasting_text/put_tex_on.c \
 		raycasting/ft_move.c \
 		raycasting/keys.c \
 		raycasting/scene.c \
@@ -29,7 +30,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 RM = rm -f
 

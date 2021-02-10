@@ -53,7 +53,7 @@ int	key_press(int keycode, t_param *p)
     if (keycode == DISP_MAP)
 	    p->touch = (p->touch + 1) % 2;
     if (keycode == ESC)
-        quit(p, "Closing the window.\n");
+        mlx_exit(p);
     if (keycode == GO_FORWARD)
         p->fps.forward = 1;
     if (keycode == GO_DOWN)

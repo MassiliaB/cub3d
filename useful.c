@@ -1,4 +1,4 @@
-#include "../inc/cub3d.h"
+#include "inc/cub3d.h"
 
 int		creat_trgb(int t, int r, int g, int b)
 {
@@ -24,4 +24,18 @@ int	ft_len(int num)
 		size++;
 	}
 	return (size);
+}
+
+char	*ft_cleandup(char *str, char *dst)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		dst[i] = str[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }

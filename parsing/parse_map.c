@@ -11,7 +11,7 @@ int	 get_good_line(char *line, t_param *p, int x)
 	else if (ft_isview(*line, p))
 	{
 		if (p->horizon.view != 0)
-			return (quit(p, "Error :\nTwo players on the map.\n"));
+			return (quit(p, "Error :\nTwo players on the map.\n", line));
 	   	p->horizon.view = *line;
 	   	p->map.tab[p->map.mapY][x] = '0';
 		p->horizon.posX = x + 0.5;
@@ -72,8 +72,8 @@ int	parse_map_tex(t_param *p, char *line)
 			return (0);
     if (ft_strncmp(line, "NO", 2) != 0 && ft_strncmp(line, "SO", 2) != 0
     && ft_strncmp(line, "WE", 2) != 0 && ft_strncmp(line, "EA", 2) != 0)
-        return (0);
-	return (1);
+    	return (0);
+return (1);
 }
 
 int	parse_map_coord(t_param *p, char *line)
@@ -98,11 +98,11 @@ int	parse_map_coord(t_param *p, char *line)
 
 int	parse_map(t_param *p, char *line)
 {
-	if (parse_map_tex(p, line) && p->map.mapY == 0)
+	if (parse_map_tex(p, line) && !p->map.mapY)
 		return (1);
-	if (parse_map_coord(p, line) && p->map.mapY == 0)
+	if (parse_map_coord(p, line) && !p->map.mapY)
 		return (1);
-	if (*(line + 1) == '\0' && p->map.mapY == 0)
+	if (*(line + 1) == '\0' && !p->map.mapY)
 		return (1);
 	if (is_there_num(line))
 	{
