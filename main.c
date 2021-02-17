@@ -19,7 +19,6 @@ int		main_loop(t_param *p)
 	    return (quit(p,"Error :\nMlx_new_image NULL.\n", NULL));
 	if (!(p->img.addr = mlx_get_data_addr(p->img.img, &(p->img.bits_per_pixel), &(p->img.line_length), &(p->img.endian))))
 	    return (quit(p, "Error :\nMlx_get_data_add.\n", NULL));
-//	printf("hello\n");
 	check_resolution(p);
 	get_tex_path(p);
 	mlx_hook(p->vars.win_ptr, KEYPRESS, KEYPRESS_MASK, key_press, p);

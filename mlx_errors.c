@@ -27,20 +27,19 @@ void		free_malloc(t_param *p, char *line)
 	int i;
 
 	i = 0;
-	if (line != NULL)
-	{	
-		free(line);
-        line = NULL;
-	}
 	if (p->map.tab != NULL)
 	{
-		while (p->map.tab[i])
+		while (i < p->map.mapY)
 		{
 			free(p->map.tab[i]);
 			i++;
 		}
 		free(p->map.tab);
-        p->map.tab = NULL;
+	}
+	if (line != NULL)
+	{	
+		free(line);
+        line = NULL;
 	}
 	if (p->sprite_ptr != NULL)
 		free(p->sprite_ptr);
@@ -48,8 +47,6 @@ void		free_malloc(t_param *p, char *line)
 		free(p->sprite.sprite_dist);
 	if (p->sprite.sprite_order != 0)
 		free(p->sprite.sprite_order);
-	if (p->text.we_path != 0)
-		free(p->text.we_path);
 	if (p->text.ea_path != 0)
 		free(p->text.we_path);
 	if (p->text.no_path != 0)

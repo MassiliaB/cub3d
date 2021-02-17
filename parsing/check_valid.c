@@ -6,16 +6,16 @@ int	set_camwe(char view, t_param *p)
 	{
 		p->horizon.dirX = 0;
 		p->horizon.dirY = -1;
-		p->horizon.planeX = -0.66;
-		p->horizon.planeY = 0;
+		p->horizon.planeX = p->horizon.dirY * tan(1.25 / 2);
+		p->horizon.planeY = p->horizon.dirX * tan(1.25 / 2);
 		return (1);
 	}
 	else if (view == 'E')
 	{
 		p->horizon.dirX = 0;
 		p->horizon.dirY = 1;
-		p->horizon.planeX = 0.66;
-		p->horizon.planeY = 0;
+		p->horizon.planeX = p->horizon.dirY * tan(1.25 / 2);
+		p->horizon.planeY = -p->horizon.dirX * tan(1.25 / 2);
 		return (1);
 	}
 	return (0);
@@ -26,17 +26,17 @@ int	set_camsn(char view, t_param *p)
 	if (view == 'S')
 	{
 		p->horizon.dirX = 1;
-		p->horizon.dirY = 0;
-		p->horizon.planeX = 0;
-		p->horizon.planeY = -0.66;
+		p->horizon.dirY = 0.0;
+		p->horizon.planeX = -p->horizon.dirY * tan(1.25 / 2);
+		p->horizon.planeY = -p->horizon.dirX * tan(1.25 / 2);
 		return (1);
 	}
 	else if (view == 'N')
 	{
-		p->horizon.dirX = -1;
+		p->horizon.dirX = -1.0;
 		p->horizon.dirY = 0.0;
-		p->horizon.planeX = 0.0;
-		p->horizon.planeY = 0.66;
+		p->horizon.planeX = p->horizon.dirY * tan(1.25 / 2);
+		p->horizon.planeY = -p->horizon.dirX * tan(1.25 / 2);
 		return (1);
 	}
 	return (0);

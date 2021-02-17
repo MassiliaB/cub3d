@@ -6,7 +6,7 @@ int	get_no(char *line, t_param *p)
 
 	i = 0;
 	if (p->text.no_path != NULL)
-		return (quit(p, "Error :\nYou have two NO.\n", line));
+		return (quit(p, "Error :\nYou have two NO.\n", NULL));
 	while (*line == ' ')
 		line++;
 	if (ft_isalpha(*line) || *line == '_'
@@ -35,7 +35,7 @@ int	get_so(char *line, t_param *p)
 	
 	i = 0;
 	if (p->text.so_path != NULL)
-		return (quit(p, "Error :\nYou have two SO.\n", line));
+		return (quit(p, "Error :\nYou have two SO.\n", NULL));
 	while (*line == ' ')
 		line++;
 	if (ft_isalpha(*line) || *line == '_'
@@ -64,7 +64,7 @@ int	get_we(char *line, t_param *p)
 	
 	i = 0;
 	if (p->text.we_path != NULL)
-		return (quit(p, "Error :\nYou have two WE.\n", line));
+		return (quit(p, "Error :\nYou have two WE.\n", NULL));
 	while (*line == ' ')
 		line++;
 	if (ft_isalpha(*line) || *line == '_'
@@ -93,7 +93,7 @@ int	get_ea(char *line, t_param *p)
 	
 	i = 0;
 	if (p->text.ea_path != NULL)
-		return (quit(p, "Error :\nYou have two EA.\n", line));
+		return (quit(p, "Error :\nYou have two EA.\n", NULL));
 	while (*line == ' ')
 		line++;
 	if (ft_isalpha(*line) || *line == '_'
@@ -119,10 +119,12 @@ int	get_ea(char *line, t_param *p)
 int	get_sprite(char *line, t_param *p)
 {
 	int i;
+//	char *tmp;
 	
 	i = 0;
+//	tmp = 0;
 	if (p->text.sprite_path != NULL)
-		return (quit(p, "Error :\nYou put two sprite.\n", line));
+		return (quit(p, "Error :\nYou put two sprites.\n", NULL));
 	while (*line == ' ')
 		line++;
 	if (ft_isalpha(*line) || *line == '_'

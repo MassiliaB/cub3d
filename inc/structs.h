@@ -77,7 +77,7 @@ typedef struct s_sprites
 
 typedef struct s_player
 {
-    double  rad;
+    int  rad;
 	int		forward;
 	int		backward;	
 	int		left;

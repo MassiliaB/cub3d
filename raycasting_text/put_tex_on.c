@@ -2,7 +2,8 @@
 
 void    put_sprite_on(t_param *p)
 {
-    int color;
+    char *color;
+    int color2; //modif guig
     p->sprite.stripe = p->draw.draw_startX;
     while (p->sprite.stripe < p->draw.draw_endX)
     {
@@ -16,10 +17,10 @@ void    put_sprite_on(t_param *p)
             {
                 p->sprite.d = (p->sprite.y) * 256 - p->win_height * 128 + p->sprite.sprite_height * 128;
                 p->sprite.texY = ((p->sprite.d * p->text.sp_height) / p->sprite.sprite_height) / 256; // -> / 200 vol dans les airs
-                color = p->text.sp_addr[p->sprite.texY * p->img.line_length_sp + p->sprite.texX * p->text.bpp / 8];
-            //    printf("color = %d", color);
-                if (color && 0x00FFFFFF != 0)
-                    my_mlx_pixel_put(p, p->sprite.stripe, p->sprite.y, color);
+                color = p->text.sp_addr + p->sprite.texY * p->img.line_length_sp + p->sprite.texX * p->text.bpp / 8;
+                color2 = *(unsigned int*)color;
+                if (color2 && 0x00FFFFFF != 0)
+                    my_mlx_pixel_put(p, p->sprite.stripe, p->sprite.y, color2);
                 p->sprite.y++;
             }
         }
@@ -30,20 +31,21 @@ void    put_sprite_on(t_param *p)
 void    put_tex_on(t_param *p, int x)
 {
     int y;
-    int color;
+    char *color;
+    int color2;
 
-    color = 0;
     y = p->draw.draw_start;
     while (y < p->draw.draw_end)
     {
         p->text.texY = (int)p->text.tex_pos & (p->text.tex_height - 1);
         p->text.tex_pos += p->text.step;
-        color = p->text.img_addr[p->text.texY * p->text.ll + p->text.texX * (p->text.bpp / 8)];
+        color = p->text.img_addr + p->text.texY * p->text.ll + p->text.texX * (p->text.bpp / 8);
+        color2 = *(unsigned int*)color; 
         if (p->horizon.side == 1)
-            color = (color >> 1) & 8355711;
-        my_mlx_pixel_put(p, x, y , color);
+            color2 = (color2 >> 1) & 8355711;
+        my_mlx_pixel_put(p, x, y , color2);
         y++;
-    }
+    } 
     p->sprite.buff[x] = p->horizon.perpwalldist;
 }
 void    tex_side(t_param *p)
@@ -51,20 +53,26 @@ void    tex_side(t_param *p)
     if (p->horizon.side == 0)
     {
         if (p->horizon.rayDirX > 0)
+        {
             p->text.wall_dir = 'S';
+            p->text.texX = p->text.tex_width - p->text.texX - 1;
+        }
         else
             p->text.wall_dir = 'N';
-        p->text.texX = p->text.tex_width - p->text.texX - 1;
     }
     if (p->horizon.side == 1)
     {
-        if (p->horizon.rayDirY > 0)
-            p->text.wall_dir = 'E';
-        else
+        if (p->horizon.rayDirY < 0)
+        {
             p->text.wall_dir = 'W';
-        p->text.texX = p->text.tex_width - p->text.texX - 1;
+            p->text.texX = p->text.tex_width - p->text.texX - 1;
+        }
+        else
+            p->text.wall_dir = 'E';
     }
+    
 }
+
 void    wall_tex_value(t_param *p, int x)
 {
     p->text.tex_num = p->map.tab[p->horizon.currentposY][p->horizon.currentposX] - 1;

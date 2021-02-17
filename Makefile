@@ -10,11 +10,11 @@ SRCS = 	main.c mlx_errors.c init.c bmp_save.c \
         mini_map/custom_map.c \
 		useful.c \
 		raycasting_text/raycasting_sprite.c \
-		raycasting_text/raycasting_view.c \
 		raycasting_text/put_tex_on.c \
+		raycasting_text/raycasting_view.c \
 		raycasting/ft_move.c \
 		raycasting/keys.c \
-		raycasting/scene.c \
+		raycasting/steps.c \
         gnl/get_next_line.c \
         gnl/get_next_line_utils.c \
 
@@ -30,7 +30,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 

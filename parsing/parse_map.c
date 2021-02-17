@@ -6,7 +6,7 @@ int	 get_good_line(char *line, t_param *p, int x)
 	{
 		p->map.tab[p->map.mapY][x] = *line;
 		if (*line == '2')
-			p->sprite.num_sprites += 1;
+			p->sprite.num_sprites++;
 	}
 	else if (ft_isview(*line, p))
 	{
@@ -41,7 +41,7 @@ int	get_tab(char *line, t_param *p)
     {
 		if (!(get_good_line(line, p, x)))
 	    	return (0);
-//		printf("[%c]", p->map.tab[p->map.mapY][x]);
+		printf("[%c]", p->map.tab[p->map.mapY][x]);
 		x++;
 		line++;
     }
@@ -49,9 +49,9 @@ int	get_tab(char *line, t_param *p)
     while (++x < p->map.col_max)
 	{	
 		p->map.tab[p->map.mapY][x] = ' ';
-//		printf("[%c]", p->map.tab[p->map.mapY][x]);
+		printf("[%c]", p->map.tab[p->map.mapY][x]);
 		}
-//printf("\n");
+printf("\n");
     p->map.tab[p->map.mapY][x] = '\0';
     return (1);
 }

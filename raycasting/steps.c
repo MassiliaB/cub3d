@@ -47,7 +47,7 @@ void    ft_is_wall(t_param *p)
             p->horizon.currentposX += p->horizon.stepX;
             p->horizon.side = 0;
         }
-        else
+        else if (p->horizon.sideDistX > p->horizon.sideDistY)
         {
             p->horizon.sideDistY += p->horizon.deltaDistY;
             p->horizon.currentposY += p->horizon.stepY;
@@ -58,7 +58,7 @@ void    ft_is_wall(t_param *p)
     }
 }
 
-void    wall_dist(t_param *p)
+void    wall_dist(t_param *p, int x)
 {
     if (p->horizon.side == 0)
 	    p->horizon.perpwalldist = (p->horizon.currentposX - p->horizon.posX +
@@ -66,4 +66,5 @@ void    wall_dist(t_param *p)
 	else
 	    p->horizon.perpwalldist = (p->horizon.currentposY - p->horizon.posY +
 		(1 - p->horizon.stepY) / 2) / p->horizon.rayDirY;
+  (void)x;//  p->sprite.buff[x] = p->horizon.perpwalldist;
 }

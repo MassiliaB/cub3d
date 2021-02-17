@@ -65,9 +65,9 @@ void    sprite_casting(t_param *p)
     i = 0;
     while (i < p->sprite.num_sprites)
     {
-        p->sprite.spriteX = p->sprite_ptr[p->sprite.sprite_order[i]].x
+        p->sprite.spriteX = p->sprite_ptr[p->sprite.sprite_order[i]].x + 0.5
         - p->horizon.posX;
-        p->sprite.spriteY = p->sprite_ptr[p->sprite.sprite_order[i]].y
+        p->sprite.spriteY = p->sprite_ptr[p->sprite.sprite_order[i]].y + 0.5
         - p->horizon.posY;
         p->sprite.invDet = 1.0 / (p->horizon.planeX * p->horizon.dirY
         - p->horizon.dirX * p->horizon.planeY);

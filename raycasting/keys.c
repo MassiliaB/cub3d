@@ -11,7 +11,7 @@ int    update_scene(t_param *p)
     {
         stepX(p, x);
         ft_is_wall(p);
-        wall_dist(p);
+        wall_dist(p, x);
         line_wall(p, x);
         x++;
     }

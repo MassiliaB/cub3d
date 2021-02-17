@@ -43,6 +43,8 @@ int 	save(t_param *p);
 int		mlx_exit(t_param *p);
 int		ft_len(int num);
 void    put_sprite_on(t_param *p);
+void    put_tex_on(t_param *p, int x);
+void    wall_dist(t_param *p, int x);
 void    wall_tex_value(t_param *p, int x);
 char	*ft_cleandup(char *str, char *dst);
 
@@ -66,7 +68,6 @@ int    move(t_param *p);
 void    stepX(t_param *p, int x);
 void    stepY(t_param *p);
 void    ft_is_wall(t_param *p);
-void    wall_dist(t_param *p);
 void    line_wall(t_param *p, int x);
 void    draw_verline(int x, t_param *p, int color);
 void    init_rotTime(t_param *p);

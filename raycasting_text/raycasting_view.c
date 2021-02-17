@@ -67,7 +67,7 @@ void    line_wall(t_param *p, int x)
     p->draw.draw_end = p->draw.line_height / 2 + p->win_height / 2;
     if (p->draw.draw_end >= p->win_height)
         p->draw.draw_end = p->win_height - 1;
-/*   colors = p->colors.wall;
+/*    colors = p->colors.wall;
     if (p->horizon.side == 1)
         colors = p->colors.wall / 2;
    draw_verline(x, p, color);*/

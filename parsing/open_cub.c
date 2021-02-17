@@ -31,7 +31,7 @@ int		malloc_lines(t_param *p, char *line, int fd)
         return (quit(p, "Error :\nwhy.\n", NULL));
     if (p->map.nb_lines == 0)
 		return (quit(p, "Error :\nWhere is the map ?\n", NULL));
-    if (!(p->map.tab = (char **)malloc(sizeof(char *) * (p->map.nb_lines) )))
+    if (!(p->map.tab = (char **)malloc(sizeof(char *) * p->map.nb_lines + 1)))
 	    return (quit(p, "Error :\nMalloc of the array failed.\n", NULL));
     return (1);
 }

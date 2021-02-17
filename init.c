@@ -61,7 +61,7 @@ t_sprites_ptr    *get_sprites_pos(t_param *p)
     }
     return (sprite_ptr);
 }
-//{}(),[y]
+
 void	init_img(t_param *p)
 {
 	p->colors.wall = creat_trgb(0, 47, 95, 95);
@@ -74,8 +74,8 @@ void	init_img(t_param *p)
 void	init_player(t_param *p)
 {
     p->map.tab = NULL;
-    p->horizon.movespeed =  0.08;
-    p->horizon.rotspeed =  0.03;
+    p->horizon.movespeed =  0.20;
+    p->horizon.rotspeed =  0.05;
     p->touch = 0;
     p->sprite.num_sprites = 0;
     p->fps.rot_right = 0;
@@ -84,7 +84,7 @@ void	init_player(t_param *p)
     p->fps.backward = 0;
     p->fps.left = 0;
     p->fps.right = 0;
-    p->text.sprite_path = 0;
+    p->text.sprite_path = NULL;
     p->text.ea_path = NULL;
     p->text.we_path = NULL;
     p->text.so_path = NULL;

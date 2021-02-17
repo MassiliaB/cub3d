@@ -3,7 +3,7 @@
 int	get_r(char *line, t_param *p)
 {
 	if (p->win_width != 0 && p->win_height != 0)
-		return (quit(p, "Error :\nYou have two R.\n", line));
+		return (quit(p, "Error :\nYou have two R.\n", NULL));
 	while (*line == ' ')
 		line++;
 	if (ft_isdigit(*line))
@@ -43,7 +43,7 @@ char	*check_order(char *line)
 int	get_c(char *line, t_param *p)
 {
 	if (p->colors.sky_r != 0 && p->colors.sky_g != 0 && p->colors.sky_b != 0)
-		return (quit(p, "Error :\nYou have two C.\n", line));
+		return (quit(p, "Error :\nYou have two C.\n", NULL));
 	while (*line == ' ')
 		line++;
     if (ft_isdigit(*line))
@@ -74,7 +74,7 @@ int	get_c(char *line, t_param *p)
 int	get_f(char *line, t_param *p)
 {
 	if (p->colors.floor_r != 0 && p->colors.floor_g != 0 && p->colors.floor_b != 0)
-		return (quit(p, "Error :\nYou have two F.\n", line));
+		return (quit(p, "Error :\nYou have two F.\n", NULL));
 	while (*line == ' ')
 		line++;
     if (ft_isdigit(*line))
