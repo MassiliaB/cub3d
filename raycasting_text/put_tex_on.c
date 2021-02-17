@@ -39,11 +39,11 @@ void    put_tex_on(t_param *p, int x)
     {
         p->text.texY = (int)p->text.tex_pos & (p->text.tex_height - 1);
         p->text.tex_pos += p->text.step;
-        color = p->text.img_addr + p->text.texY * p->text.ll + p->text.texX * (p->text.bpp / 8);
+        color = p->text.img_addr + (p->text.texY * p->text.ll + p->text.texX * (p->text.bpp / 8));
         color2 = *(unsigned int*)color; 
         if (p->horizon.side == 1)
             color2 = (color2 >> 1) & 8355711;
-        my_mlx_pixel_put(p, x, y , color2);
+        my_mlx_pixel_put(p, x, y, color2);
         y++;
     } 
     p->sprite.buff[x] = p->horizon.perpwalldist;

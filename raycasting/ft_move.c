@@ -33,6 +33,7 @@ int    move(t_param *p)
 {
     if (p->fps.forward == 1)
     {
+        printf("FORWARD\ndirY [%f], dirX [%f], posX[%f], posY[%f]\n", p->horizon.dirY, p->horizon.dirX, p->horizon.posX, p->horizon.posY);
         if (moving_ok(p->map.tab[(int)p->horizon.posY]
         [(int)(p->horizon.posX + p->horizon.dirX * p->horizon.movespeed)]))
             p->horizon.posX += p->horizon.dirX * p->horizon.movespeed;
@@ -42,6 +43,7 @@ int    move(t_param *p)
     }
     if (p->fps.backward == 1)
     {
+        printf("BACKWARD\ndirY [%f], dirX [%f], posX[%f], posY[%f]\n", p->horizon.dirY, p->horizon.dirX, p->horizon.posX, p->horizon.posY);
         if (moving_ok(p->map.tab[(int)p->horizon.posY]
         [(int)(p->horizon.posX - p->horizon.dirX * p->horizon.movespeed)]))
             p->horizon.posX -= p->horizon.dirX * p->horizon.movespeed;
@@ -51,15 +53,17 @@ int    move(t_param *p)
     }
     if (p->fps.left == 1)
     {
+        printf("LEFT\ndirY [%f], dirX [%f], posX[%f], posY[%f]\n", p->horizon.dirY, p->horizon.dirX, p->horizon.posX, p->horizon.posY);
         if (moving_ok(p->map.tab[(int)p->horizon.posY]
-        [(int)(p->horizon.posX - p->horizon.dirY * p->horizon.movespeed)]))
-            p->horizon.posX += p->horizon.dirY * p->horizon.movespeed;
+            [(int)(p->horizon.posX - p->horizon.dirY * p->horizon.movespeed)]))
+                p->horizon.posX += p->horizon.dirY * p->horizon.movespeed;
         if (moving_ok(p->map.tab[(int)(p->horizon.posY + p->horizon.dirX * p->horizon.movespeed)]
-        [(int)(p->horizon.posX)]))
-            p->horizon.posY += p->horizon.dirX * p->horizon.movespeed;
+            [(int)(p->horizon.posX)]))
+                p->horizon.posY += p->horizon.dirX * p->horizon.movespeed;
     }
     if (p->fps.right == 1)
     {
+        printf("RIGHT\ndirY [%f], dirX [%f], posX[%f], posY[%f]\n", p->horizon.dirY, p->horizon.dirX, p->horizon.posX, p->horizon.posY);
         if (moving_ok(p->map.tab[(int)p->horizon.posY]
         [(int)(p->horizon.posX + p->horizon.dirY * p->horizon.movespeed)]))
             p->horizon.posX -= p->horizon.dirY * p->horizon.movespeed;

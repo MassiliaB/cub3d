@@ -84,6 +84,7 @@ void	init_player(t_param *p)
     p->fps.backward = 0;
     p->fps.left = 0;
     p->fps.right = 0;
+    p->text.img_addr = NULL;
     p->text.sprite_path = NULL;
     p->text.ea_path = NULL;
     p->text.we_path = NULL;
