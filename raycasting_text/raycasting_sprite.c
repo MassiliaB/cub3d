@@ -64,7 +64,7 @@ void    sprite_casting(t_param *p)
     i = 0;
     while (i < p->sprite.num_sprites)
     {
-    //    printf("coucou7\n");
+        printf("coucou7\n");
         p->sprite.spriteX = p->sprite_ptr[p->sprite.sprite_order[i]].x
         - p->horizon.posX;
         p->sprite.spriteY = p->sprite_ptr[p->sprite.sprite_order[i]].y
@@ -77,7 +77,7 @@ void    sprite_casting(t_param *p)
         * p->sprite.spriteX + p->horizon.planeX * p->sprite.spriteY);
         p->sprite.sprite_screenX = (int)((p->win_width /2)
         * (1 + p->sprite.transformX / p->sprite.transformY));
-    //    printf("coucou7.0\n");
+        printf("coucou7.0\n");
         sprite_height(p);
     //    printf("coucou8\n");
         sprite_width(p);

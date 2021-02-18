@@ -66,5 +66,5 @@ void    wall_dist(t_param *p, int x)
 	else
 	    p->horizon.perpwalldist = (p->horizon.currentposY - p->horizon.posY +
 		(1 - p->horizon.stepY) / 2) / p->horizon.rayDirY;
-   p->sprite.buff[x] = p->horizon.perpwalldist;
+(void)x;//   p->sprite.buff[x] = p->horizon.perpwalldist;
 }
