@@ -18,7 +18,7 @@ void    put_sprite_on(t_param *p)
                 p->sprite.d = (p->sprite.y) * 256 - p->win_height * 128 + p->sprite.sprite_height * 128;
                 p->sprite.texY = ((p->sprite.d * p->text.sp_height) / p->sprite.sprite_height) / 256; // -> / 200 vol dans les airs
                 color = (char *)(p->text.sp_addr + p->sprite.texY * p->img.line_length_sp + p->sprite.texX * p->text.bpp / 8);
-                printf("color [%s]\n", color);
+            //   printf("color [%s]\n", color);
                 color2 = *(unsigned int*)color;
                 if (color2 && 0x00FFFFFF != 0)
                     my_mlx_pixel_put(p, p->sprite.stripe, p->sprite.y, color2);

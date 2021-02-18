@@ -1,12 +1,12 @@
 R 1000    1000
 F 235, 151,   78
-NO     ./wall_white.xpm
+NO     ./brick.xpm
 SO    ./greystone.xpm
-WE ./purplestone.xpm
+WE ./wood.xpm
 EA ./redbrick.xpm
 
 C 1,204,181
-S ./barrell.xpm
+S ./manu.xpm
 
             111111111111111111111111111
             100000100010000000000000001
