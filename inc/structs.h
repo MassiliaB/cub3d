@@ -47,8 +47,6 @@ typedef struct s_sprites_ptr
 	double	x;
 	double	y;
 	int texture;
-	int first;
-	int second;
 }				t_sprites_ptr;
 
 typedef struct s_sprites

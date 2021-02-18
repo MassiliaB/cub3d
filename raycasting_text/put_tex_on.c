@@ -55,21 +55,21 @@ void    tex_side(t_param *p)
     {
         if (p->horizon.rayDirX > 0)
         {
-            p->text.wall_dir = 'S';
+            p->text.wall_dir = 'E';
             p->text.texX = p->text.tex_width - p->text.texX - 1;
         }
         else
-            p->text.wall_dir = 'N';
+            p->text.wall_dir = 'W';
     }
     if (p->horizon.side == 1)
     {
         if (p->horizon.rayDirY < 0)
         {
-            p->text.wall_dir = 'W';
+            p->text.wall_dir = 'N';
             p->text.texX = p->text.tex_width - p->text.texX - 1;
         }
         else
-            p->text.wall_dir = 'E';
+            p->text.wall_dir = 'S';
     }
     
 }

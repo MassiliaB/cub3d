@@ -9,7 +9,7 @@ int moving_ok(char moove)
 
 void    rotate(t_param *p)
 {
-    if (p->fps.rot_right == 1)
+    if (p->fps.rot_left == 1)
     {
         p->horizon.oldDirX = p->horizon.dirX;
         p->horizon.dirX = p->horizon.dirX * cos(-p->horizon.rotspeed)
@@ -22,7 +22,7 @@ void    rotate(t_param *p)
         p->horizon.planeY = p->horizon.oldPlaneX * sin(-p->horizon.rotspeed)
         + p->horizon.planeY * cos(-p->horizon.rotspeed);
     }
-    if (p->fps.rot_left == 1)
+    if (p->fps.rot_right == 1)
     {
         p->horizon.oldDirX = p->horizon.dirX;
         p->horizon.dirX = p->horizon.dirX * cos(p->horizon.rotspeed)

@@ -16,7 +16,7 @@ void    sort_sprite(t_param *p)
         i++;
     }
     i = 0;
-    while (i < p->sprite.num_sprites)
+    while (i < (p->sprite.num_sprites / 2))
     {
         if (p->sprite.sprite_dist[i] < p->sprite.sprite_dist[i + 1])
         {
@@ -25,10 +25,11 @@ void    sort_sprite(t_param *p)
             p->sprite.sprite_dist[i + 1] = tmp;
             tmp = p->sprite.sprite_order[i];
             p->sprite.sprite_order[i] = p->sprite.sprite_order[i + 1];
-            p->sprite.sprite_order[i + 1] = (int)tmp;
+            p->sprite.sprite_order[i + 1] = tmp;
             i = 0;
         }
-        i++;
+        else
+            i++;
     }
 }
 void    sprite_height(t_param *p)
@@ -64,20 +65,27 @@ void    sprite_casting(t_param *p)
     i = 0;
     while (i < p->sprite.num_sprites)
     {
-       // printf("coucou7\n");
+      //  printf("coucou7\n");
         p->sprite.spriteX = p->sprite_ptr[p->sprite.sprite_order[i]].x
         - p->horizon.posX;
+      //          printf("---1\n");
         p->sprite.spriteY = p->sprite_ptr[p->sprite.sprite_order[i]].y
         - p->horizon.posY;
+       //                 printf("---2\n");
         p->sprite.invDet = 1.0 / (p->horizon.planeX * p->horizon.dirY
         - p->horizon.dirX * p->horizon.planeY);
+       //                 printf("---3\n");
         p->sprite.transformX = p->sprite.invDet * (p->horizon.dirY
         * p->sprite.spriteX - p->horizon.dirX * p->sprite.spriteY);
+       //                 printf("---4\n");
         p->sprite.transformY = p->sprite.invDet * (-p->horizon.planeY
         * p->sprite.spriteX + p->horizon.planeX * p->sprite.spriteY);
+       //                 printf("---5\n");
         p->sprite.sprite_screenX = (int)((p->win_width /2)
         * (1 + p->sprite.transformX / p->sprite.transformY));
-      //  printf("coucou7.0\n");
+        
+    //    printf("p->sprite.spriteY [%f], p->sprite.spriteX [%f], p->sprite.invDet [%f], p->sprite.transformX[%f]], p->sprite.transformY[%f], p->sprite.sprite_screenX[%d]\n",p->sprite.spriteY, p->sprite.spriteX,p->sprite.invDet, p->sprite.transformX, p->sprite.transformY, p->sprite.sprite_screenX);
+
         sprite_height(p);
     //    printf("coucou8\n");
         sprite_width(p);
