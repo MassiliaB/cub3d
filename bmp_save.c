@@ -31,11 +31,13 @@ void bmp_make(t_param *p, int fd)
 int	save(t_param *p)
 {
 	int fd;
+	char *color;
+	int color2;
 	int x;
 	int y;
 
-	if ((fd = open("./Screenshot_of_the_game.bmp", O_CREAT | O_RDWR)) == -1)
-		return (quit(p, "Error :\nProblem creating the bmp fd.\n", NULL));
+	if ((fd = open("./Game.bmp", O_CREAT | O_RDWR)) == -1)
+		return (quit(p, "Error :\nProblem creating the bmp image.\n", NULL));
 	bmp_make(p, fd);
 	y = p->win_height;
 	while (y >= 0)
@@ -43,7 +45,9 @@ int	save(t_param *p)
 		x = 0;
 		while (x < p->win_width)
 		{
-			write(fd, &p->img.addr[y * p->img.line_length + x * (p->img.bits_per_pixel / 8)], 4);
+			color = p->img.addr + y * p->img.line_length + x * (p->img.bits_per_pixel / 8);
+			color2 = *(unsigned int *)color;
+			write(fd, &color2, 4);
 			x++;
 		}
 		y--;

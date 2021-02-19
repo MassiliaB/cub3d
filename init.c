@@ -74,8 +74,8 @@ void	init_img(t_param *p)
 void	init_player(t_param *p)
 {
     p->map.tab = NULL;
-    p->horizon.movespeed =  0.20;
-    p->horizon.rotspeed =  0.05;
+    p->horizon.movespeed =  0.15;
+    p->horizon.rotspeed =  0.04;
     p->touch = 0;
     p->sprite.num_sprites = 0;
     p->fps.rot_right = 0;

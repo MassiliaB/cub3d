@@ -47,12 +47,12 @@ void		free_malloc(t_param *p, char *line)
 		free(p->sprite.sprite_dist);
 	if (p->sprite.sprite_order != 0)
 		free(p->sprite.sprite_order);
-	if (p->text.ea_path != 0)
+/*	if (p->text.ea_path != 0)
 		free(p->text.we_path);
 	if (p->text.no_path != 0)
 		free(p->text.no_path);
 	if (p->text.so_path != 0)
-		free(p->text.so_path);
+		free(p->text.so_path);*/
 }
 
 int		print_error(char *str)

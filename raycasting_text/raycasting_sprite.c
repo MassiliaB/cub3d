@@ -16,7 +16,7 @@ void    sort_sprite(t_param *p)
         i++;
     }
     i = 0;
-    while (i < (p->sprite.num_sprites / 2))
+    while (i < p->sprite.num_sprites / 2)
     {
         if (p->sprite.sprite_dist[i] < p->sprite.sprite_dist[i + 1])
         {
@@ -28,8 +28,8 @@ void    sort_sprite(t_param *p)
             p->sprite.sprite_order[i + 1] = tmp;
             i = 0;
         }
-        else
-            i++;
+      //  else
+        i++;
     }
 }
 void    sprite_height(t_param *p)
