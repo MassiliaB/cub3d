@@ -1,58 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bmp_save.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: masboula <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/23 15:57:16 by masboula          #+#    #+#             */
+/*   Updated: 2021/02/24 12:59:09 by masboula         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inc/cub3d.h"
 
-void bmp_make(t_param *p, int fd)
+void	bmp_make(t_param *p, int fd, int tmp)
 {
-	int tmp;
-
-	write(fd, "BM", 2); //signature indiquant que c'est un fichier bmp
+	write(fd, "BM", 2);
 	tmp = 40 + 14 + 4 * p->win_width * p->win_height;
 	write(fd, &tmp, 4);
 	tmp = 0;
 	write(fd, &tmp, 2);
 	write(fd, &tmp, 2);
 	tmp = 54;
-	write(fd, &tmp, 4); //bf size
+	write(fd, &tmp, 4);
 	tmp = 40;
-	write(fd, &tmp, 4); //bi size
-	write(fd, &p->win_width, 4); //largeur de l'image, c-a-d le nb de pixel horizontal
-	write(fd, &p->win_height, 4); // hauteur
+	write(fd, &tmp, 4);
+	tmp = p->win_width;
+	write(fd, &tmp, 4);
+	tmp = p->win_height;
+	write(fd, &tmp, 4);
 	tmp = 1;
-	write(fd, &tmp, 2); // nb de plans, tjr = 1
-	write(fd, &p->img.bits_per_pixel, 2); // profondeur du codage de la couleur, nb de bits utilisé pour code la couleur
+	write(fd, &tmp, 2);
+	write(fd, &p->img.bits_per_pixel, 2);
 	tmp = 0;
-	write(fd, &tmp, 4); // méthode de compression, = 0 lorsque l'image n'est pas compressée
-	write(fd, &tmp, 4); //la taille total de l'image
-	write(fd, &tmp, 4); //resolution horizontale
-	write(fd, &tmp, 4); //resolution verticale 
-	write(fd, &tmp, 4); //nb de couleurs de la palette
-	write(fd, &tmp, 4); // nb de couleurs importantes de la palette, = 0 quand chaque couleur a son importance
+	write(fd, &tmp, 4);
+	write(fd, &tmp, 4);
+	write(fd, &tmp, 4);
+	write(fd, &tmp, 4);
+	write(fd, &tmp, 4);
+	write(fd, &tmp, 4);
 }
 
-int	save(t_param *p)
+int		save(t_param *p)
 {
 	int fd;
-	char *color;
-	int color2;
 	int x;
 	int y;
+	int tmp;
 
-	if ((fd = open("./Game.bmp", O_CREAT | O_RDWR)) == -1)
-		return (quit(p, "Error :\nProblem creating the bmp image.\n", NULL));
-	bmp_make(p, fd);
-	y = p->win_height;
+	tmp = 0;
+	if ((fd = open("./game.bmp", O_CREAT | O_RDWR, 0666)) == -1)
+		return (quit(p, "Error :\nProblem creating the bmp fd.\n", NULL));
+	bmp_make(p, fd, tmp);
+	y = p->win_height - 1;
 	while (y >= 0)
 	{
 		x = 0;
 		while (x < p->win_width)
 		{
-			color = p->img.addr + y * p->img.line_length + x * (p->img.bits_per_pixel / 8);
-			color2 = *(unsigned int *)color;
-			write(fd, &color2, 4);
+			write(fd, &p->img.addr[y * p->img.line_length + x * 4], 4);
 			x++;
 		}
 		y--;
 	}
 	if (close(fd) == -1)
-    	return (quit(p, "Error :\nClosing the bmp FD failed.\n", NULL));
+		return (quit(p, "Error :\nClosing the bmp FD failed.\n", NULL));
 	return (quit(p, "Image saved !\n", NULL));
 }

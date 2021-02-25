@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_coord.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: masboula <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/23 16:47:57 by masboula          #+#    #+#             */
+/*   Updated: 2021/02/23 16:49:14 by masboula         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
-int	get_r(char *line, t_param *p)
+int		get_r(char *line, t_param *p)
 {
 	if (p->win_width != 0 && p->win_height != 0)
 		return (quit(p, "Error :\nYou have two R.\n", NULL));
@@ -9,11 +21,11 @@ int	get_r(char *line, t_param *p)
 	if (ft_isdigit(*line))
 	{
 		p->win_width = ft_atoi(line);
-	    while (ft_isdigit(*line))
+		while (ft_isdigit(*line))
 			line++;
 		while (*line == ' ')
 			line++;
-	    if (ft_isdigit(*line))
+		if (ft_isdigit(*line))
 			p->win_height = ft_atoi(line);
 		else
 			return (quit(p, "Id Error.\n", line));
@@ -29,7 +41,7 @@ char	*check_order(char *line)
 		line++;
 	if (*line == ',')
 	{
-		line++;;
+		line++;
 		while (*line == ' ')
 			line++;
 		if (*line == ',')
@@ -40,14 +52,12 @@ char	*check_order(char *line)
 	return (NULL);
 }
 
-int	get_c(char *line, t_param *p)
+int		get_c(char *line, t_param *p)
 {
-	if (p->colors.sky_r != 0 && p->colors.sky_g != 0 && p->colors.sky_b != 0)
-		return (quit(p, "Error :\nYou have two C.\n", NULL));
 	while (*line == ' ')
 		line++;
-    if (ft_isdigit(*line))
-    {
+	if (ft_isdigit(*line))
+	{
 		p->colors.sky_r = ft_atoi(line);
 		while (ft_isdigit(*line))
 			line++;
@@ -64,21 +74,19 @@ int	get_c(char *line, t_param *p)
 		if (ft_isdigit(*line))
 			p->colors.sky_b = ft_atoi(line);
 		else
-			return (quit(p, "Id1 Error.\n", line));
-    }
-    else
+			return (quit(p, "Id Error.\n", line));
+	}
+	else
 		return (quit(p, "Id Error.\n", line));
-    return (1);
+	return (1);
 }
 
-int	get_f(char *line, t_param *p)
+int		get_f(char *line, t_param *p)
 {
-	if (p->colors.floor_r != 0 && p->colors.floor_g != 0 && p->colors.floor_b != 0)
-		return (quit(p, "Error :\nYou have two F.\n", NULL));
 	while (*line == ' ')
 		line++;
-    if (ft_isdigit(*line))
-    {				
+	if (ft_isdigit(*line))
+	{
 		p->colors.floor_r = ft_atoi(line);
 		while (ft_isdigit(*line))
 			line++;
@@ -96,8 +104,8 @@ int	get_f(char *line, t_param *p)
 			p->colors.floor_b = ft_atoi(line);
 		else
 			return (quit(p, "Id Error.\n", line));
-    }
-    else
+	}
+	else
 		return (quit(p, "Id Error.\n", line));
-    return (1);
+	return (1);
 }

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: masboula <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/02/24 16:06:54 by masboula          #+#    #+#              #
+#    Updated: 2021/02/24 16:07:14 by masboula         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = Cub3D
 
 SRCS = 	main.c mlx_errors.c init.c bmp_save.c \
@@ -9,6 +21,7 @@ SRCS = 	main.c mlx_errors.c init.c bmp_save.c \
 		parsing/check_content.c \
         mini_map/custom_map.c \
 		useful.c \
+		raycasting_text/sprite_pos.c \
 		raycasting_text/raycasting_sprite.c \
 		raycasting_text/put_tex_on.c \
 		raycasting_text/raycasting_view.c \
@@ -30,7 +43,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 RM = rm -f
 
