@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 16:29:53 by user42            #+#    #+#             */
-/*   Updated: 2020/11/26 15:42:30 by masboula         ###   ########.fr       */
+/*   Updated: 2021/03/08 13:20:35 by masboula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
-# define	BUFFER_SIZE 100
+# define BUFFER_SIZE 100
 
 int		get_next_line(int fd, char **line);
 char	*ft_strdup2(char *src);
