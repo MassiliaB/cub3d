@@ -51,11 +51,11 @@ int		get_tab(char *line, t_param *p)
 		return (0);
 	while (x < (p->map.mapx))
 	{
-		if (!(get_good_line(line, p, x)))
+		if (!(get_good_line(line + x, p, x)))
 			return (0);
 		x++;
-		line++;
 	}
+	line += x;
 	x--;
 	while (++x < p->map.col_max)
 		p->map.tab[p->map.mapy][x] = ' ';
@@ -120,5 +120,7 @@ int		parse_map(t_param *p, char *line)
 		p->map.mapy++;
 		return (1);
 	}
+	if (*line == '\0' && p->map.mapy == p->map.nb_lines)
+		return (1);
 	return (0);
 }

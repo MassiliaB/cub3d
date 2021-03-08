@@ -62,7 +62,7 @@ void	sprite_height(t_param *p)
 	p->draw.draw_endy = p->sprite.sprite_height
 	/ 2 + p->win_height / 2;
 	if (p->draw.draw_endy >= p->win_height)
-		p->draw.draw_endy = p->win_height - 1;
+		p->draw.draw_endy = p->win_height;
 }
 
 void	sprite_width(t_param *p)
@@ -74,7 +74,7 @@ void	sprite_width(t_param *p)
 		p->draw.draw_startx = 0;
 	p->draw.draw_endx = p->sprite.sprite_width / 2 + p->sprite.sprite_screenx;
 	if (p->draw.draw_endx >= p->win_width)
-		p->draw.draw_endx = p->win_width - 1;
+		p->draw.draw_endx = p->win_width;
 }
 
 void	sprite_casting(t_param *p)

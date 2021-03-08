@@ -6,7 +6,7 @@
 /*   By: masboula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 17:22:48 by masboula          #+#    #+#             */
-/*   Updated: 2021/02/25 14:05:15 by masboula         ###   ########.fr       */
+/*   Updated: 2021/03/03 12:52:18 by masboula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	update_scene(t_param *p)
 
 int	get_update(t_param *p)
 {
-if (!(p->img.img = mlx_new_image(p->vars.mlx_ptr,
+	if (!(p->img.img = mlx_new_image(p->vars.mlx_ptr,
 	p->win_width, p->win_height)))
 		return (quit(p, "Error :\nMlx_new_image NULL.\n", NULL));
 	if (!(p->img.addr = mlx_get_data_addr(p->img.img, &(p->img.bits_per_pixel),
@@ -46,7 +46,9 @@ if (!(p->img.img = mlx_new_image(p->vars.mlx_ptr,
 	update_scene(p);
 	if (p->touch % 2 == 1)
 		my_tiny_map(p);
-	mlx_put_image_to_window(p->vars.mlx_ptr, p->vars.win_ptr, p->img.img, 0, 0);
+	if (p->save == 0)
+		mlx_put_image_to_window(p->vars.mlx_ptr,
+		p->vars.win_ptr, p->img.img, 0, 0);
 	mlx_destroy_image(p->vars.mlx_ptr, p->img.img);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: masboula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 13:00:58 by masboula          #+#    #+#             */
-/*   Updated: 2021/02/24 16:02:31 by masboula         ###   ########.fr       */
+/*   Updated: 2021/03/03 12:50:46 by masboula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@ void	free_malloc(t_param *p, char *line)
 		}
 		free(p->map.tab);
 	}
-	(void)line;
-	if (p->sprite_ptr != NULL)
+	if (line != NULL)
+		free(line);
+	if (p->sprite_ptr)
 		free(p->sprite_ptr);
-	if (p->sprite.sp_dist != 0)
+	if (p->sprite.sp_dist)
 		free(p->sprite.sp_dist);
-	if (p->sprite.sprite_order != 0)
+	if (p->sprite.sprite_order)
 		free(p->sprite.sprite_order);
 }
 
@@ -72,6 +73,13 @@ int		quit(t_param *p, char *str, char *line)
 {
 	print_error(str);
 	free_malloc(p, line);
+	if (p->vars.win_ptr && p->vars.mlx_ptr)
+		mlx_destroy_window(p->vars.mlx_ptr, p->vars.win_ptr);
+	if (p->vars.mlx_ptr)
+	{
+		mlx_destroy_display(p->vars.mlx_ptr);
+		free(p->vars.mlx_ptr);
+	}
 	exit(0);
 }
 

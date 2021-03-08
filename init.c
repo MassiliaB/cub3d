@@ -18,6 +18,11 @@ void			paths(t_param *p)
 	&(p->img.bits_per_pixel_sp), &(p->img.line_length_sp), &(p->img.endian_sp));
 	p->text.tex_height = 0;
 	p->text.tex_width = 0;
+	free(p->text.sprite_path);
+	free(p->text.ea_path);
+	free(p->text.we_path);
+	free(p->text.so_path);
+	free(p->text.no_path);
 }
 
 int				get_tex_path(t_param *p)
@@ -66,10 +71,17 @@ void			init_img(t_param *p)
 void			init_tex(t_param *p)
 {
 	p->map.tab = NULL;
+	p->vars.win_ptr = NULL;
+	p->vars.mlx_ptr = NULL;
+	p->img.sprite = NULL;
 	p->sprite_ptr = NULL;
 	p->sprite.sprite_order = 0;
 	p->sprite.sp_dist = 0;
-	p->text.img_addr = NULL;
+	p->img.so = NULL;
+	p->img.no = NULL;
+	p->img.ea = NULL;
+	p->img.we = NULL;
+	p->img.img = NULL;
 	p->text.sprite_path = NULL;
 	p->text.ea_path = NULL;
 	p->text.we_path = NULL;
@@ -79,7 +91,7 @@ void			init_tex(t_param *p)
 
 void			init_player(t_param *p)
 {
-	p->horizon.movespeed = 0.20;
+	p->horizon.movespeed = 0.4;
 	p->horizon.rotspeed = 0.05;
 	p->touch = 0;
 	p->sprite.num_sprites = 0;

@@ -15,7 +15,7 @@
 void	bmp_make(t_param *p, int fd, int tmp)
 {
 	write(fd, "BM", 2);
-	tmp = 40 + 14 + 4 * p->win_width * p->win_height;
+	tmp = 54 + 4 * p->win_width * p->win_height;
 	write(fd, &tmp, 4);
 	tmp = 0;
 	write(fd, &tmp, 2);

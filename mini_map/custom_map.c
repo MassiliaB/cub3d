@@ -6,7 +6,7 @@
 /*   By: masboula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 16:40:08 by masboula          #+#    #+#             */
-/*   Updated: 2021/02/24 16:09:37 by masboula         ###   ########.fr       */
+/*   Updated: 2021/03/03 12:51:54 by masboula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	display_circle_map(t_param *p, int x, int y)
 	int		j;
 	double	dist;
 
-	p->fps.rad = 3;
-	p->colors.person = creat_trgb(0, 255, 255, 255);
+	p->fps.rad = p->map.width / 2.2;
+	p->colors.person = creat_trgb(0, 0, 0, 0);
 	j = 0;
 	while (j <= 2 * p->fps.rad)
 	{
@@ -57,7 +57,7 @@ void	display_circle_map(t_param *p, int x, int y)
 		{
 			dist = sqrt((i - p->fps.rad) * (i - p->fps.rad)
 			+ (j - p->fps.rad) * (j - p->fps.rad));
-			if (dist > (p->fps.rad - 0.5) && dist < (p->fps.rad + 0.5))
+			if (dist > (p->fps.rad - 1) && dist < (p->fps.rad + 1))
 				my_mlx_pixel_put(p, i + x, j + y, p->colors.person);
 			i++;
 		}
@@ -70,7 +70,7 @@ void	my_tiny_map(t_param *p)
 	int	x;
 	int	y;
 
-	p->map.width = p->win_width / (4 * p->map.col_max);
+	p->map.width = p->win_height / (p->map.col_max * 3);
 	y = -1;
 	while (++y < p->map.mapy)
 	{

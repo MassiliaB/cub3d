@@ -59,19 +59,21 @@ void	movelr(t_param *p)
 	if (p->fps.left == 1)
 	{
 		if (moving_ok(p->map.tab[(int)p->horizon.posy]
-		[(int)(p->horizon.posx - p->horizon.planex * p->horizon.movespeed)]))
+		[(int)(p->horizon.posx - p->horizon.planex
+		* p->horizon.movespeed * 2)]))
 			p->horizon.posx -= p->horizon.planex * p->horizon.movespeed;
 		if (moving_ok(p->map.tab[(int)(p->horizon.posy - p->horizon.planey
-		* p->horizon.movespeed)][(int)(p->horizon.posx)]))
+		* p->horizon.movespeed * 2)][(int)(p->horizon.posx)]))
 			p->horizon.posy -= p->horizon.planey * p->horizon.movespeed;
 	}
 	if (p->fps.right == 1)
 	{
 		if (moving_ok(p->map.tab[(int)p->horizon.posy]
-		[(int)(p->horizon.posx + p->horizon.planex * p->horizon.movespeed)]))
+		[(int)(p->horizon.posx + p->horizon.planex
+		* p->horizon.movespeed * 2)]))
 			p->horizon.posx += p->horizon.planex * p->horizon.movespeed;
 		if (moving_ok(p->map.tab[(int)(p->horizon.posy + p->horizon.planey
-		* p->horizon.movespeed)][(int)(p->horizon.posx)]))
+		* p->horizon.movespeed * 2)][(int)(p->horizon.posx)]))
 			p->horizon.posy += p->horizon.planey * p->horizon.movespeed;
 	}
 }
@@ -81,19 +83,19 @@ void	move(t_param *p)
 	if (p->fps.forward == 1)
 	{
 		if (moving_ok(p->map.tab[(int)p->horizon.posy]
-		[(int)(p->horizon.posx + p->horizon.dirx * p->horizon.movespeed)]))
+		[(int)(p->horizon.posx + p->horizon.dirx * p->horizon.movespeed * 2)]))
 			p->horizon.posx += p->horizon.dirx * p->horizon.movespeed;
 		if (moving_ok(p->map.tab[(int)(p->horizon.posy + p->horizon.diry
-		* p->horizon.movespeed)][(int)(p->horizon.posx)]))
+		* p->horizon.movespeed * 2)][(int)(p->horizon.posx)]))
 			p->horizon.posy += p->horizon.diry * p->horizon.movespeed;
 	}
 	if (p->fps.backward == 1)
 	{
 		if (moving_ok(p->map.tab[(int)p->horizon.posy]
-		[(int)(p->horizon.posx - p->horizon.dirx * p->horizon.movespeed)]))
+		[(int)(p->horizon.posx - p->horizon.dirx * p->horizon.movespeed * 2)]))
 			p->horizon.posx -= p->horizon.dirx * p->horizon.movespeed;
 		if (moving_ok(p->map.tab[(int)(p->horizon.posy - p->horizon.diry
-		* p->horizon.movespeed)][(int)(p->horizon.posx)]))
+		* p->horizon.movespeed * 2)][(int)(p->horizon.posx)]))
 			p->horizon.posy -= p->horizon.diry * p->horizon.movespeed;
 	}
 	movelr(p);

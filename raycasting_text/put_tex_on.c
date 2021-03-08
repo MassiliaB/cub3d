@@ -6,32 +6,31 @@
 /*   By: masboula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 12:37:04 by masboula          #+#    #+#             */
-/*   Updated: 2021/02/24 16:14:31 by masboula         ###   ########.fr       */
+/*   Updated: 2021/03/03 12:52:58 by masboula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	put_color(t_param *p, char *color, int color2)
+void	put_color(t_param *p)
 {
+	int color;
+	int index;
+
+	color = 0;
 	p->sprite.d = (p->sprite.y) * 256 - p->win_height * 128
 	+ p->sprite.sprite_height * 128;
 	p->sprite.texy = ((p->sprite.d * p->text.sp_height) /
 	p->sprite.sprite_height) / 256;
-	color = (char *)(p->text.sp_addr + p->sprite.texy
-	* p->img.line_length_sp + p->sprite.texx * p->text.bpp / 8);
-	color2 = *(unsigned int*)color;
-	if (color2 && 0x00FFFFFF != 0)
-		my_mlx_pixel_put(p, p->sprite.stripe, p->sprite.y, color2);
+	index = abs(p->sprite.texy) * p->img.line_length_sp +
+	abs(p->sprite.texx) * (p->img.bits_per_pixel_sp / 8);
+	ft_memcpy(&color, &p->text.sp_addr[index], 4);
+	if (color && 0x00FFFFFF != 0)
+		my_mlx_pixel_put(p, p->sprite.stripe, p->sprite.y, color);
 }
 
 void	put_sprite_on(t_param *p)
 {
-	char	*color;
-	unsigned int		color2;
-
-	color = NULL;
-	color2 = 0;
 	p->sprite.stripe = p->draw.draw_startx;
 	while (p->sprite.stripe < p->draw.draw_endx)
 	{
@@ -45,7 +44,7 @@ void	put_sprite_on(t_param *p)
 			p->sprite.y = p->draw.draw_starty;
 			while (p->sprite.y < p->draw.draw_endy)
 			{
-				put_color(p, color, color2);
+				put_color(p);
 				p->sprite.y++;
 			}
 		}
@@ -56,20 +55,20 @@ void	put_sprite_on(t_param *p)
 void	put_tex_on(t_param *p, int x)
 {
 	int		y;
-	char	*color;
-	int		color2;
+	int		color;
+	char	*color2;
 
 	y = p->draw.draw_start;
 	while (y < p->draw.draw_end)
 	{
 		p->text.texy = (int)p->text.tex_pos & (p->text.tex_height - 1);
 		p->text.tex_pos += p->text.step;
-		color = (char *)(p->text.img_addr + p->text.texy
-		* p->text.ll + p->text.texx * p->text.bpp / 8);
-		color2 = *(unsigned int*)color;
+		color2 = p->text.img_addr + (abs(p->text.texy) * p->text.ll
+		+ abs(p->text.texx) * (p->text.bpp / 8));
+		color = *(unsigned int *)color2;
 		if (p->horizon.side == 1)
-			color2 = (color2 >> 1) & 8355711;
-		my_mlx_pixel_put(p, x, y, color2);
+			color = (color >> 1) & 8355711;
+		my_mlx_pixel_put(p, x, y, color);
 		y++;
 	}
 	p->sprite.buff[x] = p->horizon.perpwalldist;
