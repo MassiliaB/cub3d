@@ -4,7 +4,7 @@
 
 **Subject**
 
-A project inspired by the first FPS 3d known game Wolfstein 3D. The purpose is to code a first-person dynamic view in a realistic maze.
+A project inspired by the first FPS known game Wolfstein 3D. The purpose is to code a first-person dynamic view in a realistic maze.
 
 **Aprehende the project**
 
