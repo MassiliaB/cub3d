@@ -21,11 +21,11 @@ SRCS = 	main.c mlx_errors.c init.c bmp_save.c \
 		parsing/check_content.c \
         mini_map/custom_map.c \
 		useful.c \
-		raycasting_text/sprite_pos.c \
-		raycasting_text/raycasting_sprite.c \
-		raycasting_text/put_tex_on.c \
-		raycasting_text/raycasting_view.c \
-		raycasting/ft_move.c \
+		raycasting/sprite_pos.c \
+		raycasting/raycasting_sprite.c \
+		raycasting/put_tex_on.c \
+		raycasting/raycasting_tex.c \
+		raycasting/move.c \
 		raycasting/keys.c \
 		raycasting/steps.c \
         gnl/get_next_line.c \
