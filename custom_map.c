@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "inc/cub3d.h"
 
 void	display_cub_map(t_param *p, int color, int x, int y)
 {

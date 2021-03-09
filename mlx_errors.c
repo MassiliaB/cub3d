@@ -35,7 +35,7 @@ int		parse_error(t_param *p)
 	return (1);
 }
 
-void	free_malloc(t_param *p, char *line)
+void	free_tabs(t_param *p, char *line)
 {
 	int i;
 
@@ -57,6 +57,18 @@ void	free_malloc(t_param *p, char *line)
 		free(p->sprite.sp_dist);
 	if (p->sprite.sprite_order)
 		free(p->sprite.sprite_order);
+	if (p->text.ea_path)		
+		free(p->text.ea_path);
+	if (p->text.we_path)		
+		free(p->text.we_path);
+	if (p->text.no_path)
+		free(p->text.no_path);
+	if (p->text.so_path)
+		free(p->text.so_path);
+	if (p->text.sprite_path)		
+		free(p->text.sprite_path);
+
+
 }
 
 int		print_error(char *str)
@@ -72,8 +84,20 @@ int		print_error(char *str)
 int		quit(t_param *p, char *str, char *line)
 {
 	print_error(str);
-	free_malloc(p, line);
-	if (p->vars.win_ptr && p->vars.mlx_ptr)
+	free_tabs(p, line);
+	if (p->img.ea)
+		mlx_destroy_image(p->vars.mlx_ptr, p->img.ea);
+	if (p->img.we)	
+		mlx_destroy_image(p->vars.mlx_ptr, p->img.we);
+	if (p->img.no)
+		mlx_destroy_image(p->vars.mlx_ptr, p->img.no);
+	if (p->img.so)
+		mlx_destroy_image(p->vars.mlx_ptr, p->img.so);
+	if (p->img.sprite)
+		mlx_destroy_image(p->vars.mlx_ptr, p->img.sprite);
+	if (p->save == 1)
+		mlx_destroy_image(p->vars.mlx_ptr, p->img.img);
+	if (p->vars.win_ptr)
 		mlx_destroy_window(p->vars.mlx_ptr, p->vars.win_ptr);
 	if (p->vars.mlx_ptr)
 	{

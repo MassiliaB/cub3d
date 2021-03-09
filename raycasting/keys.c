@@ -46,9 +46,7 @@ int	get_update(t_param *p)
 	update_scene(p);
 	if (p->touch % 2 == 1)
 		my_tiny_map(p);
-	if (p->save == 0)
-		mlx_put_image_to_window(p->vars.mlx_ptr,
-		p->vars.win_ptr, p->img.img, 0, 0);
+	mlx_put_image_to_window(p->vars.mlx_ptr, p->vars.win_ptr, p->img.img, 0, 0);
 	mlx_destroy_image(p->vars.mlx_ptr, p->img.img);
 	return (0);
 }

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Cub3D
+NAME = cub3D
 
 SRCS = 	main.c mlx_errors.c init.c bmp_save.c \
 		parsing/get_coord.c \
@@ -19,7 +19,7 @@ SRCS = 	main.c mlx_errors.c init.c bmp_save.c \
 		parsing/open_cub.c \
         parsing/get_text.c \
 		parsing/check_content.c \
-        mini_map/custom_map.c \
+        custom_map.c \
 		useful.c \
 		raycasting/sprite_pos.c \
 		raycasting/raycasting_sprite.c \
@@ -43,7 +43,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 RM = rm -f
 

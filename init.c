@@ -18,11 +18,6 @@ void			paths(t_param *p)
 	&(p->img.bits_per_pixel_sp), &(p->img.line_length_sp), &(p->img.endian_sp));
 	p->text.tex_height = 0;
 	p->text.tex_width = 0;
-	free(p->text.sprite_path);
-	free(p->text.ea_path);
-	free(p->text.we_path);
-	free(p->text.so_path);
-	free(p->text.no_path);
 }
 
 int				get_tex_path(t_param *p)

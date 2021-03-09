@@ -14,7 +14,7 @@
 
 int		word_check(char *str, char *comp)
 {
-	while (*str)
+	while (*comp)
 	{
 		if (*str != *comp)
 			return (0);
