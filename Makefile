@@ -21,6 +21,7 @@ SRCS = 	main.c mlx_errors.c init.c bmp_save.c \
 		parsing/check_content.c \
         custom_map.c \
 		useful.c \
+		parse_err.c \
 		raycasting/sprite_pos.c \
 		raycasting/raycasting_sprite.c \
 		raycasting/put_tex_on.c \
@@ -43,7 +44,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 

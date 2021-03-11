@@ -28,7 +28,7 @@ void	free_struct(t_param *p)
 		free(p->text.no_path);
 	if (p->text.so_path)
 		free(p->text.so_path);
-	if (p->text.sprite_path
+	if (p->text.sprite_path)
 		free(p->text.sprite_path);
 }
 
